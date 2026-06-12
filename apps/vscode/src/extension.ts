@@ -38,7 +38,13 @@ import {
 	migrateWorkspaceToGlobalStorage,
 } from "./core/storage/state-migrations"
 import { workspaceResolver } from "./core/workspace"
-import { findMatchingNotebookCell, getContextForCommand, showWebview } from "./hosts/vscode/commandUtils"
+import {
+	buildFileMentionsFromUris,
+	findMatchingNotebookCell,
+	getContextForCommand,
+	getUrisFromCommandArgs,
+	showWebview,
+} from "./hosts/vscode/commandUtils"
 import { abortCommitGeneration, generateCommitMsg } from "./hosts/vscode/commit-message-generator"
 import { registerClineOutputChannel } from "./hosts/vscode/hostbridge/env/debugLog"
 import {
@@ -345,6 +351,42 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 			await addToCline(context.controller, context.commandContext)
 		}),
+	)
+	context.subscriptions.push(
+		vscode.commands.registerCommand(
+			commands.AddFilesToChat,
+			async (clickedUri?: vscode.Uri, selectedUris?: vscode.Uri[]) => {
+				const uris = getUrisFromCommandArgs(clickedUri, selectedUris)
+				if (uris.length === 0) {
+					return
+				}
+				await showWebview(false)
+				const input = await buildFileMentionsFromUris(uris)
+				if (!input.trim()) {
+					return
+				}
+				await sendAddToInputEvent(input)
+			},
+		),
+	)
+	context.subscriptions.push(
+		vscode.commands.registerCommand(
+			commands.AddFilesToNewTask,
+			async (clickedUri?: vscode.Uri, selectedUris?: vscode.Uri[]) => {
+				const uris = getUrisFromCommandArgs(clickedUri, selectedUris)
+				if (uris.length === 0) {
+					return
+				}
+				const webview = await showWebview(false)
+				await webview.controller.clearTask()
+				await webview.controller.postStateToWebview()
+				const input = await buildFileMentionsFromUris(uris)
+				if (!input.trim()) {
+					return
+				}
+				await sendAddToInputEvent(input)
+			},
+		),
 	)
 	context.subscriptions.push(
 		vscode.commands.registerCommand(commands.FixWithCline, async (range: vscode.Range, diagnostics: vscode.Diagnostic[]) => {
