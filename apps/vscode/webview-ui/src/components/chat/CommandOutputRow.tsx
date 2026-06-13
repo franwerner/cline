@@ -74,8 +74,8 @@ export const CommandOutputContent = memo(
 								console.error("Failed to open log file:", err),
 							)
 						}}
-						title={`Click to open: ${logFilePath}`}>
-						<span className="shrink-0">📋 Output is being logged to:</span>
+						title={`Haz clic para abrir: ${logFilePath}`}>
+						<span className="shrink-0">📋 La salida se está registrando en:</span>
 						<span className="text-vscode-textLink-foreground underline break-all">{fileName}</span>
 					</div>
 					{afterLogPath && <CodeBlock forceWrap={true} source={`${"```"}shell\n${afterLogPath}\n${"```"}`} />}
@@ -208,13 +208,13 @@ export const CommandOutputRow = memo(
 											} else {
 												// For regular terminal mode, show a message
 												alert(
-													"This command is running in the VSCode terminal. You can manually stop it using Ctrl+C in the terminal, or switch to Background Execution mode in settings for cancellable commands.",
+													"Este comando se está ejecutando en el terminal de VSCode. Puedes detenerlo manualmente con Ctrl+C en el terminal, o cambiar al modo de ejecución en segundo plano en los ajustes para poder cancelar comandos.",
 												)
 											}
 										}}
 										size="sm"
 										variant="secondary">
-										{isBackgroundExec ? "cancel" : "stop"}
+										{isBackgroundExec ? "Cancelar" : "Detener"}
 									</Button>
 								)}
 							</div>
@@ -237,7 +237,7 @@ export const CommandOutputRow = memo(
 				{requestsApproval && (
 					<div className="flex items-center gap-2.5 p-2 text-[12px] text-editor-warning-foreground">
 						<i className="codicon codicon-warning" />
-						<span>The model has determined this command requires explicit approval.</span>
+						<span>El modelo ha determinado que este comando requiere aprobación explícita.</span>
 					</div>
 				)}
 			</>
@@ -248,10 +248,10 @@ export const CommandOutputRow = memo(
 CommandOutputRow.displayName = "CommandOutputRow"
 
 const CommandStatusMap = {
-	executing: "Running",
-	pending: "Pending",
-	completed: "Completed",
-	skipped: "Skipped",
+	executing: "Ejecutando",
+	pending: "Pendiente",
+	completed: "Completado",
+	skipped: "Omitido",
 }
 
 function getCommandStatusText(isExecuting: boolean, isPending: boolean, isCompleted: boolean): string {

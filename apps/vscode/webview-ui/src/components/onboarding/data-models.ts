@@ -32,7 +32,7 @@ export function getPriceRange(modelInfo: OpenRouterModelInfo): string {
 	const completion = Number(modelInfo.outputPrice ?? 0)
 	const cost = prompt + completion
 	if (cost === 0) {
-		return "Free"
+		return "Gratis"
 	}
 	if (cost < 10) {
 		return "$"
@@ -45,45 +45,45 @@ export function getPriceRange(modelInfo: OpenRouterModelInfo): string {
 
 export function getOverviewLabel(overview: number): string {
 	if (overview >= 95) {
-		return "Top Performer"
+		return "Sobresaliente"
 	}
 	if (overview >= 80) {
-		return "Great"
+		return "Muy bueno"
 	}
 	if (overview >= 60) {
-		return "Good"
+		return "Bueno"
 	}
 	if (overview >= 50) {
-		return "Average"
+		return "Medio"
 	}
-	return "Below Average"
+	return "Por debajo de la media"
 }
 
 export function getCapabilities(modelInfo: OpenRouterModelInfo): string[] {
 	const capabilities = new Set<string>()
 	if (modelInfo.supportsImages) {
-		capabilities.add("Images")
+		capabilities.add("Imágenes")
 	}
 	if (modelInfo.supportsPromptCache) {
-		capabilities.add("Prompt Cache")
+		capabilities.add("Caché de prompts")
 	}
-	capabilities.add("Tools")
+	capabilities.add("Herramientas")
 	return Array.from(capabilities)
 }
 
 export function getSpeedLabel(latency?: number): string {
 	if (!latency) {
-		return "Average"
+		return "Media"
 	}
 	if (latency < 1) {
-		return "Instant"
+		return "Instantánea"
 	}
 	if (latency < 2) {
-		return "Fast"
+		return "Rápida"
 	}
 	if (latency > 5) {
-		return "Slow"
+		return "Lenta"
 	}
 
-	return "Average"
+	return "Media"
 }

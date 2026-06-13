@@ -20,7 +20,7 @@ export function registerTaskCommands(controller: Controller): vscode.Disposable[
 				const secretsJson = stateManager.getSecretKey("mcpOAuthSecrets")
 
 				if (!secretsJson) {
-					vscode.window.showInformationMessage("No MCP OAuth secrets found - no servers are authenticated")
+					vscode.window.showInformationMessage("No se han encontrado secretos de OAuth de MCP; no hay servidores autenticados")
 					return
 				}
 
@@ -39,24 +39,24 @@ export function registerTaskCommands(controller: Controller): vscode.Disposable[
 				stateManager.setSecret("mcpOAuthSecrets", JSON.stringify(secrets))
 
 				const action = await vscode.window.showInformationMessage(
-					`Expired ${expiredCount} MCP OAuth token(s). Reload window to test token refresh flow.`,
-					"Reload Window",
-					"Cancel",
+					`Se ${expiredCount === 1 ? "ha caducado" : "han caducado"} ${expiredCount} token(s) de OAuth de MCP. Vuelva a cargar la ventana para probar el flujo de actualización de tokens.`,
+					"Volver a cargar la ventana",
+					"Cancelar",
 				)
 
-				if (action === "Reload Window") {
+				if (action === "Volver a cargar la ventana") {
 					vscode.commands.executeCommand("workbench.action.reloadWindow")
 				}
 			} catch (error) {
-				vscode.window.showErrorMessage(`Failed to expire tokens: ${error}`)
+				vscode.window.showErrorMessage(`No se han podido caducar los tokens: ${error}`)
 				Logger.error("[Dev] Error expiring MCP OAuth tokens:", error)
 			}
 		}),
 		vscode.commands.registerCommand("cline.dev.createTestTasks", async () => {
 			const count = (
 				await HostProvider.window.showInputBox({
-					title: "Test Tasks",
-					prompt: "How many test tasks to create?",
+					title: "Tareas de prueba",
+					prompt: "¿Cuántas tareas de prueba desea crear?",
 					value: "10",
 				})
 			).response
@@ -72,7 +72,7 @@ export function registerTaskCommands(controller: Controller): vscode.Disposable[
 			vscode.window.withProgress(
 				{
 					location: vscode.ProgressLocation.Notification,
-					title: `Creating ${tasksCount} test tasks...`,
+					title: `Creando ${tasksCount} tareas de prueba...`,
 					cancellable: false,
 				},
 				async (progress) => {
@@ -139,7 +139,7 @@ export function registerTaskCommands(controller: Controller): vscode.Disposable[
 					// Update the UI to show the new tasks
 					await controller.postStateToWebview()
 
-					const message = `Created ${tasksCount} test tasks`
+					const message = `Se han creado ${tasksCount} tareas de prueba`
 					HostProvider.window.showMessage({
 						type: ShowMessageType.INFORMATION,
 						message,

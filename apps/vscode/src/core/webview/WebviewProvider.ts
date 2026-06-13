@@ -173,7 +173,7 @@ export abstract class WebviewProvider {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
 					message:
-						"Cline: Local webview dev server is not running, HMR will not work. Please run 'npm run dev:webview' before launching the extension to enable HMR. Using bundled assets.",
+						"Catalina: el servidor de desarrollo local del webview no se está ejecutando, HMR no funcionará. Ejecute 'npm run dev:webview' antes de iniciar la extensión para activar HMR. Se usarán los recursos empaquetados.",
 				})
 			}
 

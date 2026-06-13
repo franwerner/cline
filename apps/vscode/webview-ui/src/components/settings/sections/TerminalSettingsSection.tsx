@@ -35,7 +35,7 @@ export const TerminalSettingsSection: React.FC<TerminalSettingsSectionProps> = (
 
 		const seconds = parseFloat(value)
 		if (Number.isNaN(seconds) || seconds <= 0) {
-			setInputError("Please enter a positive number")
+			setInputError("Introduce un número positivo")
 			return
 		}
 
@@ -93,7 +93,7 @@ export const TerminalSettingsSection: React.FC<TerminalSettingsSectionProps> = (
 				<div className="mb-5" id="terminal-settings-section">
 					<div className="mb-4">
 						<label className="font-medium block mb-1" htmlFor="default-terminal-profile">
-							Default Terminal Profile
+							Perfil de terminal predeterminado
 						</label>
 						<VSCodeDropdown
 							className="w-full"
@@ -107,27 +107,29 @@ export const TerminalSettingsSection: React.FC<TerminalSettingsSectionProps> = (
 							))}
 						</VSCodeDropdown>
 						<p className="text-xs text-(--vscode-descriptionForeground) mt-1">
-							Select the default terminal Catalina will use. 'Default' uses your VSCode global setting.
+							Selecciona el terminal predeterminado que usará Catalina. «Default» usa tu ajuste global de VSCode.
 						</p>
 					</div>
 
 					<div className="mb-4">
 						<div className="mb-2">
-							<label className="font-medium block mb-1">Shell integration timeout (seconds)</label>
+							<label className="font-medium block mb-1">
+								Tiempo de espera de la integración del shell (segundos)
+							</label>
 							<div className="flex items-center">
 								<VSCodeTextField
 									className="w-full"
 									onBlur={handleInputBlur}
 									onChange={(event) => handleTimeoutChange(event as Event)}
-									placeholder="Enter timeout in seconds"
+									placeholder="Introduce el tiempo de espera en segundos"
 									value={inputValue}
 								/>
 							</div>
 							{inputError && <div className="text-(--vscode-errorForeground) text-xs mt-1">{inputError}</div>}
 						</div>
 						<p className="text-xs text-(--vscode-descriptionForeground)">
-							Set how long Catalina waits for shell integration to activate before executing commands. Increase this
-							value if you experience terminal connection timeouts.
+							Define cuánto tiempo espera Catalina a que se active la integración del shell antes de ejecutar comandos.
+							Aumenta este valor si experimentas tiempos de espera agotados en la conexión del terminal.
 						</p>
 					</div>
 
@@ -136,50 +138,51 @@ export const TerminalSettingsSection: React.FC<TerminalSettingsSectionProps> = (
 							<VSCodeCheckbox
 								checked={terminalReuseEnabled ?? true}
 								onChange={(event) => handleTerminalReuseChange(event as Event)}>
-								Enable aggressive terminal reuse
+								Activar la reutilización agresiva del terminal
 							</VSCodeCheckbox>
 						</div>
 						<p className="text-xs text-(--vscode-descriptionForeground)">
-							When enabled, Catalina will reuse existing terminal windows that aren't in the current working directory.
-							Disable this if you experience issues with task lockout after a terminal command.
+							Cuando se activa, Catalina reutiliza ventanas de terminal existentes que no están en el directorio de
+							trabajo actual. Desactívalo si experimentas problemas de bloqueo de tareas después de un comando del
+							terminal.
 						</p>
 					</div>
 					{isVsCodePlatform && (
 						<div className="mb-4">
 							<label className="font-medium block mb-1" htmlFor="terminal-execution-mode">
-								Terminal Execution Mode
+								Modo de ejecución del terminal
 							</label>
 							<VSCodeDropdown
 								className="w-full"
 								id="terminal-execution-mode"
 								onChange={(event) => handleExecutionModeChange(event as Event)}
 								value={vscodeTerminalExecutionMode ?? "vscodeTerminal"}>
-								<VSCodeOption value="vscodeTerminal">VS Code Terminal</VSCodeOption>
-								<VSCodeOption value="backgroundExec">Background Exec</VSCodeOption>
+								<VSCodeOption value="vscodeTerminal">Terminal de VS Code</VSCodeOption>
+								<VSCodeOption value="backgroundExec">Ejecución en segundo plano</VSCodeOption>
 							</VSCodeDropdown>
 							<p className="text-xs text-[var(--vscode-descriptionForeground)] mt-1">
-								Choose whether Catalina runs commands in the VS Code terminal or a background process.
+								Elige si Catalina ejecuta los comandos en el terminal de VS Code o en un proceso en segundo plano.
 							</p>
 						</div>
 					)}
 					<TerminalOutputLineLimitSlider />
 					<div className="mt-5 p-3 bg-(--vscode-textBlockQuote-background) rounded border border-(--vscode-textBlockQuote-border)">
 						<p className="text-[13px] m-0">
-							<strong>Having terminal issues?</strong> Check our{" "}
+							<strong>¿Problemas con el terminal?</strong> Consulta nuestras{" "}
 							<a
 								className="text-(--vscode-textLink-foreground) underline hover:no-underline"
 								href="https://docs.cline.bot/troubleshooting/terminal-quick-fixes"
 								rel="noopener noreferrer"
 								target="_blank">
-								Terminal Quick Fixes
+								Soluciones rápidas del terminal
 							</a>{" "}
-							or the{" "}
+							o la{" "}
 							<a
 								className="text-(--vscode-textLink-foreground) underline hover:no-underline"
 								href="https://docs.cline.bot/troubleshooting/terminal-integration-guide"
 								rel="noopener noreferrer"
 								target="_blank">
-								Complete Troubleshooting Guide
+								Guía completa de resolución de problemas
 							</a>
 							.
 						</p>

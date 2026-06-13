@@ -101,7 +101,7 @@ export async function parseMentions(
 			launchBrowserError = error
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Error fetching content for ${urlMention}: ${error.message}`,
+				message: `Error al obtener el contenido de ${urlMention}: ${error.message}`,
 			})
 		}
 	}
@@ -133,7 +133,7 @@ export async function parseMentions(
 				} catch (error) {
 					HostProvider.window.showMessage({
 						type: ShowMessageType.ERROR,
-						message: `Error fetching content for ${mention}: ${error.message}`,
+						message: `Error al obtener el contenido de ${mention}: ${error.message}`,
 					})
 					result = `Error fetching content: ${error.message}`
 					// Track failed URL mention

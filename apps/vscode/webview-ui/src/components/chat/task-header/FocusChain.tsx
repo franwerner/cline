@@ -23,10 +23,10 @@ interface FocusChainProps {
 }
 
 // Static strings to avoid recreating them
-const COMPLETED_MESSAGE = "All tasks have been completed!"
-const TODO_LIST_LABEL = "To-Do list"
-const NEW_STEPS_MESSAGE = "New steps will be generated if you continue the task"
-const CLICK_TO_EDIT_TITLE = "Click to edit to-do list in file"
+const COMPLETED_MESSAGE = "¡Todas las tareas se han completado!"
+const TODO_LIST_LABEL = "Lista de tareas pendientes"
+const NEW_STEPS_MESSAGE = "Se generarán nuevos pasos si continúas la tarea"
+const CLICK_TO_EDIT_TITLE = "Haz clic para editar la lista de tareas pendientes en el archivo"
 
 // Optimized header component with minimal re-renders
 const ToDoListHeader = memo<{
@@ -194,7 +194,7 @@ export const FocusChain: React.FC<FocusChainProps> = memo(
 					<span className="rounded-lg px-2 py-0.25 inline-block shrink-0 bg-badge-foreground/20 text-foreground text-sm">
 						0/0
 					</span>
-					<span className="text-sm text-foreground/80 truncate">TODOs</span>
+					<span className="text-sm text-foreground/80 truncate">Tareas pendientes</span>
 				</div>
 			)
 		}
@@ -207,7 +207,7 @@ export const FocusChain: React.FC<FocusChainProps> = memo(
 
 		return (
 			<div
-				aria-label={isExpanded ? "Collapse focus chain" : "Expand focus chain"}
+				aria-label={isExpanded ? "Contraer cadena de enfoque" : "Expandir cadena de enfoque"}
 				className="relative rounded-sm bg-toolbar-hover/65 flex flex-col gap-1.5 select-none hover:bg-toolbar-hover overflow-hidden opacity-80 hover:opacity-100 transition-[transform,box-shadow] duration-200 cursor-pointer"
 				onClick={handleToggle}
 				onKeyDown={(e) => {

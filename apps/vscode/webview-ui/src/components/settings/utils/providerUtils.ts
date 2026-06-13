@@ -405,7 +405,7 @@ export function normalizeApiConfiguration(
 				selectedModelInfo: basetenModelInfo ||
 					basetenModels[finalBasetenModelId as keyof typeof basetenModels] ||
 					basetenModels[basetenDefaultModelId] || {
-						description: "Baseten model",
+						description: "Modelo de Baseten",
 					},
 			}
 		}
@@ -436,7 +436,7 @@ export function normalizeApiConfiguration(
 					supportsPromptCache: false,
 					inputPrice: 0,
 					outputPrice: 0,
-					description: "Dify workflow - model selection is configured in your Dify application",
+					description: "Flujo de trabajo de Dify: la selección del modelo se configura en tu aplicación de Dify",
 				},
 			}
 		case "vercel-ai-gateway":
@@ -863,86 +863,86 @@ export const getProviderInfo = (
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeBasetenModelId : apiConfiguration.actModeBasetenModelId,
 				baseUrl: apiConfiguration.basetenBaseUrl,
-				helpText: "Start Baseten and load a model to begin",
+				helpText: "Inicia Baseten y carga un modelo para empezar",
 			}
 		case "lmstudio":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeLmStudioModelId : apiConfiguration.actModeLmStudioModelId,
 				baseUrl: apiConfiguration.lmStudioBaseUrl,
-				helpText: "Start LM Studio and load a model to begin",
+				helpText: "Inicia LM Studio y carga un modelo para empezar",
 			}
 		case "ollama":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeOllamaModelId : apiConfiguration.actModeOllamaModelId,
 				baseUrl: apiConfiguration.ollamaBaseUrl,
-				helpText: "Run `ollama serve` and pull a model",
+				helpText: "Ejecuta `ollama serve` y descarga un modelo",
 			}
 		case "litellm":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeLiteLlmModelId : apiConfiguration.actModeLiteLlmModelId,
 				baseUrl: apiConfiguration.liteLlmBaseUrl,
-				helpText: "Add your LiteLLM proxy URL in settings",
+				helpText: "Añade la URL de tu proxy de LiteLLM en los ajustes",
 			}
 		case "openai":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeOpenAiModelId : apiConfiguration.actModeOpenAiModelId,
 				baseUrl: apiConfiguration.openAiBaseUrl,
-				helpText: "Add your OpenAI API key and endpoint",
+				helpText: "Añade tu clave de API y el endpoint de OpenAI",
 			}
 		case "vscode-lm":
 			return {
 				modelId: undefined,
 				baseUrl: undefined,
-				helpText: "Select a VS Code language model from settings",
+				helpText: "Selecciona un modelo de lenguaje de VS Code en los ajustes",
 			}
 		case "requesty":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeRequestyModelId : apiConfiguration.actModeRequestyModelId,
 				baseUrl: apiConfiguration.requestyBaseUrl,
-				helpText: "Add your Requesty API key in settings",
+				helpText: "Añade tu clave de API de Requesty en los ajustes",
 			}
 		case "together":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeTogetherModelId : apiConfiguration.actModeTogetherModelId,
 				baseUrl: undefined,
-				helpText: "Add your Together AI API key in settings",
+				helpText: "Añade tu clave de API de Together AI en los ajustes",
 			}
 		case "dify":
 			return {
 				modelId: undefined,
 				baseUrl: apiConfiguration.difyBaseUrl,
-				helpText: "Configure your Dify workflow URL and API key",
+				helpText: "Configura la URL del flujo de trabajo y la clave de API de Dify",
 			}
 		case "hicap":
 			return {
 				modelId: effectiveMode === "plan" ? apiConfiguration.planModeHicapModelId : apiConfiguration.actModeHicapModelId,
 				baseUrl: undefined,
-				helpText: "Add your HiCap API key in settings",
+				helpText: "Añade tu clave de API de HiCap en los ajustes",
 			}
 		case "oca":
 			return {
 				modelId: effectiveMode === "plan" ? apiConfiguration.planModeOcaModelId : apiConfiguration.actModeOcaModelId,
 				baseUrl: apiConfiguration.ocaBaseUrl,
-				helpText: "Configure your OCA endpoint in settings",
+				helpText: "Configura tu endpoint de OCA en los ajustes",
 			}
 		case "aihubmix":
 			return {
 				modelId:
 					effectiveMode === "plan" ? apiConfiguration.planModeAihubmixModelId : apiConfiguration.actModeAihubmixModelId,
 				baseUrl: apiConfiguration.aihubmixBaseUrl,
-				helpText: "Add your AIHubMix API key in settings",
+				helpText: "Añade tu clave de API de AIHubMix en los ajustes",
 			}
 		default:
 			return {
 				modelId: undefined,
 				baseUrl: undefined,
-				helpText: "Configure this provider in model settings",
+				helpText: "Configura este proveedor en los ajustes del modelo",
 			}
 	}
 }

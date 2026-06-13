@@ -43,7 +43,7 @@ export async function refreshOcaModels(
 	if (!ocaAccessToken) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: "Not authenticated with OCA. Please sign in first.",
+			message: "No se ha autenticado con OCA. Inicie sesión primero.",
 		});
 		return OcaCompatibleModelInfo.create({
 			error: "Not authenticated with OCA",
@@ -71,7 +71,7 @@ export async function refreshOcaModels(
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
 					message:
-						"No models found. Did you set up your OCA access (possibly through entitlements)?",
+						"No se ha encontrado ningún modelo. ¿Ha configurado su acceso a OCA (posiblemente mediante entitlements)?",
 				});
 			}
 			for (const model of response.data.data) {
@@ -184,24 +184,24 @@ export async function refreshOcaModels(
 
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: `Refreshed OCA models from ${baseUrl}`,
+				message: `Modelos de OCA actualizados desde ${baseUrl}`,
 			});
 			await controller.postStateToWebview?.();
 		} else {
 			Logger.error("Invalid response from OCA API");
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Failed to fetch OCA models. Please check your configuration from ${baseUrl}`,
+				message: `No se han podido obtener los modelos de OCA. Compruebe su configuración desde ${baseUrl}`,
 			});
 		}
 	} catch (err) {
 		let userMsg;
 		if (err.response) {
 			// The request was made and the server responded with a status code that falls out of the range of 2xx
-			userMsg = `Did you set up your OCA access (possibly through entitlements)? OCA service returned ${err.response.status} ${err.response.statusText}.`;
+			userMsg = `¿Ha configurado su acceso a OCA (posiblemente mediante entitlements)? El servicio de OCA ha devuelto ${err.response.status} ${err.response.statusText}.`;
 		} else if (err.request) {
 			// The request was made but no response was received
-			userMsg = `Unable to access the OCA backend. Is your endpoint and proxy configured properly? Please see the troubleshooting guide.`;
+			userMsg = `No se ha podido acceder al backend de OCA. ¿Están su endpoint y su proxy configurados correctamente? Consulte la guía de resolución de problemas.`;
 		} else {
 			userMsg = err.message;
 			Logger.error(userMsg, err);
@@ -209,7 +209,7 @@ export async function refreshOcaModels(
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
 			message:
-				`Error refreshing OCA models. ` +
+				`Error al actualizar los modelos de OCA. ` +
 				userMsg +
 				` opc-request-id: ${headers["opc-request-id"]}`,
 		});

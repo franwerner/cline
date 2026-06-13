@@ -60,48 +60,48 @@ export const OllamaProvider = ({ showModelOptions, isPopup, currentMode }: Ollam
 		<div className="flex flex-col gap-2">
 			<BaseUrlField
 				initialValue={apiConfiguration?.ollamaBaseUrl}
-				label="Use custom base URL"
+				label="Usar URL base personalizada"
 				onChange={(value) => handleFieldChange("ollamaBaseUrl", value)}
-				placeholder="Default: http://localhost:11434"
+				placeholder="Predeterminado: http://localhost:11434"
 			/>
 
 			{apiConfiguration?.ollamaBaseUrl && (
 				<ApiKeyField
-					helpText="Optional API key for authenticated Ollama instances or cloud services. Leave empty for local installations."
+					helpText="Clave de API opcional para instancias de Ollama autenticadas o servicios en la nube. Déjala vacía para instalaciones locales."
 					initialValue={apiConfiguration?.ollamaApiKey || ""}
 					onChange={(value) => handleFieldChange("ollamaApiKey", value)}
-					placeholder="Enter API Key (optional)..."
+					placeholder="Introducir clave de API (opcional)..."
 					providerName="Ollama"
 				/>
 			)}
 
 			{/* Model selection - use filterable picker */}
 			<label htmlFor="ollama-model-selection">
-				<span className="font-semibold">Model</span>
+				<span className="font-semibold">Modelo</span>
 			</label>
 			<OllamaModelPicker
 				ollamaModels={ollamaModels}
 				onModelChange={(modelId) => {
 					handleModeFieldChange({ plan: "planModeOllamaModelId", act: "actModeOllamaModelId" }, modelId, currentMode)
 				}}
-				placeholder={ollamaModels.length > 0 ? "Search and select a model..." : "e.g. llama3.1"}
+				placeholder={ollamaModels.length > 0 ? "Buscar y seleccionar un modelo..." : "p. ej. llama3.1"}
 				selectedModelId={ollamaModelId || ""}
 			/>
 
 			{/* Show status message based on model availability */}
 			{ollamaModels.length === 0 && (
 				<p className="text-sm mt-1 text-description italic">
-					Unable to fetch models from Ollama server. Please ensure Ollama is running and accessible, or enter the model
-					ID manually above.
+					No se pudieron obtener los modelos del servidor de Ollama. Asegúrate de que Ollama esté en ejecución y
+					accesible, o introduce el ID del modelo manualmente arriba.
 				</p>
 			)}
 
 			<DebouncedTextField
 				initialValue={apiConfiguration?.ollamaApiOptionsCtxNum || "32768"}
 				onChange={(v) => handleFieldChange("ollamaApiOptionsCtxNum", v || undefined)}
-				placeholder={"e.g. 32768"}
+				placeholder={"p. ej. 32768"}
 				style={{ width: "100%" }}>
-				<span className="font-semibold">Model Context Window</span>
+				<span className="font-semibold">Ventana de contexto del modelo</span>
 			</DebouncedTextField>
 
 			{showModelOptions && (
@@ -115,12 +115,12 @@ export const OllamaProvider = ({ showModelOptions, isPopup, currentMode }: Ollam
 								handleFieldChange("requestTimeoutMs", numValue)
 							}
 						}}
-						placeholder="Default: 30000 (30 seconds)"
+						placeholder="Predeterminado: 30000 (30 segundos)"
 						style={{ width: "100%" }}>
-						<span className="font-semibold">Request Timeout (ms)</span>
+						<span className="font-semibold">Tiempo de espera de la solicitud (ms)</span>
 					</DebouncedTextField>
 					<p className="text-xs mt-0 text-description">
-						Maximum time in milliseconds to wait for API responses before timing out.
+						Tiempo máximo en milisegundos para esperar las respuestas de la API antes de agotar el tiempo de espera.
 					</p>
 				</>
 			)}
@@ -133,15 +133,15 @@ export const OllamaProvider = ({ showModelOptions, isPopup, currentMode }: Ollam
 					marginTop: "5px",
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				Ollama allows you to run models locally on your computer. For instructions on how to get started, see their{" "}
+				Ollama te permite ejecutar modelos localmente en tu ordenador. Para obtener instrucciones sobre cómo empezar, consulta su{" "}
 				<VSCodeLink
 					href="https://github.com/ollama/ollama/blob/main/README.md"
 					style={{ display: "inline", fontSize: "inherit" }}>
-					quickstart guide.
+					guía de inicio rápido.
 				</VSCodeLink>{" "}
 				<span style={{ color: "var(--vscode-errorForeground)" }}>
-					(<span style={{ fontWeight: 500 }}>Note:</span> Catalina uses complex prompts and works best with Claude models.
-					Less capable models may not work as expected.)
+					(<span style={{ fontWeight: 500 }}>Nota:</span> Catalina usa prompts complejos y funciona mejor con modelos Claude.
+					Los modelos menos capaces pueden no funcionar como se espera.)
 				</span>
 			</p>
 		</div>

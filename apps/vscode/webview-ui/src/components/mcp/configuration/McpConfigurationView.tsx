@@ -74,7 +74,7 @@ const McpConfigurationView = ({ onDone, initialTab }: McpViewProps) => {
 				display: "flex",
 				flexDirection: "column",
 			}}>
-			<ViewHeader environment={environment} onDone={onDone} title="MCP Servers" />
+			<ViewHeader environment={environment} onDone={onDone} title="Servidores MCP" />
 
 			<div style={{ flex: 1, overflow: "auto" }}>
 				{/* Tabs container */}
@@ -92,11 +92,11 @@ const McpConfigurationView = ({ onDone, initialTab }: McpViewProps) => {
 					)}
 					{showRemoteServers && (
 						<TabButton isActive={activeTab === "addRemote"} onClick={() => handleTabChange("addRemote")}>
-							Remote Servers
+							Servidores remotos
 						</TabButton>
 					)}
 					<TabButton isActive={activeTab === "configure"} onClick={() => handleTabChange("configure")}>
-						Configure
+						Configurar
 					</TabButton>
 				</div>
 

@@ -35,8 +35,8 @@ const getActivityText = (tool: ClineSayTool): string | null => {
 			.filter(Boolean)
 			.join(" | ")
 		return filePattern && filePattern !== "*"
-			? `"${terms}" in ${cleanedPath}/ (${filePattern})`
-			: `"${terms}" in ${cleanedPath}/`
+			? `"${terms}" en ${cleanedPath}/ (${filePattern})`
+			: `"${terms}" en ${cleanedPath}/`
 	}
 
 	switch (tool.tool) {
@@ -45,16 +45,16 @@ const getActivityText = (tool: ClineSayTool): string | null => {
 				return null
 			}
 			const lineHint =
-				tool.readLineStart != null && tool.readLineEnd != null ? ` (lines ${tool.readLineStart}-${tool.readLineEnd})` : ""
-			return `Reading ${cleanedPath}${lineHint}...`
+				tool.readLineStart != null && tool.readLineEnd != null ? ` (líneas ${tool.readLineStart}-${tool.readLineEnd})` : ""
+			return `Leyendo ${cleanedPath}${lineHint}...`
 		}
 		case "listFilesTopLevel":
 		case "listFilesRecursive":
-			return tool.path ? `Exploring ${cleanedPath}/...` : null
+			return tool.path ? `Explorando ${cleanedPath}/...` : null
 		case "searchFiles":
-			return tool.regex && tool.path ? `Searching ${formatSearchRegex(tool.regex, tool.path, tool.filePattern)}...` : null
+			return tool.regex && tool.path ? `Buscando ${formatSearchRegex(tool.regex, tool.path, tool.filePattern)}...` : null
 		case "listCodeDefinitionNames":
-			return tool.path ? `Analyzing ${cleanedPath}/...` : null
+			return tool.path ? `Analizando ${cleanedPath}/...` : null
 		default:
 			return null
 	}
@@ -301,7 +301,7 @@ function getToolDisplayInfo(tool: ClineSayTool) {
 	switch (tool.tool) {
 		case "readFile": {
 			const lineNote =
-				tool.readLineStart != null && tool.readLineEnd != null ? `lines ${tool.readLineStart}-${tool.readLineEnd}` : null
+				tool.readLineStart != null && tool.readLineEnd != null ? `líneas ${tool.readLineStart}-${tool.readLineEnd}` : null
 			return {
 				icon,
 				path: filePath,
@@ -337,8 +337,8 @@ function formatSearchDisplay(regex: string, path: string, filePattern?: string):
 		.map((t) => t.trim().replace(/\\b/g, "").replace(/\\s\?/g, " "))
 		.filter(Boolean)
 
-	const termDisplay = terms.length > 3 ? `${terms.length} patterns` : `"${terms.join(" | ")}"`
-	let result = `${termDisplay} in ${cleanPathPrefix(path)}/`
+	const termDisplay = terms.length > 3 ? `${terms.length} patrones` : `"${terms.join(" | ")}"`
+	let result = `${termDisplay} en ${cleanPathPrefix(path)}/`
 
 	if (filePattern && filePattern !== "*") {
 		result += ` (${filePattern})`
@@ -372,20 +372,20 @@ export function getToolGroupSummaryFromParsedTools(tools: ClineSayTool[]): strin
 	}
 
 	const parts: string[] = []
-	const action = counts.read > 0 || counts.list > 0 ? " read " : " "
+	const action = counts.read > 0 || counts.list > 0 ? " leyó " : " "
 
 	if (counts.read > 0) {
-		parts.push(`${counts.read} file${counts.read > 1 ? "s" : ""}`)
+		parts.push(`${counts.read} archivo${counts.read > 1 ? "s" : ""}`)
 	}
 	if (counts.list > 0) {
-		parts.push(`${counts.list} folder${counts.list > 1 ? "s" : ""}`)
+		parts.push(`${counts.list} carpeta${counts.list > 1 ? "s" : ""}`)
 	}
 	if (counts.def > 0) {
-		parts.push(`${counts.def} definition${counts.def > 1 ? "s" : ""}`)
+		parts.push(`${counts.def} definición${counts.def > 1 ? "es" : ""}`)
 	}
 	if (counts.search > 0) {
-		parts.push(`performed ${counts.search} search${counts.search > 1 ? "es" : ""}`)
+		parts.push(`realizó ${counts.search} búsqueda${counts.search > 1 ? "s" : ""}`)
 	}
 
-	return parts.length === 0 ? "Context" : "Catalina" + action + parts.join(", ")
+	return parts.length === 0 ? "Contexto" : "Catalina" + action + parts.join(", ")
 }

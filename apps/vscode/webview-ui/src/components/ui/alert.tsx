@@ -40,7 +40,7 @@ const Alert = React.forwardRef<
 				</AlertTitle>
 				{isDismissible && (
 					<Button
-						aria-label="Dismiss"
+						aria-label="Descartar"
 						className="opacity-100 hover:opacity-100 justify-center"
 						onClick={(e) => {
 							e.preventDefault()

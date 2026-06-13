@@ -91,7 +91,7 @@ export async function createSkillFile(
 	if (await fileExistsAtPath(skillDir)) {
 		await HostProvider.window.showMessage({
 			type: ShowMessageType.WARNING,
-			message: `Skill "${sanitizedName}" already exists`,
+			message: `La skill "${sanitizedName}" ya existe`,
 		});
 		// Return current toggles
 		const globalToggles =

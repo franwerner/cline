@@ -28,7 +28,7 @@ export async function openAiCodexSignIn(
 			.then(async () => {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: "Successfully signed in to OpenAI Codex",
+					message: "Sesión iniciada correctamente en OpenAI Codex",
 				});
 				await controller.postStateToWebview();
 			})
@@ -41,7 +41,7 @@ export async function openAiCodexSignIn(
 				if (!errorMessage.includes("timed out")) {
 					HostProvider.window.showMessage({
 						type: ShowMessageType.ERROR,
-						message: `OpenAI Codex sign in failed: ${errorMessage}`,
+						message: `No se ha podido iniciar sesión en OpenAI Codex: ${errorMessage}`,
 					});
 				}
 			});

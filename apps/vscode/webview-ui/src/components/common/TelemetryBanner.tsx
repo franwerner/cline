@@ -21,23 +21,23 @@ export const TelemetryBanner: React.FC = () => {
 
 	return (
 		<div className="bg-banner-background text-banner-foreground px-3 py-2 flex flex-col gap-1 shrink-0 mb-1 relative text-sm m-4">
-			<h3 className="m-0">Help Improve Catalina</h3>
-			<i>(and access experimental features)</i>
+			<h3 className="m-0">Ayuda a mejorar Catalina</h3>
+			<i>(y accede a funciones experimentales)</i>
 			<p className="m-0">
-				Catalina collects error and usage data to help us fix bugs and improve the extension. No code, prompts, or personal
-				information is ever sent.
+				Catalina recopila datos de errores y de uso para ayudarnos a corregir fallos y mejorar la extensión. Nunca se envía
+				código, prompts ni información personal.
 			</p>
 			<p className="m-0">
-				<span>You can turn this setting off in </span>
+				<span>Puedes desactivar este ajuste en los </span>
 				<span className="text-link cursor-pointer" onClick={handleOpenSettings}>
-					settings
+					Ajustes
 				</span>
 				.
 			</p>
 
 			{/* Close button */}
 			<button
-				aria-label="Close banner and enable telemetry"
+				aria-label="Cerrar el banner y activar la telemetría"
 				className="absolute top-3 right-3 opacity-70 hover:opacity-100 cursor-pointer border-0 bg-transparent p-0 text-inherit"
 				onClick={handleClose}
 				type="button">

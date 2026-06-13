@@ -7,13 +7,13 @@ export const getMainRole = (roles?: string[]) => {
 	}
 
 	if (roles.includes("owner")) {
-		return "Owner"
+		return "Propietario"
 	}
 	if (roles.includes("admin")) {
-		return "Admin"
+		return "Administrador"
 	}
 
-	return "Member"
+	return "Miembro"
 }
 
 export const getClineUris = (base: string, type: "dashboard" | "credits", route?: "account" | "organization") => {

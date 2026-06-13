@@ -45,13 +45,13 @@ export function showOmissionWarning(originalFileContent: string, newFileContent:
 		HostProvider.window
 			.showMessage({
 				type: ShowMessageType.WARNING,
-				message: "Potential code truncation detected. This happens when the AI reaches its max output limit.",
+				message: "Se ha detectado un posible truncamiento del código. Esto ocurre cuando la IA alcanza su límite máximo de salida.",
 				options: {
-					items: ["Follow this guide to fix the issue"],
+					items: ["Siga esta guía para solucionar el problema"],
 				},
 			})
 			.then((response) => {
-				if (response.selectedOption === "Follow this guide to fix the issue") {
+				if (response.selectedOption === "Siga esta guía para solucionar el problema") {
 					openExternal(
 						"https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Cline-Deleting-Code-with-%22Rest-of-Code-Here%22-Comments",
 					)

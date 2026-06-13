@@ -50,7 +50,7 @@ const McpPromptRow = ({ prompt, serverName }: McpPromptRowProps) => {
 							fontSize: "11px",
 							textTransform: "uppercase",
 						}}>
-						Arguments
+						Argumentos
 					</div>
 					{prompt.arguments.map((arg) => (
 						<div
@@ -81,7 +81,7 @@ const McpPromptRow = ({ prompt, serverName }: McpPromptRowProps) => {
 									overflowWrap: "break-word",
 									wordBreak: "break-word",
 								}}>
-								{arg.description || "No description"}
+								{arg.description || "Sin descripción"}
 							</span>
 						</div>
 					))}

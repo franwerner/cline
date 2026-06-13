@@ -22,14 +22,14 @@ export const ContextWindowSwitcher = ({
 			return {
 				current: base200kModelId,
 				alternate: base1mModelId,
-				linkText: "Switch to 1M context window model",
+				linkText: "Cambiar al modelo con ventana de contexto de 1M",
 			}
 		}
 		if (selectedModelId === base1mModelId) {
 			return {
 				current: base1mModelId,
 				alternate: base200kModelId,
-				linkText: "Switch to 200K context window model",
+				linkText: "Cambiar al modelo con ventana de contexto de 200K",
 			}
 		}
 		return null

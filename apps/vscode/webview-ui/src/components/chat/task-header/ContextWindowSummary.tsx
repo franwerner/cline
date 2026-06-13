@@ -60,10 +60,10 @@ AccordionItem.displayName = "AccordionItem"
 
 // Constants
 const TOKEN_DETAILS_CONFIG: Omit<TokenDetail, "value">[] = [
-	{ title: "Prompt Tokens", icon: "codicon-arrow-up" },
-	{ title: "Completion Tokens", icon: "codicon-arrow-down" },
-	{ title: "Cache Writes", icon: "codicon-arrow-left" },
-	{ title: "Cache Reads", icon: "codicon-arrow-right" },
+	{ title: "Tokens de prompt", icon: "codicon-arrow-up" },
+	{ title: "Tokens de finalización", icon: "codicon-arrow-down" },
+	{ title: "Escrituras en caché", icon: "codicon-arrow-left" },
+	{ title: "Lecturas de caché", icon: "codicon-arrow-right" },
 ]
 
 const TokenUsageDetails = memo<TokenUsageInfoProps>(({ tokensIn, tokensOut, cacheWrites, cacheReads }) => {
@@ -73,7 +73,7 @@ const TokenUsageDetails = memo<TokenUsageInfoProps>(({ tokensIn, tokensOut, cach
 	}, [tokensIn, tokensOut, cacheWrites, cacheReads])
 
 	if (!tokensIn) {
-		return <div>No token usage data available</div>
+		return <div>No hay datos de uso de tokens disponibles</div>
 	}
 
 	return (
@@ -126,14 +126,14 @@ export const ContextWindowSummary: React.FC<TaskContextWindowButtonsProps> = ({
 				<AccordionItem
 					isExpanded={expandedSections.has("threshold")}
 					onToggle={(event) => toggleSection("threshold", event)}
-					title="Auto Condense Threshold"
+					title="Umbral de condensación automática"
 					value={<span className="text-muted-foreground">{`${(autoCompactThreshold * 100).toFixed(0)}%`}</span>}>
 					<div className="space-y-1">
 						<p className="text-xs leading-relaxed text-white">
-							Click on the context window bar to set a new threshold.
+							Haz clic en la barra de la ventana de contexto para establecer un nuevo umbral.
 						</p>
 						<p className="text-xs leading-relaxed mt-0 mb-0">
-							When the context window usage exceeds this threshold, the task will be automatically condensed.
+							Cuando el uso de la ventana de contexto supere este umbral, la tarea se condensará automáticamente.
 						</p>
 					</div>
 				</AccordionItem>
@@ -142,11 +142,11 @@ export const ContextWindowSummary: React.FC<TaskContextWindowButtonsProps> = ({
 			<AccordionItem
 				isExpanded={expandedSections.has("context")}
 				onToggle={(event) => toggleSection("context", event)}
-				title="Context Window"
+				title="Ventana de contexto"
 				value={percentage ? `${percentage.toFixed(1)}%` : formatTokenNumber(contextWindow)}>
 				<div className="space-y-1">
 					<div className="flex justify-between">
-						<span>Used:</span>
+						<span>Usado:</span>
 						<span className="font-mono">{formatTokenNumber(tokenUsed)}</span>
 					</div>
 					<div className="flex justify-between">
@@ -154,7 +154,7 @@ export const ContextWindowSummary: React.FC<TaskContextWindowButtonsProps> = ({
 						<span className="font-mono">{formatTokenNumber(contextWindow)}</span>
 					</div>
 					<div className="flex justify-between">
-						<span>Remaining:</span>
+						<span>Restante:</span>
 						<span className="font-mono">{formatTokenNumber(contextWindow - tokenUsed)}</span>
 					</div>
 				</div>
@@ -164,7 +164,7 @@ export const ContextWindowSummary: React.FC<TaskContextWindowButtonsProps> = ({
 				<AccordionItem
 					isExpanded={expandedSections.has("tokens")}
 					onToggle={(event) => toggleSection("tokens", event)}
-					title="Token Usage"
+					title="Uso de tokens"
 					value={`${formatTokenNumber(totalTokens)}`}>
 					<TokenUsageDetails
 						cacheReads={cacheReads}

@@ -32,7 +32,7 @@ export const MinimaxProvider = ({ showModelOptions, isPopup, currentMode }: Mini
 		<div>
 			<DropdownContainer className="dropdown-container" style={{ position: "inherit" }}>
 				<label htmlFor="minimax-entrypoint">
-					<span style={{ fontWeight: 500, marginTop: 5 }}>MiniMax Entrypoint</span>
+					<span style={{ fontWeight: 500, marginTop: 5 }}>Punto de entrada de MiniMax</span>
 				</label>
 				<VSCodeDropdown
 					id="minimax-entrypoint"
@@ -52,8 +52,8 @@ export const MinimaxProvider = ({ showModelOptions, isPopup, currentMode }: Mini
 					marginTop: 3,
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				Select the API endpoint according to your region: <code>api.minimaxi.com</code> for China, or{" "}
-				<code>api.minimax.io</code> for all other locations.
+				Selecciona el endpoint de la API según tu región: <code>api.minimaxi.com</code> para China, o{" "}
+				<code>api.minimax.io</code> para el resto de ubicaciones.
 			</p>
 			<ApiKeyField
 				initialValue={apiConfiguration?.minimaxApiKey || ""}
@@ -69,7 +69,7 @@ export const MinimaxProvider = ({ showModelOptions, isPopup, currentMode }: Mini
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={minimaxModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(

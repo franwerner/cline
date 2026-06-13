@@ -29,7 +29,7 @@ export class NotebookDiffView {
 			vscode.extensions.getExtension("ms-toolsai.jupyter");
 		if (!jupyterExtension) {
 			vscode.window.showErrorMessage(
-				"Jupyter extension is required for notebook diffs.",
+				"Se requiere la extensión de Jupyter para las diferencias de notebooks.",
 			);
 			return;
 		}
@@ -77,7 +77,7 @@ export class NotebookDiffView {
 			"vscode.diff",
 			uri,
 			this.tempModifiedUri,
-			`${fileName}: Original ↔ Cline's Changes (Notebook)`,
+			`${fileName}: Original ↔ Cambios de Catalina (cuaderno)`,
 		);
 
 		// Brief delay to allow VS Code to render the notebook diff view

@@ -37,10 +37,10 @@ export const DifyProvider = ({ showModelOptions, isPopup, currentMode }: DifyPro
 					onChange={(value) => {
 						handleFieldChange("difyBaseUrl", value)
 					}}
-					placeholder={"Enter base URL..."}
+					placeholder={"Introducir URL base..."}
 					style={{ width: "100%", marginBottom: 10 }}
 					type="text">
-					<span style={{ fontWeight: 500 }}>Base URL</span>
+					<span style={{ fontWeight: 500 }}>URL base</span>
 				</DebouncedTextField>
 
 				<ApiKeyField
@@ -53,11 +53,11 @@ export const DifyProvider = ({ showModelOptions, isPopup, currentMode }: DifyPro
 
 				<div style={{ fontSize: "12px", color: "var(--vscode-descriptionForeground)", marginTop: "5px" }}>
 					<p>
-						Dify is a platform that provides access to various AI models through a unified API. Configure your Dify
-						instance URL and API key to get started.
+						Dify es una plataforma que proporciona acceso a varios modelos de IA a través de una API unificada.
+						Configura la URL de tu instancia de Dify y la clave de API para empezar.
 					</p>
 					<p style={{ marginTop: "8px" }}>
-						<strong>Note:</strong> The model selection is handled within your Dify application configuration.
+						<strong>Nota:</strong> la selección del modelo se gestiona en la configuración de tu aplicación de Dify.
 					</p>
 				</div>
 			</div>

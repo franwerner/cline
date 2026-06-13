@@ -140,7 +140,7 @@ export const BrowserSettingsMenu = () => {
 				className="browser-info-icon"
 				onClick={toggleInfoPopover}
 				style={{ marginRight: "4px" }}
-				title="Browser connection info">
+				title="Información de conexión del navegador">
 				<i
 					className={`codicon ${getIconClass()}`}
 					style={{
@@ -160,11 +160,11 @@ export const BrowserSettingsMenu = () => {
 						border: "1px solid var(--vscode-widget-border)",
 						boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
 					}}>
-					<h4 style={{ margin: "0 0 8px 0" }}>Browser Connection</h4>
+					<h4 style={{ margin: "0 0 8px 0" }}>Conexión del navegador</h4>
 					{/* InfoRow - Status row container */}
 					<div className="flex flex-wrap whitespace-nowrap mb-1">
 						{/* InfoLabel - Fixed-width label */}
-						<div className="flex-none w-[90px] font-medium">Status:</div>
+						<div className="flex-none w-[90px] font-medium">Estado:</div>
 						{/* InfoValue - Flexible value container */}
 						<div
 							className="flex-1 break-words"
@@ -173,23 +173,23 @@ export const BrowserSettingsMenu = () => {
 									? "var(--vscode-charts-green)"
 									: "var(--vscode-errorForeground)",
 							}}>
-							{connectionInfo.isConnected ? "Connected" : "Disconnected"}
+							{connectionInfo.isConnected ? "Conectado" : "Desconectado"}
 						</div>
 					</div>
 					{connectionInfo.isConnected && (
 						// InfoRow - Type row container
 						<div className="flex flex-wrap whitespace-nowrap mb-1">
 							{/* InfoLabel - Fixed-width label */}
-							<div className="flex-none w-[90px] font-medium">Type:</div>
+							<div className="flex-none w-[90px] font-medium">Tipo:</div>
 							{/* InfoValue - Flexible value container */}
-							<div className="flex-1 break-words">{connectionInfo.isRemote ? "Remote" : "Local"}</div>
+							<div className="flex-1 break-words">{connectionInfo.isRemote ? "Remoto" : "Local"}</div>
 						</div>
 					)}
 					{connectionInfo.isConnected && connectionInfo.isRemote && connectionInfo.host && (
 						// InfoRow - Remote host row container
 						<div className="flex flex-wrap whitespace-nowrap mb-1">
 							{/* InfoLabel - Fixed-width label */}
-							<div className="flex-none w-[90px] font-medium">Remote Host:</div>
+							<div className="flex-none w-[90px] font-medium">Host remoto:</div>
 							{/* InfoValue - Flexible value container */}
 							<div className="flex-1 break-words">{connectionInfo.host}</div>
 						</div>

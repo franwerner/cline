@@ -133,7 +133,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 				}}>
 				{/* Task Title */}
 				<div
-					aria-label={isTaskExpanded ? "Collapse task header" : "Expand task header"}
+					aria-label={isTaskExpanded ? "Contraer cabecera de la tarea" : "Expandir cabecera de la tarea"}
 					className="flex justify-between items-center cursor-pointer"
 					onClick={toggleTaskExpanded}
 					onKeyDown={(e) => {

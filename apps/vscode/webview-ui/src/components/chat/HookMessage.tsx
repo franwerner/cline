@@ -200,14 +200,14 @@ const HookMessage = memo(({ message, CommandOutput }: HookMessageProps) => {
 								flexShrink: 0,
 							}}>
 							{isRunning
-								? "Running"
+								? "Ejecutando"
 								: isFailed
-									? "Failed"
+									? "Fallido"
 									: isCancelled
-										? "Aborted"
+										? "Abortado"
 										: isCompleted
-											? "Completed"
-											: "Unknown"}
+											? "Completado"
+											: "Desconocido"}
 						</span>
 						{metadata.exitCode !== undefined && metadata.exitCode !== 0 && (
 							<span
@@ -215,7 +215,7 @@ const HookMessage = memo(({ message, CommandOutput }: HookMessageProps) => {
 									color: "var(--vscode-descriptionForeground)",
 									fontSize: "12px",
 								}}>
-								(exit: {metadata.exitCode})
+								(salida: {metadata.exitCode})
 							</span>
 						)}
 					</div>
@@ -244,7 +244,7 @@ const HookMessage = memo(({ message, CommandOutput }: HookMessageProps) => {
 								cursor: "pointer",
 								fontFamily: "inherit",
 							}}>
-							Abort
+							Abortar
 						</button>
 					)}
 				</div>
@@ -258,7 +258,7 @@ const HookMessage = memo(({ message, CommandOutput }: HookMessageProps) => {
 							fontSize: "13px",
 							color: "var(--vscode-descriptionForeground)",
 						}}>
-						Took longer than 30 seconds. Check for infinite loops or add timeouts to network requests.
+						Tardó más de 30 segundos. Comprueba si hay bucles infinitos o añade tiempos de espera a las solicitudes de red.
 					</div>
 				)}
 
@@ -270,7 +270,7 @@ const HookMessage = memo(({ message, CommandOutput }: HookMessageProps) => {
 							fontSize: "13px",
 							color: "var(--vscode-descriptionForeground)",
 						}}>
-						Hook returned invalid JSON. See error details below for more information.
+						El hook devolvió JSON no válido. Consulta los detalles del error abajo para más información.
 					</div>
 				)}
 

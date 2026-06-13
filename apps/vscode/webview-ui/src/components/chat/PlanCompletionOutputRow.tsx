@@ -21,7 +21,7 @@ const PlanCompletionOutputRow = memo(({ text, headClassNames }: PlanCompletionOu
 			<div className={cn(headClassNames, "justify-between px-1")}>
 				<div className="flex gap-2 items-center">
 					<NotepadTextIcon className="size-2" />
-					<span className="text-foreground font-bold">Plan Created</span>
+					<span className="text-foreground font-bold">Plan creado</span>
 				</div>
 				<CopyButton textToCopy={text || ""} />
 			</div>

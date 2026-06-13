@@ -56,7 +56,7 @@ export const QwenProvider = ({ showModelOptions, isPopup, currentMode }: QwenPro
 		<div>
 			<DropdownContainer className="dropdown-container" style={{ position: "inherit" }}>
 				<label htmlFor="qwen-line-provider">
-					<span style={{ fontWeight: 500, marginTop: 5 }}>Alibaba API Line</span>
+					<span style={{ fontWeight: 500, marginTop: 5 }}>Línea de API de Alibaba</span>
 				</label>
 				<VSCodeDropdown
 					id="qwen-line-provider"
@@ -79,8 +79,8 @@ export const QwenProvider = ({ showModelOptions, isPopup, currentMode }: QwenPro
 					marginTop: 3,
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				Please select the appropriate API interface based on your location. If you are in China, choose the China API
-				interface. Otherwise, choose the International API interface.
+				Selecciona la interfaz de API adecuada según tu ubicación. Si estás en China, elige la interfaz de API de China.
+				De lo contrario, elige la interfaz de API internacional.
 			</p>
 
 			<ApiKeyField
@@ -93,7 +93,7 @@ export const QwenProvider = ({ showModelOptions, isPopup, currentMode }: QwenPro
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={qwenModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(

@@ -154,9 +154,9 @@ export default function MermaidBlock({ code }: MermaidBlockProps) {
 
 	return (
 		<MermaidBlockContainer>
-			{isLoading && <LoadingMessage>Generating mermaid diagram...</LoadingMessage>}
+			{isLoading && <LoadingMessage>Generando diagrama de mermaid...</LoadingMessage>}
 			<ButtonContainer>
-				<StyledVSCodeButton aria-label="Copy Code" onClick={handleCopyCode} title="Copy Code">
+				<StyledVSCodeButton aria-label="Copiar código" onClick={handleCopyCode} title="Copiar código">
 					<span className="codicon codicon-copy"></span>
 				</StyledVSCodeButton>
 			</ButtonContainer>

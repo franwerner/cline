@@ -47,7 +47,7 @@ const AccountView = ({ onDone, clineUser, organizations, activeOrganization }: A
 
 	return (
 		<div className="fixed inset-0 flex flex-col overflow-hidden">
-			<ViewHeader environment={environment} onDone={onDone} showEnvironmentSuffix title="Account" />
+			<ViewHeader environment={environment} onDone={onDone} showEnvironmentSuffix title="Cuenta" />
 			<div className="grow flex flex-col px-5 overflow-y-auto">
 				{clineUser?.uid ? (
 					<ClineAccountView
@@ -338,11 +338,11 @@ export const ClineAccountView = ({ clineUser, userOrganizations, activeOrganizat
 										</VSCodeDropdown>
 									</TooltipTrigger>
 									<TooltipContent hidden={!isLockedByRemoteConfig}>
-										This cannot be changed while your organization has remote configuration enabled.
+										Esto no se puede cambiar mientras tu organización tenga activada la configuración remota.
 									</TooltipContent>
 								</Tooltip>
 								{activeOrganization && (
-									<VSCodeTag className="text-xs p-2" title="Role">
+									<VSCodeTag className="text-xs p-2" title="Rol">
 										{getMainRole(activeOrganization.roles)}
 									</VSCodeTag>
 								)}
@@ -361,7 +361,7 @@ export const ClineAccountView = ({ clineUser, userOrganizations, activeOrganizat
 						</VSCodeButtonLink>
 					</div>
 					<VSCodeButton appearance="secondary" className="w-full min-[225px]:w-1/2" onClick={() => handleSignOut()}>
-						Log out
+						Cerrar sesión
 					</VSCodeButton>
 				</div>
 

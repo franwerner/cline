@@ -101,7 +101,7 @@ export async function setupWorkspaceManager({
 
 		HostProvider.window.showMessage({
 			type: ShowMessageType.WARNING,
-			message: "Failed to initialize workspace. Using single folder mode.",
+			message: "No se ha podido inicializar el espacio de trabajo. Se usará el modo de una sola carpeta.",
 		})
 		return manager
 	}

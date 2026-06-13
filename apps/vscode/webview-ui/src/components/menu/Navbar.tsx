@@ -21,7 +21,7 @@ export const Navbar = () => {
 			{
 				id: "chat",
 				name: "Chat",
-				tooltip: "New Task",
+				tooltip: "Nueva tarea",
 				icon: PlusIcon,
 				navigate: () => {
 					// Close the current task, then navigate to the chat view
@@ -35,21 +35,21 @@ export const Navbar = () => {
 			{
 				id: "mcp",
 				name: "MCP",
-				tooltip: "MCP Servers",
+				tooltip: "Servidores MCP",
 				icon: McpServerIcon,
 				navigate: navigateToMcp,
 			},
 			{
 				id: "history",
-				name: "History",
-				tooltip: "History",
+				name: "Historial",
+				tooltip: "Historial",
 				icon: HistoryIcon,
 				navigate: navigateToHistory,
 			},
 			{
 				id: "settings",
-				name: "Settings",
-				tooltip: "Settings",
+				name: "Ajustes",
+				tooltip: "Ajustes",
 				icon: SettingsIcon,
 				navigate: navigateToSettings,
 			},

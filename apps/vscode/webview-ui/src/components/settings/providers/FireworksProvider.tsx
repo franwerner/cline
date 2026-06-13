@@ -34,7 +34,7 @@ export const FireworksProvider = ({ currentMode, isPopup, showModelOptions }: Fi
 				signupUrl="https://fireworks.ai/"
 			/>
 			<ModelSelector
-				label="Model"
+				label="Modelo"
 				models={fireworksModels}
 				onChange={(e: any) => {
 					handleModeFieldChange(

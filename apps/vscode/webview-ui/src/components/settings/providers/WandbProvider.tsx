@@ -22,7 +22,7 @@ export const WandbProvider = ({ showModelOptions, isPopup, currentMode }: WandbP
 	return (
 		<div>
 			<ApiKeyField
-				helpText="This key is stored locally and only used to make API requests from this extension."
+				helpText="Esta clave se guarda localmente y solo se usa para hacer solicitudes de API desde esta extensión."
 				initialValue={apiConfiguration?.wandbApiKey || ""}
 				onChange={(value) => handleFieldChange("wandbApiKey", value)}
 				providerName="W&B"
@@ -32,7 +32,7 @@ export const WandbProvider = ({ showModelOptions, isPopup, currentMode }: WandbP
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={wandbModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(

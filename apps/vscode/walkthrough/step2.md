@@ -1,7 +1,7 @@
-# Deep Codebase Intelligence
+# Inteligencia profunda sobre el código
 
-**Catalina starts with broad context and explores deeply where needed.**
+**Catalina parte de un contexto amplio y explora en profundidad donde sea necesario.**
 
-Catalina is designed with inherent codebase intelligence. It doesn't operate in a vacuum, but starts with a structural understanding of your project. Before making changes, it performs targeted agentic exploration to gain any additional specific context required, ensuring its actions are always well-informed and aligned with your architecture.
+Catalina está diseñada con una inteligencia inherente sobre el código. No funciona en el vacío, sino que parte de una comprensión estructural de tu proyecto. Antes de realizar cambios, lleva a cabo una exploración agéntica selectiva para obtener cualquier contexto específico adicional que necesite, garantizando que sus acciones estén siempre bien fundamentadas y alineadas con tu arquitectura.
 
-![Catalina Deep Codebase Intelligence Demo](https://storage.googleapis.com/cline_public_images/docs/assets/cline-reading-codebase-hifi-2_compress.webp)
+![Demostración de la inteligencia profunda de Catalina sobre el código](https://storage.googleapis.com/cline_public_images/docs/assets/cline-reading-codebase-hifi-2_compress.webp)

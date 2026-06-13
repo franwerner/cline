@@ -1,7 +1,7 @@
-# No Black Box: Full Visibility & Control
+# Sin caja negra: visibilidad y control totales
 
-**Catalina operates with complete transparency, showing you every file read and every proposed diff.**
+**Catalina opera con total transparencia, mostrándote cada archivo leído y cada diff propuesto.**
 
-Understand exactly what Catalina is doing and why—no obfuscation. Review all actions and approve changes before they're made. Catalina uses checkpoints, allowing you to easily revert if needed, maintaining full control over your codebase. With BYO-key, you also have clear cost transparency.
+Comprende exactamente qué hace Catalina y por qué, sin ofuscación. Revisa todas las acciones y aprueba los cambios antes de que se apliquen. Catalina utiliza puntos de control, que te permiten revertir con facilidad si lo necesitas, manteniendo el control total sobre tu código. Con tu propia clave (BYO-key), también dispones de una transparencia clara de los costes.
 
-![Catalina Transparency Demo](https://storage.googleapis.com/cline_public_images/docs/assets/clines-transparency-hifi-5_compress.webp)
+![Demostración de la transparencia de Catalina](https://storage.googleapis.com/cline_public_images/docs/assets/clines-transparency-hifi-5_compress.webp)

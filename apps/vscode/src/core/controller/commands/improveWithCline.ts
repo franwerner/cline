@@ -15,7 +15,7 @@ export async function improveWithCline(
 		Logger.log("❌ No text selected and no notebook context");
 		HostProvider.window.showMessage({
 			type: ShowMessageType.INFORMATION,
-			message: "Please select some code to improve.",
+			message: "Seleccione el código que desea mejorar.",
 		});
 		return {};
 	}

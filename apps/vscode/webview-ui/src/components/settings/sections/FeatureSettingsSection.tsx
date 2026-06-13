@@ -35,43 +35,43 @@ interface FeatureToggle {
 const agentFeatures: FeatureToggle[] = [
 	{
 		id: "subagents",
-		label: "Subagents",
-		description: "Let Catalina run focused subagents in parallel to explore the codebase for you.",
+		label: "Subagentes",
+		description: "Permite que Catalina ejecute subagentes específicos en paralelo para explorar el código por ti.",
 		stateKey: "subagentsEnabled",
 		settingKey: "subagentsEnabled",
 	},
 	{
 		id: "native-tool-call",
-		label: "Native Tool Call",
-		description: "Use native function calling when available",
+		label: "Llamada nativa a herramientas",
+		description: "Usar la llamada nativa a funciones cuando esté disponible",
 		stateKey: "nativeToolCallSetting",
 		settingKey: "nativeToolCallEnabled",
 	},
 	{
 		id: "parallel-tool-calling",
-		label: "Parallel Tool Calling",
-		description: "Execute multiple tool calls simultaneously",
+		label: "Llamada paralela a herramientas",
+		description: "Ejecutar varias llamadas a herramientas de forma simultánea",
 		stateKey: "enableParallelToolCalling",
 		settingKey: "enableParallelToolCalling",
 	},
 	{
 		id: "strict-plan-mode",
-		label: "Strict Plan Mode",
-		description: "Prevents file edits while in Plan mode",
+		label: "Modo Plan estricto",
+		description: "Impide editar archivos mientras se está en modo Plan",
 		stateKey: "strictPlanModeEnabled",
 		settingKey: "strictPlanModeEnabled",
 	},
 	{
 		id: "auto-compact",
-		label: "Auto Compact",
-		description: "Automatically compress conversation history.",
+		label: "Compactación automática",
+		description: "Comprime automáticamente el historial de la conversación.",
 		stateKey: "useAutoCondense",
 		settingKey: "useAutoCondense",
 	},
 	{
 		id: "focus-chain",
-		label: "Focus Chain",
-		description: "Maintain context focus across interactions",
+		label: "Cadena de enfoque",
+		description: "Mantiene el foco del contexto a lo largo de las interacciones",
 		stateKey: "focusChainEnabled",
 		settingKey: "focusChainSettings",
 		nestedKey: "enabled",
@@ -81,36 +81,37 @@ const agentFeatures: FeatureToggle[] = [
 const editorFeatures: FeatureToggle[] = [
 	{
 		id: "show-feature-tips",
-		label: "Feature Tips",
-		description: "Show rotating tips during the thinking phase to help you discover Catalina features.",
+		label: "Consejos de funciones",
+		description:
+			"Muestra consejos rotativos durante la fase de razonamiento para ayudarte a descubrir las funciones de Catalina.",
 		stateKey: "showFeatureTips",
 		settingKey: "showFeatureTips",
 	},
 	{
 		id: "background-edit",
-		label: "Background Edit",
-		description: "Allow edits without stealing editor focus",
+		label: "Edición en segundo plano",
+		description: "Permite ediciones sin robar el foco del editor",
 		stateKey: "backgroundEditEnabled",
 		settingKey: "backgroundEditEnabled",
 	},
 	{
 		id: "checkpoints",
-		label: "Checkpoints",
-		description: "Save progress at key points for easy rollback",
+		label: "Puntos de control",
+		description: "Guarda el progreso en puntos clave para revertir con facilidad",
 		stateKey: "enableCheckpointsSetting",
 		settingKey: "enableCheckpointsSetting",
 	},
 	{
 		id: "cline-web-tools",
-		label: "Catalina Web Tools",
-		description: "Access web browsing and search capabilities",
+		label: "Herramientas web de Catalina",
+		description: "Acceso a capacidades de navegación y búsqueda en la web",
 		stateKey: "clineWebToolsEnabled",
 		settingKey: "clineWebToolsEnabled",
 	},
 	{
 		id: "worktrees",
 		label: "Worktrees",
-		description: "Enables git worktree management for running parallel Catalina tasks.",
+		description: "Activa la gestión de worktrees de git para ejecutar tareas de Catalina en paralelo.",
 		stateKey: "worktreesEnabled",
 		settingKey: "worktreesEnabled",
 	},
@@ -120,7 +121,7 @@ const advancedFeatures: FeatureToggle[] = [
 	{
 		id: "hooks",
 		label: "Hooks",
-		description: "Enable lifecycle and tool hooks during task execution.",
+		description: "Activa los hooks de ciclo de vida y de herramientas durante la ejecución de tareas.",
 		stateKey: "hooksEnabled",
 		settingKey: "hooksEnabled",
 	},
@@ -261,7 +262,7 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 				<div className="mb-5 flex flex-col gap-3">
 					{/* Core features */}
 					<div>
-						<div className="text-xs font-medium text-foreground/80 uppercase tracking-wider mb-3">Agent</div>
+						<div className="text-xs font-medium text-foreground/80 uppercase tracking-wider mb-3">Agente</div>
 						<div
 							className="relative p-3 pt-0 my-3 rounded-md border border-editor-widget-border/50"
 							id="agent-features">
@@ -281,7 +282,7 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 									/>
 									{feature.id === "focus-chain" && featureState[feature.stateKey] && (
 										<SettingsSlider
-											label="Reminder Interval (1-10)"
+											label="Intervalo de recordatorio (1-10)"
 											max={10}
 											min={1}
 											onChange={handleFocusChainIntervalChange}
@@ -317,7 +318,7 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 
 				{/* Advanced */}
 				<div>
-					<div className="text-xs font-medium text-foreground/80 uppercase tracking-wider mb-3">Advanced</div>
+					<div className="text-xs font-medium text-foreground/80 uppercase tracking-wider mb-3">Avanzado</div>
 					<div className="relative p-3 my-3 rounded-md border border-editor-widget-border/50" id="advanced-features">
 						<div className="space-y-3">
 							{advancedFeatures.map((feature) => (
@@ -333,15 +334,15 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 
 							{/* MCP Display Mode */}
 							<div className="space-y-2">
-								<Label className="text-sm font-medium text-foreground">MCP Display Mode</Label>
-								<p className="text-xs text-muted-foreground">Controls how MCP responses are displayed</p>
+								<Label className="text-sm font-medium text-foreground">Modo de visualización de MCP</Label>
+								<p className="text-xs text-muted-foreground">Controla cómo se muestran las respuestas de MCP</p>
 								<Select onValueChange={(v) => updateSetting("mcpDisplayMode", v)} value={mcpDisplayMode}>
 									<SelectTrigger className="w-full">
 										<SelectValue />
 									</SelectTrigger>
 									<SelectContent>
-										<SelectItem value="plain">Plain Text</SelectItem>
-										<SelectItem value="rich">Rich Display</SelectItem>
+										<SelectItem value="plain">Texto sin formato</SelectItem>
+										<SelectItem value="rich">Visualización enriquecida</SelectItem>
 										<SelectItem value="markdown">Markdown</SelectItem>
 									</SelectContent>
 								</Select>

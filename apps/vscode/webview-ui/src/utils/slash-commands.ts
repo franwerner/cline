@@ -85,7 +85,7 @@ export function getMcpPromptCommands(mcpServers: McpServer[] = []): SlashCommand
 		for (const prompt of server.prompts) {
 			commands.push({
 				name: `mcp:${server.name}:${prompt.name}`,
-				description: prompt.description || prompt.title || `MCP prompt from ${server.name}`,
+				description: prompt.description || prompt.title || `Prompt de MCP de ${server.name}`,
 				section: "mcp",
 			})
 		}

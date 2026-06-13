@@ -184,7 +184,7 @@ export class McpHub {
 			} catch (_error) {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "Invalid MCP settings format. Please ensure your settings follow the correct JSON format.",
+					message: "El formato de los ajustes de MCP no es válido. Asegúrese de que sus ajustes siguen el formato JSON correcto.",
 				})
 				return undefined
 			}
@@ -198,7 +198,7 @@ export class McpHub {
 			if (!result.success) {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "Invalid MCP settings schema.",
+					message: "El esquema de los ajustes de MCP no es válido.",
 				})
 				return undefined
 			}
@@ -1053,7 +1053,7 @@ export class McpHub {
 		if (config) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: `Restarting ${serverName} MCP server...`,
+				message: `Reiniciando el servidor MCP ${serverName}...`,
 			})
 			connection.server.status = "connecting"
 			connection.server.error = ""
@@ -1065,13 +1065,13 @@ export class McpHub {
 				await this.connectToServer(serverName, JSON.parse(config), "internal")
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: `${serverName} MCP server connected`,
+					message: `Servidor MCP ${serverName} conectado`,
 				})
 			} catch (error) {
 				Logger.error(`Failed to restart connection for ${serverName}:`, error)
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: `Failed to connect to ${serverName} MCP server`,
+					message: `No se ha podido conectar con el servidor MCP ${serverName}`,
 				})
 			}
 		}
@@ -1134,7 +1134,7 @@ export class McpHub {
 		try {
 			const config = await this.readAndValidateMcpSettingsFile()
 			if (!config) {
-				throw new Error("Failed to read or validate MCP settings")
+				throw new Error("No se han podido leer o validar los ajustes de MCP")
 			}
 
 			if (config.mcpServers[serverName]) {
@@ -1157,7 +1157,7 @@ export class McpHub {
 				return this.getSortedMcpServers(serverOrder)
 			}
 			Logger.error(`Server "${serverName}" not found in MCP configuration`)
-			throw new Error(`Server "${serverName}" not found in MCP configuration`)
+			throw new Error(`No se ha encontrado el servidor "${serverName}" en la configuración de MCP`)
 		} catch (error) {
 			Logger.error("Failed to update server disabled state:", error)
 			if (error instanceof Error) {
@@ -1165,7 +1165,7 @@ export class McpHub {
 			}
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Failed to update server state: ${error instanceof Error ? error.message : String(error)}`,
+				message: `No se ha podido actualizar el estado del servidor: ${error instanceof Error ? error.message : String(error)}`,
 			})
 			throw error
 		}
@@ -1409,7 +1409,7 @@ export class McpHub {
 			Logger.error("Failed to update autoApprove settings:", error)
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Failed to update autoApprove settings",
+				message: "No se han podido actualizar los ajustes de autoApprove",
 			})
 			throw error // Re-throw to ensure the error is properly handled
 		} finally {
@@ -1563,7 +1563,7 @@ export class McpHub {
 			}
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Failed to update server timeout: ${error instanceof Error ? error.message : String(error)}`,
+				message: `No se ha podido actualizar el tiempo de espera del servidor: ${error instanceof Error ? error.message : String(error)}`,
 			})
 			throw error
 		} finally {

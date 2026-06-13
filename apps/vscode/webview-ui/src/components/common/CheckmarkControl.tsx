@@ -183,7 +183,7 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 					className={cn("text-[9px] text-description shrink-0", {
 						"text-link": isCheckpointCheckedOut,
 					})}>
-					{isCheckpointCheckedOut ? "Checkpoint (restored)" : "Checkpoint"}
+					{isCheckpointCheckedOut ? "Punto de control (restaurado)" : "Punto de control"}
 				</span>
 				<DottedLine $isCheckedOut={isCheckpointCheckedOut} />
 				<ButtonGroup>
@@ -205,7 +205,7 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 							}
 						}}
 						style={{ cursor: compareDisabled ? "wait" : "pointer" }}>
-						Compare
+						Comparar
 					</CustomButton>
 					<DottedLine $isCheckedOut={isCheckpointCheckedOut} small />
 					<div ref={refs.setReference} style={{ position: "relative", marginTop: -2 }}>
@@ -213,7 +213,7 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 							$isCheckedOut={isCheckpointCheckedOut}
 							isActive={showRestoreConfirm}
 							onClick={() => setShowRestoreConfirm(true)}>
-							Restore
+							Restaurar
 						</CustomButton>
 						{showRestoreConfirm &&
 							createPortal(
@@ -231,13 +231,13 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 												cursor: restoreBothDisabled ? "wait" : "pointer",
 											}}>
 											<i className="codicon codicon-debug-restart" style={{ marginRight: "6px" }} />
-											Restore Files & Task
+											Restaurar archivos y tarea
 										</Button>
-										<p>Revert files and clear messages after this point</p>
+										<p>Revertir los archivos y borrar los mensajes posteriores a este punto</p>
 									</PrimaryRestoreOption>
 
 									<MoreOptionsToggle onClick={() => setShowMoreOptions(!showMoreOptions)}>
-										More options
+										Más opciones
 										<i
 											className={`codicon codicon-chevron-${showMoreOptions ? "up" : "down"}`}
 											style={{ marginLeft: "4px", fontSize: "10px" }}
@@ -262,9 +262,9 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 														className="codicon codicon-file-symlink-directory"
 														style={{ marginRight: "6px" }}
 													/>
-													Restore Files Only
+													Restaurar solo los archivos
 												</Button>
-												<p>Revert files to this checkpoint</p>
+												<p>Revertir los archivos a este punto de control</p>
 											</RestoreOption>
 											<RestoreOption>
 												<Button
@@ -278,9 +278,9 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 														className="codicon codicon-comment-discussion"
 														style={{ marginRight: "6px" }}
 													/>
-													Restore Task Only
+													Restaurar solo la tarea
 												</Button>
-												<p>Clear messages after this point</p>
+												<p>Borrar los mensajes posteriores a este punto</p>
 											</RestoreOption>
 										</AdditionalOptions>
 									)}

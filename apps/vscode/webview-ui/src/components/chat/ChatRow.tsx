@@ -320,12 +320,12 @@ export const ChatRowContent = memo(
 				case "mistake_limit_reached":
 					return [
 						<CircleXIcon className="text-error size-2" />,
-						<span className="text-error font-bold">Catalina is having trouble...</span>,
+						<span className="text-error font-bold">Catalina tiene problemas...</span>,
 					]
 				case "command":
 					return [
 						<TerminalIcon className="text-foreground size-2" />,
-						<span className="font-bold text-foreground">Catalina wants to execute this command:</span>,
+						<span className="font-bold text-foreground">Catalina quiere ejecutar este comando:</span>,
 					]
 				case "use_mcp_server":
 					const mcpServerUse = JSON.parse(message.text || "{}") as ClineAskUseMcpServer
@@ -336,17 +336,18 @@ export const ChatRowContent = memo(
 							<span className="codicon codicon-server text-foreground mb-[-1.5px]" />
 						),
 						<span className="ph-no-capture font-bold text-foreground break-words">
-							Catalina wants to {mcpServerUse.type === "use_mcp_tool" ? "use a tool" : "access a resource"} on the{" "}
+							Catalina quiere {mcpServerUse.type === "use_mcp_tool" ? "usar una herramienta" : "acceder a un recurso"} en el
+							servidor MCP{" "}
 							<code className="break-all">
 								{getMcpServerDisplayName(mcpServerUse.serverName, mcpMarketplaceCatalog)}
-							</code>{" "}
-							MCP server:
+							</code>
+							:
 						</span>,
 					]
 				case "completion_result":
 					return [
 						<span className="codicon codicon-check text-success mb-[-1.5px]" />,
-						<span className="text-success font-bold">Task Completed</span>,
+						<span className="text-success font-bold">Tarea completada</span>,
 					]
 				case "api_req_started":
 					// API request rows no longer render the request payload/cost accordion.
@@ -355,7 +356,7 @@ export const ChatRowContent = memo(
 				case "followup":
 					return [
 						<span className="codicon codicon-question text-foreground mb-[-1.5px]" />,
-						<span className="font-bold text-foreground">Catalina has a question:</span>,
+						<span className="font-bold text-foreground">Catalina tiene una pregunta:</span>,
 					]
 				default:
 					return [null, null]
@@ -404,7 +405,7 @@ export const ChatRowContent = memo(
 			const names = conditionalRulesInfo.rules.map((r: { name: string }) => r.name).join(", ")
 			return (
 				<div className={HEADER_CLASSNAMES}>
-					<span style={{ fontWeight: "bold" }}>Conditional rules applied:</span>
+					<span style={{ fontWeight: "bold" }}>Reglas condicionales aplicadas:</span>
 					<span className="ph-no-capture break-words whitespace-pre-wrap">{names}</span>
 				</div>
 			)
@@ -433,14 +434,14 @@ export const ChatRowContent = memo(
 					const content = tool?.content || ""
 					const isApplyingPatch = content?.startsWith("%%bash") && !content.endsWith("*** End Patch\nEOF")
 					const editToolTitle = isApplyingPatch
-						? "Catalina is creating patches to edit this file:"
-						: "Catalina wants to edit this file:"
+						? "Catalina está creando parches para editar este archivo:"
+						: "Catalina quiere editar este archivo:"
 					return (
 						<div>
 							<div className={HEADER_CLASSNAMES}>
 								<PencilIcon className="size-2" />
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This file is outside of your workspace")}
+									toolIcon("sign-out", "yellow", -90, "Este archivo está fuera de tu espacio de trabajo")}
 								<span style={{ fontWeight: "bold" }}>{editToolTitle}</span>
 							</div>
 							{backgroundEditEnabled && tool.path && tool.content ? (
@@ -467,8 +468,8 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								<SquareMinusIcon className="size-2" />
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This file is outside of your workspace")}
-								<span style={{ fontWeight: "bold" }}>Catalina wants to delete this file:</span>
+									toolIcon("sign-out", "yellow", -90, "Este archivo está fuera de tu espacio de trabajo")}
+								<span style={{ fontWeight: "bold" }}>Catalina quiere eliminar este archivo:</span>
 							</div>
 							<CodeAccordian
 								// isLoading={message.partial}
@@ -485,8 +486,8 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								<FilePlus2Icon className="size-2" />
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This file is outside of your workspace")}
-								<span className="font-bold">Catalina wants to create a new file:</span>
+									toolIcon("sign-out", "yellow", -90, "Este archivo está fuera de tu espacio de trabajo")}
+								<span className="font-bold">Catalina quiere crear un nuevo archivo:</span>
 							</div>
 							{backgroundEditEnabled && tool.path && tool.content ? (
 								<DiffEditRow patch={tool.content} path={tool.path} startLineNumbers={tool.startLineNumbers} />
@@ -508,8 +509,8 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								{isImage ? <ImageUpIcon className="size-2" /> : <FileCode2Icon className="size-2" />}
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This file is outside of your workspace")}
-								<span className="font-bold">Catalina wants to read this file:</span>
+									toolIcon("sign-out", "yellow", -90, "Este archivo está fuera de tu espacio de trabajo")}
+								<span className="font-bold">Catalina quiere leer este archivo:</span>
 							</div>
 							<div className="bg-code rounded-sm overflow-hidden border border-editor-group-border">
 								<div
@@ -546,11 +547,11 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								{toolIcon("folder-opened")}
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This is outside of your workspace")}
+									toolIcon("sign-out", "yellow", -90, "Esto está fuera de tu espacio de trabajo")}
 								<span style={{ fontWeight: "bold" }}>
 									{message.type === "ask"
-										? "Catalina wants to view the top level files in this directory:"
-										: "Catalina viewed the top level files in this directory:"}
+										? "Catalina quiere ver los archivos de nivel superior de este directorio:"
+										: "Catalina vio los archivos de nivel superior de este directorio:"}
 								</span>
 							</div>
 							<CodeAccordian
@@ -568,11 +569,11 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								{toolIcon("folder-opened")}
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This is outside of your workspace")}
+									toolIcon("sign-out", "yellow", -90, "Esto está fuera de tu espacio de trabajo")}
 								<span style={{ fontWeight: "bold" }}>
 									{message.type === "ask"
-										? "Catalina wants to recursively view all files in this directory:"
-										: "Catalina recursively viewed all files in this directory:"}
+										? "Catalina quiere ver de forma recursiva todos los archivos de este directorio:"
+										: "Catalina vio de forma recursiva todos los archivos de este directorio:"}
 								</span>
 							</div>
 							<CodeAccordian
@@ -590,11 +591,11 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								{toolIcon("file-code")}
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This file is outside of your workspace")}
+									toolIcon("sign-out", "yellow", -90, "Este archivo está fuera de tu espacio de trabajo")}
 								<span style={{ fontWeight: "bold" }}>
 									{message.type === "ask"
-										? "Catalina wants to view source code definition names used in this directory:"
-										: "Catalina viewed source code definition names used in this directory:"}
+										? "Catalina quiere ver los nombres de las definiciones de código usadas en este directorio:"
+										: "Catalina vio los nombres de las definiciones de código usadas en este directorio:"}
 								</span>
 							</div>
 							<CodeAccordian
@@ -611,9 +612,9 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								{toolIcon("search")}
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This is outside of your workspace")}
+									toolIcon("sign-out", "yellow", -90, "Esto está fuera de tu espacio de trabajo")}
 								<span className="font-bold">
-									Cline wants to search this directory for <code className="break-all">{tool.regex}</code>:
+									Catalina quiere buscar en este directorio <code className="break-all">{tool.regex}</code>:
 								</span>
 							</div>
 							<SearchResultsDisplay
@@ -630,11 +631,11 @@ export const ChatRowContent = memo(
 						<div>
 							<div className={HEADER_CLASSNAMES}>
 								<FoldVerticalIcon className="size-2" />
-								<span className="font-bold">Catalina is condensing the conversation:</span>
+								<span className="font-bold">Catalina está condensando la conversación:</span>
 							</div>
 							<div className="bg-code overflow-hidden border border-editor-group-border rounded-[3px]">
 								<div
-									aria-label={isExpanded ? "Collapse summary" : "Expand summary"}
+									aria-label={isExpanded ? "Contraer resumen" : "Expandir resumen"}
 									className="text-description py-2 px-2.5 cursor-pointer select-none"
 									onClick={handleToggle}
 									onKeyDown={(e) => {
@@ -648,7 +649,7 @@ export const ChatRowContent = memo(
 									{isExpanded ? (
 										<div>
 											<div className="flex items-center mb-2">
-												<span className="font-bold mr-1">Summary:</span>
+												<span className="font-bold mr-1">Resumen:</span>
 												<div className="grow" />
 												<ChevronDownIcon className="my-0.5 shrink-0 size-4" />
 											</div>
@@ -672,11 +673,11 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								<Link2Icon className="size-2" />
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This URL is external")}
+									toolIcon("sign-out", "yellow", -90, "Esta URL es externa")}
 								<span className="font-bold">
 									{message.type === "ask"
-										? "Catalina wants to fetch content from this URL:"
-										: "Catalina fetched content from this URL:"}
+										? "Catalina quiere obtener el contenido de esta URL:"
+										: "Catalina obtuvo el contenido de esta URL:"}
 								</span>
 							</div>
 							<div
@@ -701,11 +702,11 @@ export const ChatRowContent = memo(
 							<div className={HEADER_CLASSNAMES}>
 								<SearchIcon className="size-2 rotate-90" />
 								{tool.operationIsLocatedInWorkspace === false &&
-									toolIcon("sign-out", "yellow", -90, "This search is external")}
+									toolIcon("sign-out", "yellow", -90, "Esta búsqueda es externa")}
 								<span className="font-bold">
 									{message.type === "ask"
-										? "Catalina wants to search the web for:"
-										: "Catalina searched the web for:"}
+										? "Catalina quiere buscar en la web:"
+										: "Catalina buscó en la web:"}
 								</span>
 							</div>
 							<div className="bg-code border border-editor-group-border overflow-hidden rounded-xs select-text py-[9px] px-2.5">
@@ -720,7 +721,7 @@ export const ChatRowContent = memo(
 						<div>
 							<div className={HEADER_CLASSNAMES}>
 								<LightbulbIcon className="size-2" />
-								<span className="font-bold">Catalina loaded the skill:</span>
+								<span className="font-bold">Catalina cargó la skill:</span>
 							</div>
 							<div className="bg-code border border-editor-group-border overflow-hidden rounded-xs py-[9px] px-2.5">
 								<span className="ph-no-capture font-medium">{tool.path}</span>
@@ -823,7 +824,7 @@ export const ChatRowContent = memo(
 								</div>
 								{useMcpServer.arguments && useMcpServer.arguments !== "{}" && (
 									<div className="mt-2">
-										<div className="mb-1 opacity-80 uppercase">Arguments</div>
+										<div className="mb-1 opacity-80 uppercase">Argumentos</div>
 										<CodeAccordian
 											code={useMcpServer.arguments}
 											isExpanded={true}
@@ -866,7 +867,7 @@ export const ChatRowContent = memo(
 							<div className="flex items-start gap-2 py-2.5 px-3 bg-quote rounded-sm text-base text-foreground opacity-90 mb-2">
 								<BellIcon className="mt-0.5 size-2 text-notification-foreground shrink-0" />
 								<div className="break-words flex-1">
-									<span className="font-medium">MCP Notification: </span>
+									<span className="font-medium">Notificación de MCP: </span>
 									<span className="ph-no-capture">{message.text}</span>
 								</div>
 							</div>
@@ -908,7 +909,7 @@ export const ChatRowContent = memo(
 									reasoningContent={message.text}
 									showChevron={!isReasoningStreaming || hasReasoningText}
 									showTitle={true}
-									title={isReasoningStreaming ? "Thinking..." : "Thinking"}
+									title={isReasoningStreaming ? "Pensando..." : "Pensando"}
 								/>
 								{isReasoningStreaming && showFeatureTips !== false && <FeatureTip />}
 							</div>
@@ -948,12 +949,12 @@ export const ChatRowContent = memo(
 						return (
 							<div className="text-foreground flex items-center opacity-70 text-[12px] py-1 px-0">
 								<i className="codicon codicon-book mr-1.5" />
-								Loading MCP documentation
+								Cargando documentación de MCP
 							</div>
 						)
 					case "generate_explanation": {
 						let explanationInfo: ClineSayGenerateExplanation = {
-							title: "code changes",
+							title: "cambios de código",
 							fromRef: "",
 							toRef: "",
 							status: "generating",
@@ -989,12 +990,12 @@ export const ChatRowContent = memo(
 									)}
 									<span className="font-semibold">
 										{isGenerating
-											? "Generating explanation"
+											? "Generando explicación"
 											: isError
-												? "Failed to generate explanation"
+												? "No se pudo generar la explicación"
 												: wasCancelled
-													? "Explanation cancelled"
-													: "Generated explanation"}
+													? "Explicación cancelada"
+													: "Explicación generada"}
 									</span>
 								</div>
 								{isError && explanationInfo.error && (
@@ -1010,7 +1011,7 @@ export const ChatRowContent = memo(
 												</code>
 												<ArrowRightIcon className="inline size-2 mx-1" />
 												<code className="bg-quote rounded-sm py-0.5 px-1.5">
-													{explanationInfo.toRef || "working directory"}
+													{explanationInfo.toRef || "directorio de trabajo"}
 												</code>
 											</div>
 										)}
@@ -1042,17 +1043,17 @@ export const ChatRowContent = memo(
 							<div className="flex flex-col bg-warning/20 p-2 rounded-xs border border-error">
 								<div className="flex items-center mb-1">
 									<TriangleAlertIcon className="mr-2 size-2 stroke-3 text-error" />
-									<span className="font-medium text-foreground">Shell Integration Unavailable</span>
+									<span className="font-medium text-foreground">Integración de shell no disponible</span>
 								</div>
 								<div className="text-foreground opacity-80">
-									Catalina may have trouble viewing the command's output. Please update VSCode (
-									<code>CMD/CTRL + Shift + P</code> → "Update") and make sure you're using a supported shell:
-									zsh, bash, fish, or PowerShell (<code>CMD/CTRL + Shift + P</code> → "Terminal: Select Default
+									Catalina puede tener problemas para ver la salida del comando. Actualiza VSCode (
+									<code>CMD/CTRL + Shift + P</code> → "Update") y asegúrate de usar una shell compatible:
+									zsh, bash, fish o PowerShell (<code>CMD/CTRL + Shift + P</code> → "Terminal: Select Default
 									Profile").
 									<a
 										className="px-1"
 										href="https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable">
-										Still having trouble?
+										¿Sigues teniendo problemas?
 									</a>
 								</div>
 							</div>
@@ -1076,19 +1077,19 @@ export const ChatRowContent = memo(
 												<RefreshCwIcon className="mr-2 size-2 animate-spin" />
 											)}
 											<span className="font-medium text-foreground">
-												{isFailed ? "Auto-Retry Failed" : "Auto-Retry in Progress"}
+												{isFailed ? "Reintento automático fallido" : "Reintento automático en curso"}
 											</span>
 										</div>
 										<div className="text-foreground opacity-80">
 											{isFailed ? (
 												<span>
-													Auto-retry failed after <strong>{maxAttempts}</strong> attempts. Manual
-													intervention required.
+													El reintento automático falló tras <strong>{maxAttempts}</strong> intentos. Se
+													requiere intervención manual.
 												</span>
 											) : (
 												<span>
-													Attempt <strong>{attempt}</strong> of <strong>{maxAttempts}</strong> -
-													Retrying in {delaySeconds} seconds...
+													Intento <strong>{attempt}</strong> de <strong>{maxAttempts}</strong> -
+													Reintentando en {delaySeconds} segundos...
 												</span>
 											)}
 										</div>
@@ -1116,11 +1117,11 @@ export const ChatRowContent = memo(
 							<div className="p-2 bg-link/10 border border-link/30 rounded-xs">
 								<div className="flex items-center mb-1">
 									<LightbulbIcon className="mr-1.5 size-2 text-link" />
-									<span className="font-medium text-foreground">Shell integration issues</span>
+									<span className="font-medium text-foreground">Problemas de integración de shell</span>
 								</div>
 								<div className="text-foreground opacity-90 mb-2">
-									Since you're experiencing repeated shell integration issues, we recommend switching to
-									Background Terminal mode for better reliability.
+									Como estás teniendo problemas recurrentes de integración de shell, recomendamos cambiar al
+									modo Terminal en segundo plano para mayor fiabilidad.
 								</div>
 								<button
 									className={cn(
@@ -1140,8 +1141,8 @@ export const ChatRowContent = memo(
 									}}>
 									<SettingsIcon className="size-2" />
 									{isBackgroundModeEnabled
-										? "Background Terminal Enabled"
-										: "Enable Background Terminal (Recommended)"}
+										? "Terminal en segundo plano activado"
+										: "Activar Terminal en segundo plano (recomendado)"}
 								</button>
 							</div>
 						)
@@ -1244,7 +1245,7 @@ export const ChatRowContent = memo(
 							<div>
 								<div className={HEADER_CLASSNAMES}>
 									<FilePlus2Icon className="size-2" />
-									<span className="text-foreground font-bold">Catalina wants to start a new task:</span>
+									<span className="text-foreground font-bold">Catalina quiere iniciar una nueva tarea:</span>
 								</div>
 								<NewTaskPreview context={message.text || ""} />
 							</div>
@@ -1254,7 +1255,7 @@ export const ChatRowContent = memo(
 							<div>
 								<div className={HEADER_CLASSNAMES}>
 									<FilePlus2Icon className="size-2" />
-									<span className="text-foreground font-bold">Catalina wants to condense your conversation:</span>
+									<span className="text-foreground font-bold">Catalina quiere condensar tu conversación:</span>
 								</div>
 								<NewTaskPreview context={message.text || ""} />
 							</div>
@@ -1264,7 +1265,7 @@ export const ChatRowContent = memo(
 							<div>
 								<div className={HEADER_CLASSNAMES}>
 									<FilePlus2Icon className="size-2" />
-									<span className="text-foreground font-bold">Catalina wants to create a Github issue:</span>
+									<span className="text-foreground font-bold">Catalina quiere crear una incidencia de Github:</span>
 								</div>
 								<ReportBugPreview data={message.text || ""} />
 							</div>

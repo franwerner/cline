@@ -59,45 +59,45 @@
 		"walkthroughs": [
 			{
 				"id": "ClineWalkthrough",
-				"title": "Meet Catalina, your new coding partner",
-				"description": "Catalina codes like a developer because it thinks like one. Here are 5 ways to put it to work:",
+				"title": "Conoce a Catalina, tu nuevo compañero de programación",
+				"description": "Catalina programa como un desarrollador porque piensa como uno. Aquí tienes 5 formas de ponerla a trabajar:",
 				"steps": [
 					{
 						"id": "welcome",
-						"title": "Start with a Goal, Not Just a Prompt",
-						"description": "Tell Catalina what you want to achieve. It plans, asks, and then codes, like a true partner.",
+						"title": "Empieza con un objetivo, no solo con una instrucción",
+						"description": "Dile a Catalina qué quieres conseguir. Ella planifica, pregunta y luego programa, como un verdadero compañero.",
 						"media": {
 							"markdown": "walkthrough/step1.md"
 						}
 					},
 					{
 						"id": "learn",
-						"title": "Let Catalina Learn Your Codebase",
-						"description": "Point Catalina to your project. It builds understanding to make smart, context-aware changes.",
+						"title": "Deja que Catalina aprenda tu base de código",
+						"description": "Dirige a Catalina a tu proyecto. Ella construye su comprensión para hacer cambios inteligentes y conscientes del contexto.",
 						"media": {
 							"markdown": "walkthrough/step2.md"
 						}
 					},
 					{
 						"id": "advanced-features",
-						"title": "Always Use the Best AI Models",
-						"description": "Catalina empowers you with State-of-the-Art AI, connecting to top models (Anthropic, Gemini, OpenAI & more).",
+						"title": "Usa siempre los mejores modelos de IA",
+						"description": "Catalina te potencia con IA de última generación, conectándose a los mejores modelos (Anthropic, Gemini, OpenAI y más).",
 						"media": {
 							"markdown": "walkthrough/step3.md"
 						}
 					},
 					{
 						"id": "mcp",
-						"title": "Extend with Powerful Tools (MCP)",
-						"description": "Connect to databases, APIs, or discover new capabilities in the MCP Marketplace.",
+						"title": "Amplía con herramientas potentes (MCP)",
+						"description": "Conéctate a bases de datos, APIs o descubre nuevas capacidades en el Marketplace de MCP.",
 						"media": {
 							"markdown": "walkthrough/step4.md"
 						}
 					},
 					{
 						"id": "getting-started",
-						"title": "You're Always in Control",
-						"description": "Review Catalina's plans and diffs. Approve changes before they happen. No surprises.",
+						"title": "Siempre tienes el control",
+						"description": "Revisa los planes y los cambios de Catalina. Aprueba los cambios antes de que ocurran. Sin sorpresas.",
 						"media": {
 							"markdown": "walkthrough/step5.md"
 						},
@@ -130,120 +130,120 @@
 		"commands": [
 			{
 				"command": "cline.plusButtonClicked",
-				"title": "New Task",
+				"title": "Nueva tarea",
 				"icon": "$(add)"
 			},
 			{
 				"command": "cline.mcpButtonClicked",
-				"title": "MCP Servers",
+				"title": "Servidores MCP",
 				"icon": "$(server)"
 			},
 			{
 				"command": "cline.historyButtonClicked",
-				"title": "History",
+				"title": "Historial",
 				"icon": "$(history)"
 			},
 			{
 				"command": "cline.settingsButtonClicked",
-				"title": "Settings",
+				"title": "Ajustes",
 				"icon": "$(settings-gear)"
 			},
 			{
 				"command": "cline.dev.createTestTasks",
-				"title": "Create Test Tasks",
+				"title": "Crear tareas de prueba",
 				"category": "Catalina",
 				"when": "cline.isDevMode"
 			},
 			{
 				"command": "cline.dev.expireMcpOAuthTokens",
-				"title": "Expire MCP OAuth Tokens (for testing)",
+				"title": "Caducar tokens OAuth de MCP (para pruebas)",
 				"category": "Catalina",
 				"when": "cline.isDevMode"
 			},
 			{
 				"command": "cline.addToChat",
-				"title": "Add to Catalina",
+				"title": "Añadir a Catalina",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.addFilesToChat",
-				"title": "Agregar a Catalina",
+				"title": "Añadir a Catalina",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.addFilesToNewTask",
-				"title": "Agregar a Catalina (nueva tarea)",
+				"title": "Añadir a Catalina (nueva tarea)",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.addTerminalOutputToChat",
-				"title": "Add to Catalina",
+				"title": "Añadir a Catalina",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.focusChatInput",
-				"title": "Jump to Chat Input",
+				"title": "Ir al campo de chat",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.generateGitCommitMessage",
-				"title": "Generate Commit Message with Catalina",
+				"title": "Generar mensaje de commit con Catalina",
 				"category": "Catalina",
 				"icon": "$(cline-icon)"
 			},
 			{
 				"command": "cline.abortGitCommitMessage",
-				"title": "Generate Commit Message with Catalina - Stop",
+				"title": "Generar mensaje de commit con Catalina - Detener",
 				"category": "Catalina",
 				"icon": "$(debug-stop)"
 			},
 			{
 				"command": "cline.explainCode",
-				"title": "Explain with Catalina",
+				"title": "Explicar con Catalina",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.improveCode",
-				"title": "Improve with Catalina",
+				"title": "Mejorar con Catalina",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.jupyterGenerateCell",
-				"title": "Generate Jupyter Cell with Catalina",
+				"title": "Generar celda de Jupyter con Catalina",
 				"category": "Catalina",
 				"icon": "$(sparkle)"
 			},
 			{
 				"command": "cline.jupyterExplainCell",
-				"title": "Explain Jupyter Cell with Catalina",
+				"title": "Explicar celda de Jupyter con Catalina",
 				"category": "Catalina",
 				"icon": "$(question)"
 			},
 			{
 				"command": "cline.jupyterImproveCell",
-				"title": "Improve Jupyter Cell with Catalina",
+				"title": "Mejorar celda de Jupyter con Catalina",
 				"category": "Catalina",
 				"icon": "$(lightbulb)"
 			},
 			{
 				"command": "cline.openWalkthrough",
-				"title": "Open Walkthrough",
+				"title": "Abrir tutorial",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.reconstructTaskHistory",
-				"title": "Reconstruct Task History",
+				"title": "Reconstruir historial de tareas",
 				"category": "Catalina"
 			},
 			{
 				"command": "cline.reviewComment.reply",
-				"title": "Reply",
+				"title": "Responder",
 				"category": "Catalina",
 				"enablement": "!commentIsEmpty"
 			},
 			{
 				"command": "cline.reviewComment.addToChat",
-				"title": "Add to Catalina Chat",
+				"title": "Añadir al chat de Catalina",
 				"category": "Catalina",
 				"icon": "$(link-external)"
 			}

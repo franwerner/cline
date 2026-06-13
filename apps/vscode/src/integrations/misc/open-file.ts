@@ -9,7 +9,7 @@ export async function openImage(dataUri: string) {
 	if (!matches) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: "Invalid data URI format",
+			message: "Formato de URI de datos no válido",
 		})
 		return
 	}
@@ -24,7 +24,7 @@ export async function openImage(dataUri: string) {
 	} catch (error) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: `Error opening image: ${error}`,
+			message: `Error al abrir la imagen: ${error}`,
 		})
 	}
 }
@@ -38,7 +38,7 @@ export async function openFile(absolutePath: string, preserveFocus: boolean = fa
 	} catch (_error) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: `Could not open file!`,
+			message: `No se ha podido abrir el archivo.`,
 		})
 	}
 }

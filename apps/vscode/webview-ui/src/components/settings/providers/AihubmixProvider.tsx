@@ -81,7 +81,7 @@ export const AIhubmixProvider = ({ showModelOptions, isPopup, currentMode }: AIh
 	return (
 		<div>
 			<ApiKeyField
-				helpText="Now request 10% discount!"
+				helpText="¡Ahora solicita un 10% de descuento!"
 				initialValue={apiConfiguration?.aihubmixApiKey || ""}
 				onChange={(value) => handleFieldChange("aihubmixApiKey", value)}
 				providerName="AIhubmix"
@@ -91,7 +91,7 @@ export const AIhubmixProvider = ({ showModelOptions, isPopup, currentMode }: AIh
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={models}
 						onChange={(e) => {
 							const newModelId = e.target.value

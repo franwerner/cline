@@ -14,14 +14,14 @@ interface NewRuleRowProps {
 }
 
 const HOOK_TYPES = [
-	{ name: "TaskStart", description: "Executes when a new task begins" },
-	{ name: "TaskResume", description: "Executes when a task is resumed" },
-	{ name: "TaskCancel", description: "Executes when a task is cancelled" },
-	{ name: "TaskComplete", description: "Executes when a task completes" },
-	{ name: "PreToolUse", description: "Executes before any tool is used" },
-	{ name: "PostToolUse", description: "Executes after any tool is used" },
-	{ name: "UserPromptSubmit", description: "Executes when user submits a prompt" },
-	{ name: "PreCompact", description: "Executes before conversation compaction" },
+	{ name: "TaskStart", description: "Se ejecuta cuando comienza una nueva tarea" },
+	{ name: "TaskResume", description: "Se ejecuta cuando se reanuda una tarea" },
+	{ name: "TaskCancel", description: "Se ejecuta cuando se cancela una tarea" },
+	{ name: "TaskComplete", description: "Se ejecuta cuando se completa una tarea" },
+	{ name: "PreToolUse", description: "Se ejecuta antes de usar cualquier herramienta" },
+	{ name: "PostToolUse", description: "Se ejecuta después de usar cualquier herramienta" },
+	{ name: "UserPromptSubmit", description: "Se ejecuta cuando el usuario envía un prompt" },
+	{ name: "PreCompact", description: "Se ejecuta antes de la compactación de la conversación" },
 ]
 
 const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHooks = [], workspaceName }) => {
@@ -88,7 +88,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 			if (ruleType === "skill") {
 				// Validate skill name - only allow alphanumeric, dashes, underscores
 				if (!/^[a-zA-Z0-9_-]+$/.test(trimmedFilename)) {
-					setError("Skill name can only contain letters, numbers, dashes, and underscores")
+					setError("El nombre de la skill solo puede contener letras, números, guiones y guiones bajos")
 					return
 				}
 
@@ -103,7 +103,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 					setError(null)
 					setIsExpanded(false)
 				} catch (err) {
-					setError(err instanceof Error ? err.message : "Failed to create skill")
+					setError(err instanceof Error ? err.message : "No se pudo crear la skill")
 				}
 				return
 			}
@@ -111,7 +111,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 			const extension = getExtension(trimmedFilename)
 
 			if (!isValidExtension(extension)) {
-				setError("Only .md, .txt, or no file extension allowed")
+				setError("Solo se permiten .md, .txt o ninguna extensión de archivo")
 				return
 			}
 
@@ -164,15 +164,16 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 					{ruleType === "hook" ? (
 						<>
 							<label className="sr-only" htmlFor="hook-type-select">
-								Select hook type to create
+								Selecciona el tipo de hook a crear
 							</label>
 							<span className="sr-only" id="hook-select-description">
-								Choose a hook type to create. Hooks execute at specific points in Catalina's lifecycle. Available:{" "}
+								Elige un tipo de hook a crear. Los hooks se ejecutan en puntos concretos del ciclo de vida de
+								Catalina. Disponibles:{" "}
 								{availableHookTypes.map((h) => h.name).join(", ")}
 							</span>
 							<select
 								aria-describedby="hook-select-description"
-								aria-label="Select hook type to create"
+								aria-label="Selecciona el tipo de hook a crear"
 								className="flex-1 bg-input-background text-input-foreground border-0 outline-0 rounded focus:outline-none focus:ring-0 focus:border-transparent px-2 cursor-pointer"
 								disabled={availableHookTypes.length === 0}
 								id="hook-type-select"
@@ -193,7 +194,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 								}}
 								value="">
 								<option disabled value="">
-									{availableHookTypes.length === 0 ? "All hooks created" : "New hook..."}
+									{availableHookTypes.length === 0 ? "Todos los hooks creados" : "Nuevo hook..."}
 								</option>
 								{availableHookTypes.map((hook) => (
 									<option key={hook.name} title={hook.description} value={hook.name}>
@@ -215,15 +216,15 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 								placeholder={
 									isExpanded
 										? ruleType === "workflow"
-											? "workflow-name (.md, .txt, or no extension)"
+											? "nombre-del-flujo (.md, .txt o sin extensión)"
 											: ruleType === "skill"
-												? "skill-name (letters, numbers, dashes, underscores)"
-												: "rule-name (.md, .txt, or no extension)"
+												? "nombre-de-skill (letras, números, guiones, guiones bajos)"
+												: "nombre-de-regla (.md, .txt o sin extensión)"
 										: ruleType === "workflow"
-											? "New workflow file..."
+											? "Nuevo archivo de flujo de trabajo..."
 											: ruleType === "skill"
-												? "New skill..."
-												: "New rule file..."
+												? "Nueva skill..."
+												: "Nuevo archivo de regla..."
 								}
 								ref={inputRef}
 								type="text"
@@ -234,13 +235,13 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 								aria-label={
 									isExpanded
 										? ruleType === "skill"
-											? "Create skill"
-											: "Create file"
+											? "Crear skill"
+											: "Crear archivo"
 										: ruleType === "workflow"
-											? "New workflow file..."
+											? "Nuevo archivo de flujo de trabajo..."
 											: ruleType === "skill"
-												? "New skill..."
-												: "New rule file..."
+												? "Nueva skill..."
+												: "Nuevo archivo de regla..."
 								}
 								className="mx-0.5"
 								onClick={(e) => {
@@ -250,7 +251,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType, existingHoo
 									}
 								}}
 								size="icon"
-								title={isExpanded ? (ruleType === "skill" ? "Create skill" : "Create file") : "New file"}
+								title={isExpanded ? (ruleType === "skill" ? "Crear skill" : "Crear archivo") : "Nuevo archivo"}
 								type={isExpanded ? "submit" : "button"}
 								variant="icon">
 								<PlusIcon />

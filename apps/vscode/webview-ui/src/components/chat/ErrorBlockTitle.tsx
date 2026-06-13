@@ -43,31 +43,31 @@ export const ErrorBlockTitle = ({
 
 	const title = (() => {
 		// Default loading state
-		const details = { title: "API Request...", classNames: ["font-bold"] }
+		const details = { title: "Solicitud de API...", classNames: ["font-bold"] }
 		// Handle cancellation states first
 		if (apiReqCancelReason === "user_cancelled") {
-			details.title = "API Request Cancelled"
+			details.title = "Solicitud de API cancelada"
 			details.classNames.push("text-(--vscode-foreground)")
 		} else if (apiReqCancelReason != null) {
-			details.title = "API Request Failed"
+			details.title = "Solicitud de API fallida"
 			details.classNames.push("text-(--vscode-errorForeground)")
 		} else if (cost != null) {
 			// Handle completed request
-			details.title = "API Request"
+			details.title = "Solicitud de API"
 			details.classNames.push("text-(--vscode-foreground)")
 		} else if (apiRequestFailedMessage) {
 			// Handle failed request
 			const clineError = ClineError.parse(apiRequestFailedMessage)
 			const titleText = clineError?.isErrorType(ClineErrorType.Balance)
-				? "Credit Limit Reached"
+				? "Límite de crédito alcanzado"
 				: clineError?.isErrorType(ClineErrorType.SpendLimit)
-					? "Spend Limit Reached"
-					: "API Request Failed"
+					? "Límite de gasto alcanzado"
+					: "Solicitud de API fallida"
 			details.title = titleText
 			details.classNames.push("font-bold text-(--vscode-errorForeground)")
 		} else if (retryStatus) {
 			// Handle retry state
-			details.title = "API Request"
+			details.title = "Solicitud de API"
 			details.classNames.push("text-(--vscode-foreground)")
 		}
 

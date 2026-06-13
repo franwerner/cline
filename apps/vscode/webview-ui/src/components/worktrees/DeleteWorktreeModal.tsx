@@ -51,12 +51,12 @@ const DeleteWorktreeModal = ({ open, onClose, onConfirm, worktreePath, branchNam
 				{/* Title row with icon */}
 				<div className="flex items-center gap-2 mb-3 pr-6">
 					<AlertTriangle className="w-5 h-5 text-[var(--vscode-errorForeground)]" />
-					<h4 className="m-0">Delete Worktree</h4>
+					<h4 className="m-0">Eliminar worktree</h4>
 				</div>
 
 				{/* Content */}
 				<p className="text-sm text-[var(--vscode-descriptionForeground)] mt-0 mb-3">
-					This will delete the worktree directory at{" "}
+					Esto eliminará el directorio del worktree en{" "}
 					<span className="font-semibold text-[var(--vscode-foreground)] break-all">{worktreePath}</span>
 				</p>
 
@@ -66,29 +66,29 @@ const DeleteWorktreeModal = ({ open, onClose, onConfirm, worktreePath, branchNam
 						onChange={(e) => setDeleteBranch((e.target as HTMLInputElement).checked)}
 					/>
 					<span className="text-sm">
-						Also delete branch <span className="font-semibold">{branchName}</span>
+						Eliminar también la rama <span className="font-semibold">{branchName}</span>
 					</span>
 				</label>
 
 				{deleteBranch && (
 					<p className="text-sm text-[var(--vscode-inputValidation-warningForeground)] mt-0 mb-3">
-						Warning: Unpushed commits on this branch will be lost.
+						Advertencia: se perderán los commits de esta rama que no se hayan subido.
 					</p>
 				)}
 
 				{/* Buttons */}
 				<div className="flex justify-end gap-2">
 					<VSCodeButton appearance="secondary" disabled={isDeleting} onClick={onClose}>
-						Cancel
+						Cancelar
 					</VSCodeButton>
 					<Button disabled={isDeleting} onClick={handleDelete} variant="danger">
 						{isDeleting ? (
 							<>
 								<Loader2 className="w-4 h-4 mr-1 animate-spin" />
-								Deleting...
+								Eliminando...
 							</>
 						) : (
-							"Delete"
+							"Eliminar"
 						)}
 					</Button>
 				</div>

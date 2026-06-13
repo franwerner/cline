@@ -26,7 +26,7 @@ const SapAiCoreModelPicker: React.FC<SapAiCoreModelPickerProps> = ({
 	selectedModelId,
 	selectedDeploymentId,
 	onModelChange,
-	placeholder = "Select a model...",
+	placeholder = "Seleccionar un modelo...",
 	useOrchestrationMode = false,
 }) => {
 	// Auto-fix deployment ID mismatch or missing deployment ID when deployments change (when ai core creds changes)

@@ -69,10 +69,10 @@ export const VertexProvider = ({ showModelOptions, isPopup, currentMode }: Verte
 					disabled={remoteConfigSettings?.vertexProjectId !== undefined}
 					initialValue={apiConfiguration?.vertexProjectId || ""}
 					onChange={(value) => handleFieldChange("vertexProjectId", value)}
-					placeholder="Enter Project ID..."
+					placeholder="Introducir ID del proyecto..."
 					style={{ width: "100%" }}>
 					<div className="flex items-center gap-2 mb-1">
-						<span style={{ fontWeight: 500 }}>Google Cloud Project ID</span>
+						<span style={{ fontWeight: 500 }}>ID del proyecto de Google Cloud</span>
 						{remoteConfigSettings?.vertexProjectId !== undefined && <LockIcon />}
 					</div>
 				</DebouncedTextField>
@@ -84,7 +84,7 @@ export const VertexProvider = ({ showModelOptions, isPopup, currentMode }: Verte
 						className="flex items-center gap-2 mb-1"
 						style={{ opacity: remoteConfigSettings?.vertexRegion !== undefined ? 0.4 : 1 }}>
 						<label htmlFor="vertex-region-dropdown">
-							<span className="font-medium">Google Cloud Region</span>
+							<span className="font-medium">Región de Google Cloud</span>
 						</label>
 						{remoteConfigSettings?.vertexRegion !== undefined && <LockIcon />}
 					</div>
@@ -94,7 +94,7 @@ export const VertexProvider = ({ showModelOptions, isPopup, currentMode }: Verte
 						onChange={(e: any) => handleFieldChange("vertexRegion", e.target.value)}
 						style={{ width: "100%" }}
 						value={apiConfiguration?.vertexRegion || ""}>
-						<VSCodeOption value="">Select a region...</VSCodeOption>
+						<VSCodeOption value="">Seleccionar una región...</VSCodeOption>
 						{REGIONS.map((region) => (
 							<VSCodeOption key={region} value={region}>
 								{region}
@@ -110,23 +110,23 @@ export const VertexProvider = ({ showModelOptions, isPopup, currentMode }: Verte
 					marginTop: "5px",
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				To use Google Cloud Vertex AI, you need to
+				Para usar Google Cloud Vertex AI, necesitas
 				<VSCodeLink
 					href="https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude#before_you_begin"
 					style={{ display: "inline", fontSize: "inherit" }}>
-					{"1) create a Google Cloud account › enable the Vertex AI API › enable the desired Claude models,"}
+					{"1) crear una cuenta de Google Cloud › activar la API de Vertex AI › activar los modelos Claude que quieras,"}
 				</VSCodeLink>{" "}
 				<VSCodeLink
 					href="https://cloud.google.com/docs/authentication/provide-credentials-adc#google-idp"
 					style={{ display: "inline", fontSize: "inherit" }}>
-					{"2) install the Google Cloud CLI › configure Application Default Credentials."}
+					{"2) instalar la CLI de Google Cloud › configurar las Application Default Credentials."}
 				</VSCodeLink>
 			</p>
 
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={modelsToUse}
 						onChange={(e: any) =>
 							handleModeFieldChange(
@@ -144,8 +144,8 @@ export const VertexProvider = ({ showModelOptions, isPopup, currentMode }: Verte
 							allowedEfforts={["none", "low", "medium", "high", "xhigh"] as const}
 							currentMode={currentMode}
 							defaultEffort={adaptiveThinkingDefaultEffort}
-							description="Use None to disable adaptive thinking. Higher effort increases response detail and token usage."
-							label="Adaptive Thinking"
+							description="Usar None para desactivar el razonamiento adaptativo. Un esfuerzo mayor aumenta el detalle de la respuesta y el uso de tokens."
+							label="Razonamiento adaptativo"
 						/>
 					) : SUPPORTED_THINKING_MODELS.includes(selectedModelId) ? (
 						<ThinkingBudgetSlider currentMode={currentMode} maxBudget={selectedModelInfo.thinkingConfig?.maxBudget} />

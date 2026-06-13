@@ -15,8 +15,8 @@ export const AccountWelcomeView = () => {
 			<ClineLogoVariable className="size-16 mb-4" environment={environment} />
 
 			<p>
-				Sign up for an account to get access to the latest models, billing dashboard to view usage and credits, and more
-				upcoming features.
+				Crea una cuenta para acceder a los últimos modelos, al panel de facturación para ver el uso y los créditos, y a
+				más funciones próximamente.
 			</p>
 
 			<VSCodeButton className="w-full mb-4" disabled={isLoginLoading} onClick={handleSignIn}>
@@ -29,8 +29,8 @@ export const AccountWelcomeView = () => {
 			</VSCodeButton>
 
 			<p className="text-(--vscode-descriptionForeground) text-xs text-center m-0">
-				By continuing, you agree to the <VSCodeLink href="https://cline.bot/tos">Terms of Service</VSCodeLink> and{" "}
-				<VSCodeLink href="https://cline.bot/privacy">Privacy Policy.</VSCodeLink>
+				Al continuar, aceptas las <VSCodeLink href="https://cline.bot/tos">Condiciones del servicio</VSCodeLink> y la{" "}
+				<VSCodeLink href="https://cline.bot/privacy">Política de privacidad.</VSCodeLink>
 			</p>
 		</div>
 	)

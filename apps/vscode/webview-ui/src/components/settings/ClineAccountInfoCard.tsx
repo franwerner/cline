@@ -29,12 +29,12 @@ export const ClineAccountInfoCard = () => {
 		<div className="max-w-[600px]">
 			{user ? (
 				<VSCodeButton appearance="secondary" onClick={handleShowAccount}>
-					View Billing & Usage
+					Ver facturación y uso
 				</VSCodeButton>
 			) : (
 				<div>
 					<VSCodeButton className="mt-0" disabled={isLoading} onClick={handleLogin}>
-						Sign Up with Cline
+						Regístrate con Cline
 						{isLoading && (
 							<span className="ml-1 animate-spin">
 								<span className="codicon codicon-refresh"></span>

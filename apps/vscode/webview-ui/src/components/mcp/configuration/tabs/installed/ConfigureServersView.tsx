@@ -19,18 +19,18 @@ const ConfigureServersView = () => {
 					marginBottom: "16px",
 					marginTop: "5px",
 				}}>
-				The{" "}
+				El{" "}
 				<VSCodeLink href="https://github.com/modelcontextprotocol" style={{ display: "inline" }}>
 					Model Context Protocol
 				</VSCodeLink>{" "}
-				enables communication with locally running MCP servers that provide additional tools and resources to extend
-				Catalina's capabilities. You can use{" "}
+				permite la comunicación con servidores MCP que se ejecutan localmente y que proporcionan herramientas y recursos
+				adicionales para ampliar las capacidades de Catalina. Puedes usar{" "}
 				<VSCodeLink href="https://github.com/modelcontextprotocol/servers" style={{ display: "inline" }}>
-					community-made servers
+					servidores creados por la comunidad
 				</VSCodeLink>{" "}
-				or ask Catalina to create new tools specific to your workflow (e.g., "add a tool that gets the latest npm docs").{" "}
+				o pedirle a Catalina que cree nuevas herramientas específicas para tu flujo de trabajo (p. ej., "añade una herramienta que obtenga la documentación más reciente de npm").{" "}
 				<VSCodeLink href="https://x.com/sdrzn/status/1867271665086074969" style={{ display: "inline" }}>
-					See a demo here.
+					Ver una demostración aquí.
 				</VSCodeLink>
 			</div>
 
@@ -38,7 +38,7 @@ const ConfigureServersView = () => {
 			{hasRemoteMCPServers && (
 				<div className="flex items-center gap-2 px-5 py-3 mb-4 bg-vscode-textBlockQuote-background border-l-[3px] border-vscode-textLink-foreground">
 					<i className="codicon codicon-lock text-sm" />
-					<span className="text-base">Your organization manages some MCP servers</span>
+					<span className="text-base">Tu organización gestiona algunos servidores MCP</span>
 				</div>
 			)}
 
@@ -55,12 +55,12 @@ const ConfigureServersView = () => {
 					}}
 					style={{ width: "100%", marginBottom: "5px" }}>
 					<span className="codicon codicon-server" style={{ marginRight: "6px" }}></span>
-					Configure MCP Servers
+					Configurar servidores MCP
 				</VSCodeButton>
 
 				<div style={{ textAlign: "center" }}>
 					<VSCodeLink onClick={() => navigateToSettings("features")} style={{ fontSize: "12px" }}>
-						Advanced MCP Settings
+						Ajustes avanzados de MCP
 					</VSCodeLink>
 				</div>
 			</div>

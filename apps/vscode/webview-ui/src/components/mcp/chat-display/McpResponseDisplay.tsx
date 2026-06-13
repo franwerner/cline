@@ -229,7 +229,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({ responseText })
 						) : (
 							<ChevronRightIcon className="header-icon" size={16} />
 						)}
-						Response
+						Respuesta
 					</div>
 					<DropdownContainer
 						style={{ minWidth: isExpanded ? "auto" : "0", visibility: isExpanded ? "visible" : "hidden" }}>
@@ -257,12 +257,12 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({ responseText })
 						) : (
 							<ChevronRightIcon className="header-icon" size={16} />
 						)}
-						Response (Error)
+						Respuesta (Error)
 					</div>
 				</ResponseHeader>
 				{isExpanded && (
 					<div className="response-content">
-						<div style={{ color: "var(--vscode-errorForeground)" }}>Error parsing response:</div>
+						<div style={{ color: "var(--vscode-errorForeground)" }}>Error al analizar la respuesta:</div>
 						<UrlText>{responseText}</UrlText>
 					</div>
 				)}

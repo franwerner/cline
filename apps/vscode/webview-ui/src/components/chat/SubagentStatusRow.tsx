@@ -160,7 +160,7 @@ function SubagentPromptText({ prompt, isExpanded, onShowMore }: SubagentPromptTe
 			</div>
 			{!isExpanded && showMoreVisible && (
 				<button
-					aria-label="Show full subagent prompt"
+					aria-label="Mostrar el prompt completo del subagente"
 					className="absolute right-0 bottom-0 z-10 text-[11px] text-link border-0 px-1 py-[1px] cursor-pointer leading-none rounded-[2px]"
 					onClick={onShowMore}
 					style={{ backgroundColor: "var(--vscode-editor-background)" }}
@@ -170,7 +170,7 @@ function SubagentPromptText({ prompt, isExpanded, onShowMore }: SubagentPromptTe
 						className="pointer-events-none absolute inset-y-0 -left-[6px] w-[6px]"
 						style={{ background: "linear-gradient(to left, var(--vscode-editor-background), transparent)" }}
 					/>
-					Show more
+					Mostrar más
 				</button>
 			)}
 		</div>
@@ -183,7 +183,7 @@ export default function SubagentStatusRow({ message, isLast, lastModifiedMessage
 	const data = useMemo(() => parseSubagentRowData(message), [message])
 
 	if (!data) {
-		return <div className="text-foreground opacity-80">Subagent status update unavailable.</div>
+		return <div className="text-foreground opacity-80">Actualización de estado del subagente no disponible.</div>
 	}
 
 	const resumedBeforeNextVisibleMessage =
@@ -197,7 +197,7 @@ export default function SubagentStatusRow({ message, isLast, lastModifiedMessage
 			resumedBeforeNextVisibleMessage)
 
 	const singular = data.items.length === 1
-	const title = singular ? "Catalina wants to use a subagent:" : "Catalina wants to use subagents:"
+	const title = singular ? "Catalina quiere usar un subagente:" : "Catalina quiere usar subagentes:"
 	const isPromptConstructionRow = message.ask === "use_subagents" || message.say === "use_subagents"
 	const toggleItem = (index: number) => {
 		setExpandedItems((prev) => ({
@@ -229,7 +229,7 @@ export default function SubagentStatusRow({ message, isLast, lastModifiedMessage
 					const isStreamingPromptUnderConstruction =
 						isPromptConstructionRow && message.partial === true && index === data.items.length - 1
 					const shouldShowStats = !isStreamingPromptUnderConstruction
-					const statsText = `${formatCount(entry.toolCalls)} tools called · ${formatCount(entry.contextTokens)} tokens · ${formatCost(entry.totalCost)}`
+					const statsText = `${formatCount(entry.toolCalls)} herramientas llamadas · ${formatCount(entry.contextTokens)} tokens · ${formatCost(entry.totalCost)}`
 					const latestToolCallText = entry.latestToolCall?.trim() || ""
 					return (
 						<div
@@ -253,7 +253,7 @@ export default function SubagentStatusRow({ message, isLast, lastModifiedMessage
 							)}
 							{shouldShowStats && hasDetails && (
 								<button
-									aria-label={isExpanded ? "Hide subagent output" : "Show subagent output"}
+									aria-label={isExpanded ? "Ocultar la salida del subagente" : "Mostrar la salida del subagente"}
 									className="mt-1 text-[11px] opacity-80 flex items-center gap-1 bg-transparent border-0 p-0 cursor-pointer text-left text-foreground w-full"
 									onClick={() => toggleItem(entry.index)}
 									type="button">
@@ -262,7 +262,7 @@ export default function SubagentStatusRow({ message, isLast, lastModifiedMessage
 									) : (
 										<ChevronRightIcon className="size-2 shrink-0" />
 									)}
-									<span className="shrink-0">{isExpanded ? "Hide output" : "Show output"}</span>
+									<span className="shrink-0">{isExpanded ? "Ocultar salida" : "Mostrar salida"}</span>
 								</button>
 							)}
 							{shouldShowStats && !hasDetails && latestToolCallText && (

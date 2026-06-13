@@ -246,7 +246,7 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup, 
 			</style>
 			<div style={{ display: "flex", flexDirection: "column" }}>
 				<label htmlFor="model-search">
-					<span style={{ fontWeight: 500 }}>Model</span>
+					<span style={{ fontWeight: 500 }}>Modelo</span>
 				</label>
 
 				<DropdownWrapper ref={dropdownRef}>
@@ -263,7 +263,7 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup, 
 							setIsDropdownVisible(true)
 						}}
 						onKeyDown={handleKeyDown}
-						placeholder="Search and select a model..."
+						placeholder="Buscar y seleccionar un modelo..."
 						role="combobox"
 						style={{
 							width: "100%",
@@ -273,7 +273,7 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup, 
 						value={searchTerm}>
 						{searchTerm && (
 							<div
-								aria-label="Clear search"
+								aria-label="Borrar búsqueda"
 								className="input-icon-button codicon codicon-close"
 								onClick={() => {
 									setSearchTerm("")
@@ -392,10 +392,10 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup, 
 							defaultEffort={showAdaptiveThinkingEffort ? adaptiveThinkingDefaultEffort : "medium"}
 							description={
 								showAdaptiveThinkingEffort
-									? "Use None to disable adaptive thinking. Higher effort increases response detail and token usage."
+									? "Usa Ninguno para desactivar el razonamiento adaptativo. Un mayor esfuerzo aumenta el detalle de la respuesta y el uso de tokens."
 									: undefined
 							}
-							label={showAdaptiveThinkingEffort ? "Adaptive Thinking" : undefined}
+							label={showAdaptiveThinkingEffort ? "Razonamiento adaptativo" : undefined}
 						/>
 					)}
 
@@ -415,11 +415,11 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup, 
 						marginTop: 0,
 						color: "var(--vscode-descriptionForeground)",
 					}}>
-					The extension automatically fetches the latest list of models available on{" "}
+					La extensión obtiene automáticamente la última lista de modelos disponibles en{" "}
 					<VSCodeLink href="https://openrouter.ai/models" style={{ display: "inline", fontSize: "inherit" }}>
 						OpenRouter.
 					</VSCodeLink>
-					If you're unsure which model to choose, Catalina works best with{" "}
+					Si no sabes qué modelo elegir, Catalina funciona mejor con{" "}
 					<VSCodeLink
 						onClick={() => handleModelChange("anthropic/claude-sonnet-4.6")}
 						style={{ display: "inline", fontSize: "inherit" }}>

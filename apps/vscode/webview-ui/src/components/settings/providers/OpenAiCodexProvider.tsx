@@ -47,9 +47,9 @@ export const OpenAiCodexProvider = ({ showModelOptions, isPopup, currentMode }: 
 			<div style={{ marginBottom: "15px" }}>
 				{openAiCodexIsAuthenticated ? (
 					<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-						<span style={{ color: "var(--vscode-descriptionForeground)" }}>Signed in to OpenAI Codex</span>
+						<span style={{ color: "var(--vscode-descriptionForeground)" }}>Sesión iniciada en OpenAI Codex</span>
 						<VSCodeButton appearance="secondary" onClick={handleSignOut}>
-							Sign Out
+							Cerrar sesión
 						</VSCodeButton>
 					</div>
 				) : (
@@ -60,9 +60,9 @@ export const OpenAiCodexProvider = ({ showModelOptions, isPopup, currentMode }: 
 								color: "var(--vscode-descriptionForeground)",
 								marginBottom: "10px",
 							}}>
-							Sign in with your ChatGPT Plus or Pro subscription to use GPT-5 models without an API key.
+							Inicia sesión con tu suscripción a ChatGPT Plus o Pro para usar modelos GPT-5 sin una clave de API.
 						</p>
-						<VSCodeButton onClick={handleSignIn}>Sign in to OpenAI Codex</VSCodeButton>
+						<VSCodeButton onClick={handleSignIn}>Iniciar sesión en OpenAI Codex</VSCodeButton>
 					</div>
 				)}
 			</div>
@@ -70,7 +70,7 @@ export const OpenAiCodexProvider = ({ showModelOptions, isPopup, currentMode }: 
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={openAiCodexModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(

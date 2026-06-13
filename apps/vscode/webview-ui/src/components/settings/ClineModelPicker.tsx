@@ -79,7 +79,7 @@ function toFeaturedModelCardEntry(
 
 	return {
 		id: model.id,
-		description: model.description || (fallbackLabel === "FREE" ? "Free model" : "Recommended model"),
+		description: model.description || (fallbackLabel === "FREE" ? "Modelo gratuito" : "Modelo recomendado"),
 		label: normalizedLabel || fallbackLabel,
 	}
 }
@@ -391,17 +391,17 @@ const ClineModelPicker: React.FC<ClineModelPickerProps> = ({ isPopup, currentMod
 			</style>
 			<div style={{ display: "flex", flexDirection: "column" }}>
 				<label htmlFor="model-search">
-					<span style={{ fontWeight: 500 }}>Model</span>
+					<span style={{ fontWeight: 500 }}>Modelo</span>
 				</label>
 
 				<>
 					{/* Tabs */}
 					<TabsContainer style={{ marginTop: 4 }}>
 						<Tab active={activeTab === "recommended"} onClick={() => setActiveTab("recommended")}>
-							Recommended
+							Recomendados
 						</Tab>
 						<Tab active={activeTab === "free"} onClick={() => setActiveTab("free")}>
-							Free
+							Gratuitos
 						</Tab>
 					</TabsContainer>
 
@@ -452,7 +452,7 @@ const ClineModelPicker: React.FC<ClineModelPickerProps> = ({ isPopup, currentMod
 							setIsDropdownVisible(true)
 						}}
 						onKeyDown={handleKeyDown}
-						placeholder="Search and select a model..."
+						placeholder="Buscar y seleccionar un modelo..."
 						role="combobox"
 						style={{
 							width: "100%",
@@ -462,7 +462,7 @@ const ClineModelPicker: React.FC<ClineModelPickerProps> = ({ isPopup, currentMod
 						value={searchTerm}>
 						{searchTerm && (
 							<div
-								aria-label="Clear search"
+								aria-label="Borrar búsqueda"
 								className="input-icon-button codicon codicon-close"
 								onClick={() => {
 									setSearchTerm("")
@@ -581,10 +581,10 @@ const ClineModelPicker: React.FC<ClineModelPickerProps> = ({ isPopup, currentMod
 							defaultEffort={showAdaptiveThinkingEffort ? adaptiveThinkingDefaultEffort : "medium"}
 							description={
 								showAdaptiveThinkingEffort
-									? "Use None to disable adaptive thinking. Higher effort increases response detail and token usage."
+									? "Usa Ninguno para desactivar el razonamiento adaptativo. Un mayor esfuerzo aumenta el detalle de la respuesta y el uso de tokens."
 									: undefined
 							}
-							label={showAdaptiveThinkingEffort ? "Adaptive Thinking" : undefined}
+							label={showAdaptiveThinkingEffort ? "Razonamiento adaptativo" : undefined}
 						/>
 					)}
 
@@ -604,8 +604,8 @@ const ClineModelPicker: React.FC<ClineModelPickerProps> = ({ isPopup, currentMod
 						marginTop: 0,
 						color: "var(--vscode-descriptionForeground)",
 					}}>
-					The extension automatically fetches the latest Cline model list. If you're unsure which model to choose, Catalina
-					works best with <strong>anthropic/claude-sonnet-4.5</strong>.
+					La extensión obtiene automáticamente la última lista de modelos de Cline. Si no sabes qué modelo elegir,
+					Catalina funciona mejor con <strong>anthropic/claude-sonnet-4.5</strong>.
 				</p>
 			)}
 		</div>

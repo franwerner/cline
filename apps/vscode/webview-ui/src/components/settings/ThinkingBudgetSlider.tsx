@@ -137,11 +137,12 @@ const ThinkingBudgetSlider = ({ currentMode, maxBudget, showEnableToggle = true 
 		<div className="w-full">
 			{showEnableToggle ? (
 				<VSCodeCheckbox checked={isEnabled} onClick={handleToggleChange}>
-					Enable thinking{localValue && localValue > 0 ? ` (${localValue.toLocaleString()} tokens)` : ""}
+					Activar el razonamiento{localValue && localValue > 0 ? ` (${localValue.toLocaleString()} tokens)` : ""}
 				</VSCodeCheckbox>
 			) : (
 				<p className="text-[var(--vscode-descriptionForeground)] text-sm">
-					Thinking is enabled by default for this model. ({localValue.toLocaleString()} tokens)
+					El razonamiento está activado de forma predeterminada para este modelo. ({localValue.toLocaleString()}{" "}
+					tokens)
 				</p>
 			)}
 
@@ -152,7 +153,7 @@ const ThinkingBudgetSlider = ({ currentMode, maxBudget, showEnableToggle = true 
 						$min={0}
 						$value={localValue}
 						aria-describedby="thinking-budget-description"
-						aria-label={`Thinking budget: ${localValue.toLocaleString()} tokens`}
+						aria-label={`Presupuesto de razonamiento: ${localValue.toLocaleString()} tokens`}
 						aria-valuemax={maxBudget || ANTHROPIC_MAX_THINKING_BUDGET}
 						aria-valuemin={ANTHROPIC_MIN_THINKING_BUDGET}
 						aria-valuenow={localValue}

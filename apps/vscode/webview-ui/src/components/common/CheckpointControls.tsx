@@ -138,7 +138,7 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 					}
 				}}
 				style={{ cursor: compareDisabled ? "wait" : "pointer" }}
-				title="Compare">
+				title="Comparar">
 				<i className="codicon codicon-diff-multiple" style={{ position: "absolute" }} />
 			</VSCodeButton>
 			<div ref={containerRef} style={{ position: "relative" }}>
@@ -146,7 +146,7 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 					appearance="secondary"
 					onClick={() => setShowRestoreConfirm(true)}
 					style={{ cursor: "pointer" }}
-					title="Restore">
+					title="Restaurar">
 					<i className="codicon codicon-discard" style={{ position: "absolute" }} />
 				</VSCodeButton>
 				{showRestoreConfirm && (
@@ -158,9 +158,9 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								style={{
 									cursor: restoreBothDisabled ? "wait" : "pointer",
 								}}>
-								Restore Task and Workspace
+								Restaurar tarea y espacio de trabajo
 							</VSCodeButton>
-							<p>Restores the task and your project's files back to a snapshot taken at this point</p>
+							<p>Restaura la tarea y los archivos de tu proyecto a una instantánea tomada en este punto</p>
 						</RestoreOption>
 						<RestoreOption>
 							<VSCodeButton
@@ -169,9 +169,9 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								style={{
 									cursor: restoreTaskDisabled ? "wait" : "pointer",
 								}}>
-								Restore Task Only
+								Restaurar solo la tarea
 							</VSCodeButton>
-							<p>Deletes messages after this point (does not affect workspace)</p>
+							<p>Elimina los mensajes posteriores a este punto (no afecta al espacio de trabajo)</p>
 						</RestoreOption>
 						<RestoreOption>
 							<VSCodeButton
@@ -180,9 +180,9 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								style={{
 									cursor: restoreWorkspaceDisabled ? "wait" : "pointer",
 								}}>
-								Restore Workspace Only
+								Restaurar solo el espacio de trabajo
 							</VSCodeButton>
-							<p>Restores your project's files to a snapshot taken at this point (task may become out of sync)</p>
+							<p>Restaura los archivos de tu proyecto a una instantánea tomada en este punto (la tarea puede quedar desincronizada)</p>
 						</RestoreOption>
 					</RestoreConfirmTooltip>
 				)}

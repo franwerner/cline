@@ -21,7 +21,7 @@ export const ApiKeyField = ({
 	onChange,
 	providerName,
 	signupUrl,
-	placeholder = "Enter API Key...",
+	placeholder = "Introducir clave de API...",
 	helpText,
 }: ApiKeyFieldProps) => {
 	const [localValue, setLocalValue] = useDebouncedInput(initialValue, onChange)
@@ -35,7 +35,7 @@ export const ApiKeyField = ({
 				style={{ width: "100%" }}
 				type="password"
 				value={localValue}>
-				<span style={{ fontWeight: 500 }}>{providerName} API Key</span>
+				<span style={{ fontWeight: 500 }}>Clave de API de {providerName}</span>
 			</VSCodeTextField>
 			<p
 				style={{
@@ -43,7 +43,8 @@ export const ApiKeyField = ({
 					marginTop: 3,
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				{helpText || "This key is stored locally and only used to make API requests from this extension."}
+				{helpText ||
+					"Esta clave se almacena localmente y solo se usa para realizar solicitudes a la API desde esta extensión."}
 				{!localValue && signupUrl && (
 					<VSCodeLink
 						href={signupUrl}
@@ -51,7 +52,7 @@ export const ApiKeyField = ({
 							display: "inline",
 							fontSize: "inherit",
 						}}>
-						You can get a{/^[aeiou]/i.test(providerName) ? "n" : ""} {providerName} API key by signing up here.
+						Puedes obtener una clave de API de {providerName} registrándote aquí.
 					</VSCodeLink>
 				)}
 			</p>

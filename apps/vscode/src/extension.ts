@@ -238,7 +238,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				Logger.error("Error getting terminal contents:", error)
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "Failed to get terminal contents",
+					message: "No se ha podido obtener el contenido de la terminal",
 				})
 			}
 		}),
@@ -292,39 +292,39 @@ export async function activate(context: vscode.ExtensionContext) {
 					}
 
 					// Add to Cline (Always available)
-					const addAction = new vscode.CodeAction("Add to Cline", vscode.CodeActionKind.QuickFix)
+					const addAction = new vscode.CodeAction("Añadir a Catalina", vscode.CodeActionKind.QuickFix)
 					addAction.command = {
 						command: commands.AddToChat,
-						title: "Add to Cline",
+						title: "Añadir a Catalina",
 						arguments: [expandedRange, context.diagnostics],
 					}
 					actions.push(addAction)
 
 					// Explain with Cline (Always available)
-					const explainAction = new vscode.CodeAction("Explain with Cline", vscode.CodeActionKind.RefactorExtract) // Using a refactor kind
+					const explainAction = new vscode.CodeAction("Explicar con Catalina", vscode.CodeActionKind.RefactorExtract) // Using a refactor kind
 					explainAction.command = {
 						command: commands.ExplainCode,
-						title: "Explain with Cline",
+						title: "Explicar con Catalina",
 						arguments: [expandedRange],
 					}
 					actions.push(explainAction)
 
 					// Improve with Cline (Always available)
-					const improveAction = new vscode.CodeAction("Improve with Cline", vscode.CodeActionKind.RefactorRewrite) // Using a refactor kind
+					const improveAction = new vscode.CodeAction("Mejorar con Catalina", vscode.CodeActionKind.RefactorRewrite) // Using a refactor kind
 					improveAction.command = {
 						command: commands.ImproveCode,
-						title: "Improve with Cline",
+						title: "Mejorar con Catalina",
 						arguments: [expandedRange],
 					}
 					actions.push(improveAction)
 
 					// Fix with Cline (Only if diagnostics exist)
 					if (context.diagnostics.length > 0) {
-						const fixAction = new vscode.CodeAction("Fix with Cline", vscode.CodeActionKind.QuickFix)
+						const fixAction = new vscode.CodeAction("Corregir con Catalina", vscode.CodeActionKind.QuickFix)
 						fixAction.isPreferred = true
 						fixAction.command = {
 							command: commands.FixWithCline,
-							title: "Fix with Cline",
+							title: "Corregir con Catalina",
 							arguments: [expandedRange, context.diagnostics],
 						}
 						actions.push(fixAction)
@@ -450,7 +450,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		if (!activeNotebook) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "No active Jupyter notebook found. Please open a .ipynb file first.",
+				message: "No se ha encontrado ningún notebook de Jupyter activo. Abra primero un archivo .ipynb.",
 			})
 			return null
 		}
@@ -475,8 +475,8 @@ export async function activate(context: vscode.ExtensionContext) {
 			commands.JupyterGenerateCell,
 			async (range?: vscode.Range, diagnostics?: vscode.Diagnostic[]) => {
 				const userPrompt = await showJupyterPromptInput(
-					"Generate Notebook Cell",
-					"Enter your prompt for generating notebook cell (press Enter to confirm & Esc to cancel)",
+					"Generar celda del notebook",
+					"Introduzca su prompt para generar una celda del notebook (pulse Intro para confirmar y Esc para cancelar)",
 				)
 				if (!userPrompt) return
 
@@ -518,8 +518,8 @@ ${ctx.cellJson || "{}"}
 			commands.JupyterImproveCell,
 			async (range?: vscode.Range, diagnostics?: vscode.Diagnostic[]) => {
 				const userPrompt = await showJupyterPromptInput(
-					"Improve Notebook Cell",
-					"Enter your prompt for improving the current notebook cell (press Enter to confirm & Esc to cancel)",
+					"Mejorar celda del notebook",
+					"Introduzca su prompt para mejorar la celda actual del notebook (pulse Intro para confirmar y Esc para cancelar)",
 				)
 				if (!userPrompt) return
 
@@ -608,7 +608,7 @@ async function showJupyterPromptInput(title: string, placeholder: string): Promi
 			if (value) {
 				quickPick.items = [
 					{
-						label: "$(check) Use this prompt",
+						label: "$(check) Usar este prompt",
 						detail: value,
 						alwaysShow: true,
 					},

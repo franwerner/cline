@@ -33,7 +33,7 @@ export async function installClineCli(
 		Logger.error("Error executing CLI installation:", error);
 		await HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: `Failed to start CLI installation: ${error instanceof Error ? error.message : "Unknown error"}`,
+			message: `No se ha podido iniciar la instalación de la CLI: ${error instanceof Error ? error.message : "Error desconocido"}`,
 			options: { items: [] },
 		});
 	}

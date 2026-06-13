@@ -54,7 +54,7 @@ export async function openExternal(url: string): Promise<void> {
 			Logger.error(`Fallback 'open' also failed: ${fallbackError}`)
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Failed to open URL: ${url}`,
+				message: `No se ha podido abrir la URL: ${url}`,
 			})
 		}
 	}

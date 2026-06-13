@@ -79,10 +79,10 @@ export function UnsavedChangesDialog({
 	onConfirm,
 	onCancel,
 	onSave,
-	title = "Unsaved Changes",
-	description = "You have unsaved changes. Are you sure you want to discard them?",
-	confirmText = "Discard Changes",
-	saveText = "Save & Continue",
+	title = "Cambios sin guardar",
+	description = "Tienes cambios sin guardar. ¿Seguro que quieres descartarlos?",
+	confirmText = "Descartar cambios",
+	saveText = "Guardar y continuar",
 	showSaveOption = false,
 }: {
 	open: boolean
@@ -107,7 +107,7 @@ export function UnsavedChangesDialog({
 					<AlertDialogDescription>{description}</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel onClick={onCancel}>Cancel</AlertDialogCancel>
+					<AlertDialogCancel onClick={onCancel}>Cancelar</AlertDialogCancel>
 					{showSaveOption && onSave && <AlertDialogAction onClick={onSave}>{saveText}</AlertDialogAction>}
 					<AlertDialogAction appearance={showSaveOption ? "secondary" : "primary"} onClick={onConfirm}>
 						{confirmText}

@@ -26,13 +26,13 @@ export async function reconstructTaskHistory(showNotifications = true): Promise<
 		const proceed = await HostProvider.window.showMessage({
 			type: ShowMessageType.WARNING,
 			message:
-				"This will rebuild your task history from existing task data. This operation will backup your current task history and attempt to reconstruct it from task folders. Continue?",
+				"Esto reconstruirá su historial de tareas a partir de los datos de tareas existentes. Esta operación hará una copia de seguridad de su historial de tareas actual e intentará reconstruirlo a partir de las carpetas de tareas. ¿Continuar?",
 			options: {
-				items: ["Yes, Reconstruct", "Cancel"],
+				items: ["Sí, reconstruir", "Cancelar"],
 			},
 		})
 
-		if (proceed?.selectedOption !== "Yes, Reconstruct") {
+		if (proceed?.selectedOption !== "Sí, reconstruir") {
 			return null
 		}
 
@@ -40,7 +40,7 @@ export async function reconstructTaskHistory(showNotifications = true): Promise<
 			// Show initial progress message
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Reconstructing task history...",
+				message: "Reconstruyendo el historial de tareas...",
 			})
 		}
 
@@ -49,7 +49,7 @@ export async function reconstructTaskHistory(showNotifications = true): Promise<
 		// Show results
 		if (showNotifications) {
 			if (result.errors.length > 0) {
-				const errorMessage = `Reconstruction completed with warnings:\n- Reconstructed: ${result.reconstructedTasks} tasks\n- Skipped: ${result.skippedTasks} tasks\n- Errors: ${result.errors.length}\n\nFirst few errors:\n${result.errors.slice(0, 3).join("\n")}`
+				const errorMessage = `Reconstrucción completada con advertencias:\n- Reconstruidas: ${result.reconstructedTasks} tareas\n- Omitidas: ${result.skippedTasks} tareas\n- Errores: ${result.errors.length}\n\nPrimeros errores:\n${result.errors.slice(0, 3).join("\n")}`
 
 				HostProvider.window.showMessage({
 					type: ShowMessageType.WARNING,
@@ -58,7 +58,7 @@ export async function reconstructTaskHistory(showNotifications = true): Promise<
 			} else {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: `Task history successfully reconstructed! Found and restored ${result.reconstructedTasks} tasks.`,
+					message: `Historial de tareas reconstruido correctamente. Se han encontrado y restaurado ${result.reconstructedTasks} tareas.`,
 				})
 			}
 		}
@@ -69,7 +69,7 @@ export async function reconstructTaskHistory(showNotifications = true): Promise<
 		if (showNotifications) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Failed to reconstruct task history: ${errorMessage}`,
+				message: `No se ha podido reconstruir el historial de tareas: ${errorMessage}`,
 			})
 		}
 		return null

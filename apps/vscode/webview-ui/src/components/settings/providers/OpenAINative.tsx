@@ -40,7 +40,7 @@ export const OpenAINativeProvider = ({ showModelOptions, isPopup, currentMode }:
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={openAiNativeModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(

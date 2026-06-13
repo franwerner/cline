@@ -47,10 +47,10 @@ export const ClaudeCodeProvider = ({ showModelOptions, isPopup, currentMode }: C
 			<DebouncedTextField
 				initialValue={apiConfiguration?.claudeCodePath || ""}
 				onChange={(value) => handleFieldChange("claudeCodePath", value)}
-				placeholder="Default: claude"
+				placeholder="Predeterminado: claude"
 				style={{ width: "100%", marginTop: 3 }}
 				type="text">
-				<span style={{ fontWeight: 500 }}>Claude Code CLI Path</span>
+				<span style={{ fontWeight: 500 }}>Ruta de la CLI de Claude Code</span>
 			</DebouncedTextField>
 
 			<p
@@ -59,13 +59,13 @@ export const ClaudeCodeProvider = ({ showModelOptions, isPopup, currentMode }: C
 					marginTop: 3,
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				Path to the Claude Code CLI.
+				Ruta a la CLI de Claude Code.
 			</p>
 
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={claudeCodeModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(
@@ -85,7 +85,7 @@ export const ClaudeCodeProvider = ({ showModelOptions, isPopup, currentMode }: C
 								marginTop: 2,
 								color: "var(--vscode-descriptionForeground)",
 							}}>
-							Use the latest version of {selectedModelId} by default.
+							Usa la última versión de {selectedModelId} de forma predeterminada.
 						</p>
 					)}
 

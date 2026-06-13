@@ -327,7 +327,7 @@ export async function updateSettingsCli(
 
 					// Show information message if terminals were closed
 					if (closedCount > 0) {
-						const message = `Closed ${closedCount} ${closedCount === 1 ? "terminal" : "terminals"} with different profile.`;
+						const message = `Se ${closedCount === 1 ? "ha cerrado" : "han cerrado"} ${closedCount} ${closedCount === 1 ? "terminal" : "terminales"} con un perfil distinto.`;
 						HostProvider.window.showMessage({
 							type: ShowMessageType.INFORMATION,
 							message,
@@ -337,8 +337,8 @@ export async function updateSettingsCli(
 					// Show warning if there are busy terminals that couldn't be closed
 					if (busyTerminalsCount > 0) {
 						const message =
-							`${busyTerminalsCount} busy ${busyTerminalsCount === 1 ? "terminal has" : "terminals have"} a different profile. ` +
-							`Close ${busyTerminalsCount === 1 ? "it" : "them"} to use the new profile for all commands.`;
+							`${busyTerminalsCount} ${busyTerminalsCount === 1 ? "terminal ocupada tiene" : "terminales ocupadas tienen"} un perfil distinto. ` +
+							`${busyTerminalsCount === 1 ? "Ciérrela" : "Ciérrelas"} para usar el nuevo perfil en todos los comandos.`;
 						HostProvider.window.showMessage({
 							type: ShowMessageType.WARNING,
 							message,

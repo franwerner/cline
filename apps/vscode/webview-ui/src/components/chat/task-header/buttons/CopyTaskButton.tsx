@@ -23,10 +23,10 @@ const CopyTaskButton: React.FC<{
 
 	return (
 		<Tooltip>
-			<TooltipContent side="bottom">Copy Text</TooltipContent>
+			<TooltipContent side="bottom">Copiar texto</TooltipContent>
 			<TooltipTrigger className={cn("flex items-center", className)}>
 				<Button
-					aria-label="Copy"
+					aria-label="Copiar"
 					onClick={(e) => {
 						e.preventDefault()
 						e.stopPropagation()

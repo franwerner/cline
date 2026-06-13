@@ -45,12 +45,12 @@ export async function generateCommitMsg(
 	try {
 		const gitExtension = vscode.extensions.getExtension("vscode.git")?.exports;
 		if (!gitExtension) {
-			throw new Error("Git extension not found");
+			throw new Error("No se ha encontrado la extensión de Git");
 		}
 
 		const git = gitExtension.getAPI(1);
 		if (git.repositories.length === 0) {
-			throw new Error("No Git repositories available");
+			throw new Error("No hay ningún repositorio de Git disponible");
 		}
 
 		// If scm is provided, then the user specified one repository by clicking the "Source Control" menu button
@@ -58,7 +58,9 @@ export async function generateCommitMsg(
 			const repository = git.getRepository(scm.rootUri);
 
 			if (!repository) {
-				throw new Error("Repository not found for provided SCM");
+				throw new Error(
+					"No se ha encontrado el repositorio para el SCM indicado",
+				);
 			}
 
 			await generateCommitMsgForRepository(controller, repository);
@@ -70,7 +72,7 @@ export async function generateCommitMsg(
 		const errorMessage = error instanceof Error ? error.message : String(error);
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: `[Commit Generation Failed] ${errorMessage}`,
+			message: `[No se ha podido generar el commit] ${errorMessage}`,
 		});
 	}
 }
@@ -84,7 +86,8 @@ async function orchestrateWorkspaceCommitMsgGeneration(
 	if (reposWithChanges.length === 0) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.INFORMATION,
-			message: "No changes found in any workspace repositories",
+			message:
+				"No se han encontrado cambios en ningún repositorio del espacio de trabajo",
 		});
 		return;
 	}
@@ -147,13 +150,13 @@ async function promptRepoSelection(repos: any[]) {
 	}));
 
 	repoItems.unshift({
-		label: "$(git-commit) Generate for all repositories with changes",
-		description: `Generate commit messages for ${repos.length} repositories`,
+		label: "$(git-commit) Generar para todos los repositorios con cambios",
+		description: `Generar mensajes de commit para ${repos.length} repositorios`,
 		repo: null as any,
 	});
 
 	return await vscode.window.showQuickPick(repoItems, {
-		placeHolder: "Select repository for commit message generation",
+		placeHolder: "Seleccione el repositorio para generar el mensaje de commit",
 	});
 }
 
@@ -167,14 +170,14 @@ async function generateCommitMsgForRepository(
 
 	if (!gitDiff) {
 		throw new Error(
-			`No changes in repository ${repoPath.split(path.sep).pop() || "repository"} for commit message`,
+			`No hay cambios en el repositorio ${repoPath.split(path.sep).pop() || "repository"} para generar el mensaje de commit`,
 		);
 	}
 
 	await vscode.window.withProgress(
 		{
 			location: vscode.ProgressLocation.SourceControl,
-			title: `Generating commit message for ${repoPath.split(path.sep).pop() || "repository"}...`,
+			title: `Generando el mensaje de commit para ${repoPath.split(path.sep).pop() || "el repositorio"}...`,
 			cancellable: true,
 		},
 		() => performCommitMsgGeneration(controller, gitDiff, inputBox),
@@ -243,13 +246,13 @@ async function performCommitMsgGeneration(
 		}
 
 		if (!inputBox.value) {
-			throw new Error("empty API response");
+			throw new Error("respuesta de la API vacía");
 		}
 	} catch (error) {
 		const errorMessage = error instanceof Error ? error.message : String(error);
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: `Failed to generate commit message: ${errorMessage}`,
+			message: `No se ha podido generar el mensaje de commit: ${errorMessage}`,
 		});
 	} finally {
 		vscode.commands.executeCommand(

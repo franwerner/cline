@@ -24,13 +24,13 @@ export async function resetState(
 		if (request.global) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Resetting global state...",
+				message: "Restableciendo el estado global...",
 			});
 			await resetGlobalState();
 		} else {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Resetting workspace state...",
+				message: "Restableciendo el estado del espacio de trabajo...",
 			});
 			await resetWorkspaceState();
 		}
@@ -42,7 +42,7 @@ export async function resetState(
 
 		HostProvider.window.showMessage({
 			type: ShowMessageType.INFORMATION,
-			message: "State reset",
+			message: "Estado restablecido",
 		});
 		await controller.postStateToWebview();
 
@@ -53,7 +53,7 @@ export async function resetState(
 		Logger.error("Error resetting state:", error);
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: `Failed to reset state: ${error instanceof Error ? error.message : String(error)}`,
+			message: `No se ha podido restablecer el estado: ${error instanceof Error ? error.message : String(error)}`,
 		});
 		throw error;
 	}

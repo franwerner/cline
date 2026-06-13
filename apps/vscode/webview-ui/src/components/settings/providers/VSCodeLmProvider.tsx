@@ -44,7 +44,7 @@ export const VSCodeLmProvider = ({ currentMode }: VSCodeLmProviderProps) => {
 		<div>
 			<DropdownContainer className="dropdown-container" zIndex={DROPDOWN_Z_INDEX - 2}>
 				<label htmlFor="vscode-lm-model">
-					<span style={{ fontWeight: 500 }}>Language Model</span>
+					<span style={{ fontWeight: 500 }}>Modelo de lenguaje</span>
 				</label>
 				{vsCodeLmModels.length > 0 ? (
 					<VSCodeDropdown
@@ -68,7 +68,7 @@ export const VSCodeLmProvider = ({ currentMode }: VSCodeLmProviderProps) => {
 								? `${vsCodeLmModelSelector.vendor ?? ""}/${vsCodeLmModelSelector.family ?? ""}`
 								: ""
 						}>
-						<VSCodeOption value="">Select a model...</VSCodeOption>
+						<VSCodeOption value="">Seleccionar un modelo...</VSCodeOption>
 						{vsCodeLmModels.map((model) => (
 							<VSCodeOption key={`${model.vendor}/${model.family}`} value={`${model.vendor}/${model.family}`}>
 								{model.vendor} - {model.family}
@@ -82,9 +82,9 @@ export const VSCodeLmProvider = ({ currentMode }: VSCodeLmProviderProps) => {
 							marginTop: "5px",
 							color: "var(--vscode-descriptionForeground)",
 						}}>
-						Use models from your GitHub Copilot subscription. Install the{" "}
-						<a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">Copilot extension</a> and
-						enable Claude models in Copilot settings to get started.
+						Usa modelos de tu suscripción a GitHub Copilot. Instala la{" "}
+						<a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">extensión de Copilot</a> y
+						activa los modelos Claude en los ajustes de Copilot para empezar.
 					</p>
 				)}
 			</DropdownContainer>

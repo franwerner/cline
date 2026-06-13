@@ -57,10 +57,11 @@ export async function createRuleFile(
 		throw new Error("Failed to create file.");
 	}
 
-	const fileTypeName = request.type === "workflow" ? "workflow" : "rule";
+	const fileTypeName =
+		request.type === "workflow" ? "de flujo de trabajo" : "de regla";
 
 	if (fileExists) {
-		const message = `${fileTypeName} file "${request.filename}" already exists.`;
+		const message = `El archivo ${fileTypeName} "${request.filename}" ya existe.`;
 		HostProvider.window.showMessage({
 			type: ShowMessageType.WARNING,
 			message,
@@ -77,7 +78,7 @@ export async function createRuleFile(
 
 		await openFile(controller, { value: filePath });
 
-		const message = `Created new ${request.isGlobal ? "global" : "workspace"} ${fileTypeName} file: ${request.filename}`;
+		const message = `Se ha creado un nuevo archivo ${fileTypeName} ${request.isGlobal ? "global" : "del espacio de trabajo"}: ${request.filename}`;
 		HostProvider.window.showMessage({
 			type: ShowMessageType.INFORMATION,
 			message,

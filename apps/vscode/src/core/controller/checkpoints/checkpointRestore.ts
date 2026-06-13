@@ -24,7 +24,7 @@ export async function checkpointRestore(
 			);
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Failed to restore checkpoint",
+				message: "No se ha podido restaurar el punto de control",
 			});
 			throw error;
 		});

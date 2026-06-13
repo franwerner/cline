@@ -47,8 +47,8 @@ export class ChatErrorBoundary extends React.Component<ChatErrorBoundaryProps, C
 						borderRadius: "4px",
 						backgroundColor: "var(--vscode-inputValidation-errorBackground, rgba(255, 0, 0, 0.1))",
 					}}>
-					<h3 style={{ margin: "0 0 8px 0" }}>{errorTitle || "Something went wrong displaying this content"}</h3>
-					<p style={{ margin: "0" }}>{errorBody || `Error: ${this.state.error?.message || "Unknown error"}`}</p>
+					<h3 style={{ margin: "0 0 8px 0" }}>{errorTitle || "Algo salió mal al mostrar este contenido"}</h3>
+					<p style={{ margin: "0" }}>{errorBody || `Error: ${this.state.error?.message || "Error desconocido"}`}</p>
 				</div>
 			)
 		}
@@ -121,7 +121,7 @@ export class ErrorAfterDelay extends React.Component<ErrorAfterDelayProps, Error
 					borderRadius: "0 0 0 4px",
 					zIndex: 100,
 				}}>
-				Error in {this.state.tickCount}/{this.props.numSecondsToWait ?? 5} seconds
+				Error en {this.state.tickCount}/{this.props.numSecondsToWait ?? 5} segundos
 			</div>
 		)
 	}

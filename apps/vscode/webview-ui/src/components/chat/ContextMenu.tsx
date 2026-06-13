@@ -95,10 +95,10 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 
 	// Shared label definitions for simple option types
 	const SIMPLE_OPTION_LABELS: Partial<Record<ContextMenuOptionType, string>> = {
-		[ContextMenuOptionType.Problems]: "Problems",
+		[ContextMenuOptionType.Problems]: "Problemas",
 		[ContextMenuOptionType.Terminal]: "Terminal",
-		[ContextMenuOptionType.URL]: "Paste URL to fetch contents",
-		[ContextMenuOptionType.NoResults]: "No results found",
+		[ContextMenuOptionType.URL]: "Pega una URL para obtener su contenido",
+		[ContextMenuOptionType.NoResults]: "No se encontraron resultados",
 	}
 
 	// Get accessible label for an option (used for screen readers and aria-label)
@@ -114,13 +114,13 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 				if (option.value) {
 					return `${option.label}${option.description ? `, ${option.description}` : ""}`
 				}
-				return "Git Commits"
+				return "Commits de Git"
 			case ContextMenuOptionType.File:
 			case ContextMenuOptionType.Folder:
 				if (option.value) {
 					return option.label || option.value
 				}
-				return `Add ${option.type === ContextMenuOptionType.File ? "File" : "Folder"}`
+				return `Añadir ${option.type === ContextMenuOptionType.File ? "archivo" : "carpeta"}`
 			default:
 				return option.label || option.value || ""
 		}
@@ -156,7 +156,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						</div>
 					)
 				}
-				return <span>Git Commits</span>
+				return <span>Commits de Git</span>
 			case ContextMenuOptionType.File:
 			case ContextMenuOptionType.Folder:
 				if (option.value) {
@@ -182,7 +182,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						</>
 					)
 				}
-				return <span>Add {option.type === ContextMenuOptionType.File ? "File" : "Folder"}</span>
+				return <span>Añadir {option.type === ContextMenuOptionType.File ? "archivo" : "carpeta"}</span>
 			default:
 				return null
 		}
@@ -251,7 +251,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						? `context-menu-item-${selectedIndex}`
 						: undefined
 				}
-				aria-label="Context mentions"
+				aria-label="Menciones de contexto"
 				ref={menuRef}
 				role="listbox"
 				style={{
@@ -276,7 +276,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 							opacity: 0.7,
 						}}>
 						<i className="codicon codicon-loading codicon-modifier-spin" style={{ fontSize: "14px" }} />
-						<span>Searching...</span>
+						<span>Buscando...</span>
 					</div>
 				)}
 				{filteredOptions.map((option, index) => {

@@ -51,7 +51,7 @@ export const ModelDescriptionMarkdown = memo(({ markdown, key, isPopup }: ModelD
 							})}
 							onClick={() => setIsExpanded(!isExpanded)}
 							variant="link">
-							{isExpanded ? "See less" : "See more"}
+							{isExpanded ? "Ver menos" : "Ver más"}
 						</Button>
 					</div>
 				)}

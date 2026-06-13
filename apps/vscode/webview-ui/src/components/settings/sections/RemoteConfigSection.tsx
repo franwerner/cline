@@ -57,7 +57,7 @@ function RefreshButton() {
 			className={`w-full rounded-xs ${isLoading ? "animate-pulse" : ""}`}
 			disabled={isLoading || (retryIn !== null && retryIn > 0)}
 			onClick={() => onRefresh()}>
-			Refresh {retryIn && retryIn > 0 && <>(Retry in: {retryIn} seconds)</>}
+			Actualizar {retryIn && retryIn > 0 && <>(Reintentar en: {retryIn} segundos)</>}
 		</VSCodeButton>
 	)
 }
@@ -71,10 +71,14 @@ interface SettingRowProps {
 function SettingRow({ label, value, isSecret }: SettingRowProps) {
 	const displayValue = (() => {
 		if (value === undefined || value === null) {
-			return <span className="text-description italic">Not configured</span>
+			return <span className="text-description italic">Sin configurar</span>
 		}
 		if (typeof value === "boolean") {
-			return value ? <span className="text-green-500">Enabled</span> : <span className="text-description">Disabled</span>
+			return value ? (
+				<span className="text-green-500">Activado</span>
+			) : (
+				<span className="text-description">Desactivado</span>
+			)
 		}
 		if (isSecret && typeof value === "string" && value.length > 0) {
 			return <span className="font-mono text-xs">{"•".repeat(Math.min(value.length, 20))}</span>
@@ -125,9 +129,9 @@ function TestButton({ label, onClick, disabled, successMessage }: TestButtonProp
 		setResult(null)
 		try {
 			await onClick()
-			setResult({ success: true, message: successMessage || "Success!" })
+			setResult({ success: true, message: successMessage || "¡Correcto!" })
 		} catch (error) {
-			setResult({ success: false, message: error instanceof Error ? error.message : "Failed" })
+			setResult({ success: false, message: error instanceof Error ? error.message : "Error" })
 		} finally {
 			setIsLoading(false)
 			timeoutRef.current = setTimeout(() => setResult(null), 5000)
@@ -141,7 +145,7 @@ function TestButton({ label, onClick, disabled, successMessage }: TestButtonProp
 				className={isLoading ? "animate-pulse" : ""}
 				disabled={disabled || isLoading}
 				onClick={handleClick}>
-				{isLoading ? "Testing..." : label}
+				{isLoading ? "Probando..." : label}
 			</VSCodeButton>
 			{result && <span className={`text-xs ${result.success ? "text-green-500" : "text-red-500"}`}>{result.message}</span>}
 		</div>
@@ -165,7 +169,7 @@ function OtelSettingsSection() {
 	const handleTestOtel = async () => {
 		const response = await StateServiceClient.testOtelConnection(EmptyRequest.create({}))
 		if (!response.success) {
-			throw new Error(response.error || "Test failed")
+			throw new Error(response.error || "La prueba ha fallado")
 		}
 	}
 
@@ -173,43 +177,49 @@ function OtelSettingsSection() {
 		<div className="mb-4">
 			<h4 className="text-sm font-medium mb-2 flex items-center gap-2">
 				<i className="codicon codicon-pulse" />
-				OpenTelemetry Configuration
+				Configuración de OpenTelemetry
 			</h4>
 			<div className="bg-vscode-textBlockQuote-background rounded p-3 mb-2">
-				<SettingRow label="Enabled" value={otelEnabled} />
-				<SettingRow label="Metrics Exporter" value={remoteConfigSettings?.openTelemetryMetricsExporter} />
-				<SettingRow label="Logs Exporter" value={remoteConfigSettings?.openTelemetryLogsExporter} />
-				<SettingRow label="OTLP Protocol" value={remoteConfigSettings?.openTelemetryOtlpProtocol} />
-				<SettingRow label="OTLP Endpoint" value={remoteConfigSettings?.openTelemetryOtlpEndpoint} />
+				<SettingRow label="Activado" value={otelEnabled} />
+				<SettingRow label="Exportador de métricas" value={remoteConfigSettings?.openTelemetryMetricsExporter} />
+				<SettingRow label="Exportador de registros" value={remoteConfigSettings?.openTelemetryLogsExporter} />
+				<SettingRow label="Protocolo OTLP" value={remoteConfigSettings?.openTelemetryOtlpProtocol} />
+				<SettingRow label="Endpoint OTLP" value={remoteConfigSettings?.openTelemetryOtlpEndpoint} />
 				{remoteConfigSettings?.openTelemetryOtlpMetricsEndpoint && (
-					<SettingRow label="Metrics Endpoint" value={remoteConfigSettings?.openTelemetryOtlpMetricsEndpoint} />
+					<SettingRow label="Endpoint de métricas" value={remoteConfigSettings?.openTelemetryOtlpMetricsEndpoint} />
 				)}
 				{remoteConfigSettings?.openTelemetryOtlpLogsEndpoint && (
-					<SettingRow label="Logs Endpoint" value={remoteConfigSettings?.openTelemetryOtlpLogsEndpoint} />
+					<SettingRow label="Endpoint de registros" value={remoteConfigSettings?.openTelemetryOtlpLogsEndpoint} />
 				)}
 				{remoteConfigSettings?.openTelemetryOtlpHeaders && (
 					<SettingRow
-						label="OTLP Headers"
-						value={`${Object.keys(remoteConfigSettings.openTelemetryOtlpHeaders).length} header(s)`}
+						label="Cabeceras OTLP"
+						value={`${Object.keys(remoteConfigSettings.openTelemetryOtlpHeaders).length} cabecera(s)`}
 					/>
 				)}
 				{remoteConfigSettings?.openTelemetryMetricExportInterval && (
 					<SettingRow
-						label="Metric Export Interval"
+						label="Intervalo de exportación de métricas"
 						value={`${remoteConfigSettings.openTelemetryMetricExportInterval}ms`}
 					/>
 				)}
 				{remoteConfigSettings?.openTelemetryOtlpInsecure !== undefined && (
-					<SettingRow label="OTLP Insecure" value={remoteConfigSettings?.openTelemetryOtlpInsecure} />
+					<SettingRow label="OTLP sin cifrar" value={remoteConfigSettings?.openTelemetryOtlpInsecure} />
 				)}
 				{remoteConfigSettings?.openTelemetryLogBatchSize && (
-					<SettingRow label="Log Batch Size" value={remoteConfigSettings?.openTelemetryLogBatchSize} />
+					<SettingRow label="Tamaño del lote de registros" value={remoteConfigSettings?.openTelemetryLogBatchSize} />
 				)}
 				{remoteConfigSettings?.openTelemetryLogBatchTimeout && (
-					<SettingRow label="Log Batch Timeout" value={`${remoteConfigSettings.openTelemetryLogBatchTimeout}ms`} />
+					<SettingRow
+						label="Tiempo de espera del lote de registros"
+						value={`${remoteConfigSettings.openTelemetryLogBatchTimeout}ms`}
+					/>
 				)}
 				{remoteConfigSettings?.openTelemetryLogMaxQueueSize && (
-					<SettingRow label="Log Max Queue Size" value={remoteConfigSettings?.openTelemetryLogMaxQueueSize} />
+					<SettingRow
+						label="Tamaño máximo de la cola de registros"
+						value={remoteConfigSettings?.openTelemetryLogMaxQueueSize}
+					/>
 				)}
 			</div>
 
@@ -217,9 +227,9 @@ function OtelSettingsSection() {
 				<div className="flex gap-2 flex-wrap">
 					<TestButton
 						disabled={!remoteConfigSettings?.openTelemetryMetricsExporter}
-						label="Test"
+						label="Probar"
 						onClick={handleTestOtel}
-						successMessage="Flushed buffers! Please check the output channel for more detailed information"
+						successMessage="¡Buffers vaciados! Consulta el canal de salida para obtener información más detallada"
 					/>
 				</div>
 			)}
@@ -238,7 +248,7 @@ function PromptUploadingSection() {
 	const handleTestPromptUploading = async () => {
 		const response = await StateServiceClient.testPromptUploading(EmptyRequest.create({}))
 		if (!response.success) {
-			throw new Error(response.error || "Test failed")
+			throw new Error(response.error || "La prueba ha fallado")
 		}
 	}
 
@@ -246,24 +256,28 @@ function PromptUploadingSection() {
 		<div className="mb-4">
 			<h4 className="text-sm font-medium mb-2 flex items-center gap-2">
 				<i className="codicon codicon-cloud-upload" />
-				Prompt Uploading Configuration
+				Configuración de la subida de prompts
 			</h4>
 			<div className="bg-vscode-textBlockQuote-background rounded p-3 mb-2">
-				<SettingRow label="Storage Type" value={blobStoreConfig.adapterType?.toUpperCase()} />
+				<SettingRow label="Tipo de almacenamiento" value={blobStoreConfig.adapterType?.toUpperCase()} />
 				<SettingRow label="Bucket" value={blobStoreConfig.bucket} />
-				<SettingRow label="Region" value={blobStoreConfig.region} />
+				<SettingRow label="Región" value={blobStoreConfig.region} />
 				{blobStoreConfig.endpoint && <SettingRow label="Endpoint" value={blobStoreConfig.endpoint} />}
-				{blobStoreConfig.accountId && <SettingRow label="Account ID" value={blobStoreConfig.accountId} />}
-				<SettingRow isSecret label="Access Key ID" value={blobStoreConfig.accessKeyId} />
-				<SettingRow isSecret label="Secret Access Key" value={blobStoreConfig.secretAccessKey} />
-				{blobStoreConfig.intervalMs && <SettingRow label="Sync Interval" value={`${blobStoreConfig.intervalMs}ms`} />}
-				{blobStoreConfig.batchSize && <SettingRow label="Batch Size" value={blobStoreConfig.batchSize} />}
-				{blobStoreConfig.maxRetries && <SettingRow label="Max Retries" value={blobStoreConfig.maxRetries} />}
-				{blobStoreConfig.maxQueueSize && <SettingRow label="Max Queue Size" value={blobStoreConfig.maxQueueSize} />}
-				<SettingRow label="Backfill Enabled" value={blobStoreConfig.backfillEnabled} />
+				{blobStoreConfig.accountId && <SettingRow label="ID de cuenta" value={blobStoreConfig.accountId} />}
+				<SettingRow isSecret label="ID de clave de acceso" value={blobStoreConfig.accessKeyId} />
+				<SettingRow isSecret label="Clave de acceso secreta" value={blobStoreConfig.secretAccessKey} />
+				{blobStoreConfig.intervalMs && (
+					<SettingRow label="Intervalo de sincronización" value={`${blobStoreConfig.intervalMs}ms`} />
+				)}
+				{blobStoreConfig.batchSize && <SettingRow label="Tamaño del lote" value={blobStoreConfig.batchSize} />}
+				{blobStoreConfig.maxRetries && <SettingRow label="Reintentos máximos" value={blobStoreConfig.maxRetries} />}
+				{blobStoreConfig.maxQueueSize && (
+					<SettingRow label="Tamaño máximo de la cola" value={blobStoreConfig.maxQueueSize} />
+				)}
+				<SettingRow label="Backfill activado" value={blobStoreConfig.backfillEnabled} />
 			</div>
 
-			<TestButton label="Test Upload" onClick={handleTestPromptUploading} />
+			<TestButton label="Probar subida" onClick={handleTestPromptUploading} />
 		</div>
 	)
 }
@@ -276,7 +290,7 @@ export function RemoteConfigSection({ renderSectionHeader }: RemoteConfigSection
 		return (
 			<BaseRemoteConfigSection renderSectionHeader={renderSectionHeader}>
 				<div className="flex flex-col justify-center gap-4">
-					<h3>You have opted out of remote config. Opt back in to apply it and see it here.</h3>
+					<h3>Has rechazado la configuración remota. Vuelve a activarla para aplicarla y verla aquí.</h3>
 
 					<RemoteConfigToggle activeOrganization={activeOrganization} />
 				</div>
@@ -289,8 +303,8 @@ export function RemoteConfigSection({ renderSectionHeader }: RemoteConfigSection
 			<BaseRemoteConfigSection renderSectionHeader={renderSectionHeader}>
 				<div className="flex flex-col justify-center gap-4">
 					<h3>
-						You haven't configured remote config yet. Do so through our{" "}
-						<VSCodeLink href="https://app.cline.bot/dashboard/organization?tab=settings">dashboard</VSCodeLink>.
+						Aún no has configurado la configuración remota. Hazlo a través de nuestro{" "}
+						<VSCodeLink href="https://app.cline.bot/dashboard/organization?tab=settings">panel de control</VSCodeLink>.
 					</h3>
 
 					<RefreshButton />
@@ -303,7 +317,7 @@ export function RemoteConfigSection({ renderSectionHeader }: RemoteConfigSection
 		<BaseRemoteConfigSection renderSectionHeader={renderSectionHeader}>
 			<div className="flex flex-col gap-2">
 				<p className="text-description text-xs mb-2">
-					These settings are managed by your organization's remote configuration.
+					Estos ajustes están gestionados por la configuración remota de tu organización.
 				</p>
 
 				<OtelSettingsSection />

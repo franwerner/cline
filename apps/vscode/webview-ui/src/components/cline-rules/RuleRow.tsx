@@ -147,7 +147,7 @@ const RuleRow: React.FC<{
 								<InfoIcon className="ml-1.5 opacity-70 size-[0.85rem]" />
 							</TooltipTrigger>
 							<TooltipContent>
-								Searches recursively for all AGENTS.md files in the workspace when a top-level AGENTS.md exists
+								Busca de forma recursiva todos los archivos AGENTS.md del espacio de trabajo cuando existe un AGENTS.md en el nivel superior
 							</TooltipContent>
 						</Tooltip>
 					)}
@@ -161,22 +161,22 @@ const RuleRow: React.FC<{
 						disabled={isDisabled}
 						key={rulePath}
 						onClick={() => toggleRule(rulePath, !enabled)}
-						title={isDisabled ? "This rule is required and cannot be disabled" : undefined}
+						title={isDisabled ? "Esta regla es obligatoria y no se puede desactivar" : undefined}
 					/>
 					<Button
-						aria-label={isRemote ? `View ${ruleType} file` : `Edit ${ruleType} file`}
+						aria-label={isRemote ? `Ver archivo ${ruleType}` : `Editar archivo ${ruleType}`}
 						onClick={handleEditClick}
 						size="xs"
-						title={isRemote ? `View ${ruleType} file (read-only)` : `Edit ${ruleType} file`}
+						title={isRemote ? `Ver archivo ${ruleType} (solo lectura)` : `Editar archivo ${ruleType}`}
 						variant="icon">
 						{isRemote ? <EyeIcon /> : <PenIcon />}
 					</Button>
 					<Button
-						aria-label={`Delete ${ruleType} file`}
+						aria-label={`Eliminar archivo ${ruleType}`}
 						disabled={isRemote}
 						onClick={handleDeleteClick}
 						size="xs"
-						title={`Delete ${ruleType} file`}
+						title={`Eliminar archivo ${ruleType}`}
 						variant="icon">
 						<Trash2Icon />
 					</Button>

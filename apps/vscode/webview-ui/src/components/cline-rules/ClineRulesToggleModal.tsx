@@ -437,11 +437,15 @@ const ClineRulesToggleModal: React.FC = () => {
 		<div className="inline-flex min-w-0 max-w-full items-center" ref={modalRef}>
 			<div className="inline-flex w-full items-center" ref={buttonRef}>
 				<Tooltip>
-					{!isVisible && <TooltipContent>Manage Catalina Rules & Workflows</TooltipContent>}
+					{!isVisible && <TooltipContent>Gestionar reglas y flujos de trabajo de Catalina</TooltipContent>}
 					<TooltipTrigger>
 						<VSCodeButton
 							appearance="icon"
-							aria-label={isVisible ? "Hide Catalina Rules & Workflows" : "Show Catalina Rules & Workflows"}
+							aria-label={
+								isVisible
+									? "Ocultar reglas y flujos de trabajo de Catalina"
+									: "Mostrar reglas y flujos de trabajo de Catalina"
+							}
 							className="p-0 m-0 flex items-center"
 							onClick={() => setIsVisible(!isVisible)}>
 							<i className="codicon codicon-law" style={{ fontSize: "12.5px" }} />
@@ -470,10 +474,10 @@ const ClineRulesToggleModal: React.FC = () => {
 									flexWrap: "wrap",
 								}}>
 								<TabButton isActive={currentView === "rules"} onClick={() => setCurrentView("rules")}>
-									Rules
+									Reglas
 								</TabButton>
 								<TabButton isActive={currentView === "workflows"} onClick={() => setCurrentView("workflows")}>
-									Workflows
+									Flujos de trabajo
 								</TabButton>
 								{hooksEnabled && (
 									<TabButton isActive={currentView === "hooks"} onClick={() => setCurrentView("hooks")}>
@@ -492,8 +496,8 @@ const ClineRulesToggleModal: React.FC = () => {
 								<i className="codicon codicon-lock text-sm" />
 								<span className="text-base">
 									{currentView === "rules"
-										? "Your organization manages some rules"
-										: "Your organization manages some workflows"}
+										? "Tu organización gestiona algunas reglas"
+										: "Tu organización gestiona algunos flujos de trabajo"}
 								</span>
 							</div>
 						) : null}
@@ -502,36 +506,37 @@ const ClineRulesToggleModal: React.FC = () => {
 						<div className="text-xs text-description mb-4">
 							{currentView === "rules" ? (
 								<p>
-									Rules allow you to provide Catalina with system-level guidance. Think of them as a persistent way
-									to include context and preferences for your projects or globally for every conversation.{" "}
+									Las reglas te permiten darle a Catalina pautas a nivel de sistema. Piénsalas como una forma
+									persistente de incluir contexto y preferencias para tus proyectos o de forma global para cada
+									conversación.{" "}
 									<VSCodeLink
 										className="text-xs"
 										href="https://docs.cline.bot/features/cline-rules"
 										style={{ display: "inline", fontSize: "inherit" }}>
-										Docs
+										Documentación
 									</VSCodeLink>
 								</p>
 							) : currentView === "workflows" ? (
 								<p>
-									Workflows allow you to define a series of steps to guide Catalina through a repetitive set of
-									tasks, such as deploying a service or submitting a PR. To invoke a workflow, type{" "}
-									<span className="text-foreground font-bold">/workflow-name</span> in the chat.{" "}
+									Los flujos de trabajo te permiten definir una serie de pasos para guiar a Catalina en un conjunto
+									repetitivo de tareas, como desplegar un servicio o enviar un PR. Para invocar un flujo de trabajo,
+									escribe <span className="text-foreground font-bold">/nombre-del-flujo</span> en el chat.{" "}
 									<VSCodeLink
 										className="text-xs inline"
 										href="https://docs.cline.bot/features/slash-commands/workflows">
-										Docs
+										Documentación
 									</VSCodeLink>
 								</p>
 							) : currentView === "skills" ? (
 								<p>
-									Skills are reusable instruction sets that Catalina can activate on-demand. When a task matches a
-									skill's description, Catalina uses the <span className="font-bold">use_skill</span> tool to load
-									the full instructions.
+									Las skills son conjuntos de instrucciones reutilizables que Catalina puede activar bajo demanda.
+									Cuando una tarea coincide con la descripción de una skill, Catalina usa la herramienta{" "}
+									<span className="font-bold">use_skill</span> para cargar las instrucciones completas.
 								</p>
 							) : (
 								<p>
-									Hooks allow you to execute custom scripts at specific points in Cline's execution lifecycle,
-									enabling automation and integration with external tools.
+									Los hooks te permiten ejecutar scripts personalizados en puntos concretos del ciclo de ejecución
+									de Cline, habilitando la automatización y la integración con herramientas externas.
 								</p>
 							)}
 						</div>
@@ -544,7 +549,7 @@ const ClineRulesToggleModal: React.FC = () => {
 								{/* Remote Rules Section */}
 								{hasRemoteRules && (
 									<div className="mb-3">
-										<div className="text-sm font-normal mb-2">Enterprise Rules</div>
+										<div className="text-sm font-normal mb-2">Reglas de empresa</div>
 										<div className="flex flex-col gap-0">
 											{remoteGlobalRules.map((rule) => {
 												const enabled = rule.alwaysEnabled || remoteRulesToggles[rule.name] === true
@@ -567,7 +572,7 @@ const ClineRulesToggleModal: React.FC = () => {
 
 								{/* Global Rules Section */}
 								<div className="mb-3">
-									<div className="text-sm font-normal mb-2">Global Rules</div>
+									<div className="text-sm font-normal mb-2">Reglas globales</div>
 
 									{/* File-based Global Rules */}
 									<RulesToggleList
@@ -583,7 +588,7 @@ const ClineRulesToggleModal: React.FC = () => {
 
 								{/* Local Rules Section */}
 								<div className="-mb-2.5">
-									<div className="text-sm font-normal mb-2">Workspace Rules</div>
+									<div className="text-sm font-normal mb-2">Reglas del espacio de trabajo</div>
 									<RulesToggleList
 										isGlobal={false}
 										listGap="small"
@@ -628,7 +633,7 @@ const ClineRulesToggleModal: React.FC = () => {
 								{/* Remote Workflows Section */}
 								{hasRemoteWorkflows && (
 									<div className="mb-3">
-										<div className="text-sm font-normal mb-2">Enterprise Workflows</div>
+										<div className="text-sm font-normal mb-2">Flujos de trabajo de empresa</div>
 										<div className="flex flex-col gap-0">
 											{remoteGlobalWorkflows.map((workflow) => {
 												const enabled =
@@ -652,7 +657,7 @@ const ClineRulesToggleModal: React.FC = () => {
 
 								{/* Global Workflows Section */}
 								<div className="mb-3">
-									<div className="text-sm font-normal mb-2">Global Workflows</div>
+									<div className="text-sm font-normal mb-2">Flujos de trabajo globales</div>
 
 									{/* File-based Global Workflows */}
 									<RulesToggleList
@@ -668,7 +673,7 @@ const ClineRulesToggleModal: React.FC = () => {
 
 								{/* Local Workflows Section */}
 								<div className="-mb-2.5">
-									<div className="text-sm font-normal mb-2">Workspace Workflows</div>
+									<div className="text-sm font-normal mb-2">Flujos de trabajo del espacio de trabajo</div>
 									<RulesToggleList
 										isGlobal={false}
 										listGap="small"
@@ -685,13 +690,13 @@ const ClineRulesToggleModal: React.FC = () => {
 								<div className="text-xs text-description mb-4">
 									<p>
 										{isWindows
-											? "On Windows, hooks execute whenever the hook file exists."
-											: "Toggle to enable/disable (chmod +x/-x)."}{" "}
+											? "En Windows, los hooks se ejecutan siempre que exista el archivo del hook."
+											: "Activa/desactiva el interruptor (chmod +x/-x)."}{" "}
 										<VSCodeLink
 											className="text-xs"
 											href="https://docs.cline.bot/features/hooks"
 											style={{ display: "inline", fontSize: "inherit" }}>
-											Docs
+											Documentación
 										</VSCodeLink>
 									</p>
 								</div>
@@ -701,16 +706,16 @@ const ClineRulesToggleModal: React.FC = () => {
 									<div className="flex items-center gap-2 px-3 py-3 mb-4 bg-vscode-inputValidation-warningBackground border-l-[3px] border-vscode-inputValidation-warningBorder">
 										<i className="codicon codicon-warning text-sm" />
 										<span className="text-base">
-											Hook toggling is not yet supported on Windows in this foundation PR. Hooks can be
-											created, edited, and deleted, and execute whenever the hook file exists. Coming next:
-											JSON-backed hook enabled/disabled state across platforms.
+											Activar o desactivar hooks aún no es compatible en Windows en este PR base. Los hooks se
+											pueden crear, editar y eliminar, y se ejecutan siempre que exista el archivo del hook.
+											Próximamente: estado activado/desactivado de los hooks basado en JSON en todas las plataformas.
 										</span>
 									</div>
 								)}
 
 								{/* Global Hooks */}
 								<div className="mb-3">
-									<div className="text-sm font-normal mb-2">Global Hooks</div>
+									<div className="text-sm font-normal mb-2">Hooks globales</div>
 									<div className="flex flex-col gap-0">
 										{globalHooks
 											.sort((a, b) => a.name.localeCompare(b.name))
@@ -785,7 +790,7 @@ const ClineRulesToggleModal: React.FC = () => {
 								{/* Enterprise Skills Section (remote) */}
 								{globalSkills.some((s) => s.path.startsWith("remote:")) && (
 									<div className="mb-3">
-										<div className="text-sm font-normal mb-2">Enterprise Skills</div>
+										<div className="text-sm font-normal mb-2">Skills de empresa</div>
 										<div className="flex flex-col gap-0">
 											{globalSkills
 												.filter((s) => s.path.startsWith("remote:"))
@@ -808,7 +813,7 @@ const ClineRulesToggleModal: React.FC = () => {
 
 								{/* Global Skills Section */}
 								<div className="mb-3">
-									<div className="text-sm font-normal mb-2">Global Skills</div>
+									<div className="text-sm font-normal mb-2">Skills globales</div>
 									<div className="flex flex-col gap-0">
 										{globalSkills
 											.filter((s) => !s.path.startsWith("remote:"))
@@ -829,7 +834,7 @@ const ClineRulesToggleModal: React.FC = () => {
 
 								{/* Workspace Skills Section */}
 								<div className="-mb-2.5">
-									<div className="text-sm font-normal mb-2">Workspace Skills</div>
+									<div className="text-sm font-normal mb-2">Skills del espacio de trabajo</div>
 									<div className="flex flex-col gap-0">
 										{localSkills
 											.sort((a, b) => a.name.localeCompare(b.name))

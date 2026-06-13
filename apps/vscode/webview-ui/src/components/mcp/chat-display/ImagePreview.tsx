@@ -190,13 +190,13 @@ class ImagePreview extends React.Component<
 								}
 							`}
 						</style>
-						Loading image from {getSafeHostname(url)}...
+						Cargando imagen desde {getSafeHostname(url)}...
 					</div>
 					{elapsedSeconds > 3 && (
 						<div style={{ fontSize: "11px", color: "var(--vscode-descriptionForeground)" }}>
 							{elapsedSeconds > 60
-								? `Waiting for ${Math.floor(elapsedSeconds / 60)}m ${elapsedSeconds % 60}s...`
-								: `Waiting for ${elapsedSeconds}s...`}
+								? `Esperando ${Math.floor(elapsedSeconds / 60)} min ${elapsedSeconds % 60} s...`
+								: `Esperando ${elapsedSeconds} s...`}
 						</div>
 					)}
 					{/* Hidden image that we'll use to detect load/error events */}
@@ -244,10 +244,10 @@ class ImagePreview extends React.Component<
 						borderRadius: "4px",
 						color: "var(--vscode-errorForeground)",
 					}}>
-					<div style={{ fontWeight: "bold" }}>Failed to load image</div>
+					<div style={{ fontWeight: "bold" }}>No se pudo cargar la imagen</div>
 					<div style={{ fontSize: "12px", marginTop: "4px" }}>{getSafeHostname(url)}</div>
 					<div style={{ fontSize: "11px", marginTop: "8px", color: "var(--vscode-textLink-foreground)" }}>
-						Click to open in browser
+						Hacer clic para abrir en el navegador
 					</div>
 				</div>
 			)
@@ -327,7 +327,7 @@ const MemoizedImagePreview = React.memo(
 // Wrap the ImagePreview component with an error boundary
 const ImagePreviewWithErrorBoundary: React.FC<ImagePreviewProps> = (props) => {
 	return (
-		<ChatErrorBoundary errorTitle="Something went wrong displaying this image">
+		<ChatErrorBoundary errorTitle="Se produjo un error al mostrar esta imagen">
 			<MemoizedImagePreview {...props} />
 		</ChatErrorBoundary>
 	)

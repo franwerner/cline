@@ -8,43 +8,43 @@ interface FeatureTipItem {
 
 const FEATURE_TIPS: FeatureTipItem[] = [
 	{
-		text: 'Enable "Double-Check Completion" in settings to have Catalina verify its work before finishing a task.',
+		text: 'Activa "Doble verificación de finalización" en los ajustes para que Catalina revise su trabajo antes de terminar una tarea.',
 	},
 	{
-		text: "Add a .clinerules file to your project root to give Catalina project-specific instructions.",
+		text: "Añade un archivo .clinerules a la raíz de tu proyecto para darle a Catalina instrucciones específicas del proyecto.",
 	},
 	{
-		text: "Switch to Plan Mode to discuss and plan an approach before Catalina takes action.",
+		text: "Cambia al modo Plan para debatir y planificar un enfoque antes de que Catalina actúe.",
 	},
 	{
-		text: "Use @ in the chat input to add files, folders, or URLs as context for your task.",
+		text: "Usa @ en la entrada del chat para añadir archivos, carpetas o URL como contexto para tu tarea.",
 	},
 	{
-		text: "Set up MCP Servers to give Catalina access to external tools and APIs.",
+		text: "Configura servidores MCP para darle a Catalina acceso a herramientas y API externas.",
 	},
 	{
-		text: "Catalina creates checkpoints after changes — you can always restore to a previous state.",
+		text: "Catalina crea puntos de control tras los cambios: siempre puedes restaurar un estado anterior.",
 	},
 	{
-		text: "Use /compact to condense long conversations and free up context window space.",
+		text: "Usa /compact para condensar conversaciones largas y liberar espacio en la ventana de contexto.",
 	},
 	{
-		text: "Enable auto-approve for read-only tools like file reads to speed up exploration.",
+		text: "Activa la aprobación automática para herramientas de solo lectura, como la lectura de archivos, para acelerar la exploración.",
 	},
 	{
-		text: "Use the quote button to select text from Catalina's response and reference it in your reply.",
+		text: "Usa el botón de cita para seleccionar texto de la respuesta de Catalina y referenciarlo en tu respuesta.",
 	},
 	{
-		text: "You can drag and drop images into the chat to share screenshots with Catalina.",
+		text: "Puedes arrastrar y soltar imágenes en el chat para compartir capturas de pantalla con Catalina.",
 	},
 	{
-		text: "Catalina can browse websites — ask it to test your local dev server in the browser.",
+		text: "Catalina puede navegar por sitios web: pídele que pruebe tu servidor de desarrollo local en el navegador.",
 	},
 	{
-		text: "Use /reportbug to quickly file a GitHub issue with diagnostic context included.",
+		text: "Usa /reportbug para crear rápidamente una incidencia de GitHub con el contexto de diagnóstico incluido.",
 	},
 	{
-		text: 'You can disable these tips in Settings → Features → "Feature Tips".',
+		text: 'Puedes desactivar estos consejos en Ajustes → Funciones → "Consejos sobre funciones".',
 	},
 ]
 
@@ -108,7 +108,7 @@ export const FeatureTip = memo(() => {
 			)}>
 			<LightbulbIcon className="size-3 text-description shrink-0 mt-[1px]" />
 			<span className="text-xs text-description leading-relaxed">
-				<span className="font-medium">Tip:</span> {currentTip.text}
+				<span className="font-medium">Consejo:</span> {currentTip.text}
 			</span>
 		</div>
 	)

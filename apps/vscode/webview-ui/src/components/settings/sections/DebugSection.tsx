@@ -15,13 +15,13 @@ const DebugSection = ({ onResetState, renderSectionHeader }: DebugSectionProps) 
 			{renderSectionHeader("debug")}
 			<Section>
 				<Button onClick={() => onResetState()} variant="error">
-					Reset Workspace State
+					Restablecer el estado del espacio de trabajo
 				</Button>
 				<Button onClick={() => onResetState(true)} variant="error">
-					Reset Global State
+					Restablecer el estado global
 				</Button>
 				<p className="text-xs mt-[5px] text-(--vscode-descriptionForeground)">
-					This will reset all global state and secret storage in the extension.
+					Esto restablecerá todo el estado global y el almacenamiento de secretos de la extensión.
 				</p>
 			</Section>
 			<Section>
@@ -32,7 +32,7 @@ const DebugSection = ({ onResetState, renderSectionHeader }: DebugSectionProps) 
 							.finally(() => setShowWelcome(true))
 					}
 					variant="secondary">
-					Reset Onboarding State
+					Restablecer el estado de la introducción
 				</Button>
 			</Section>
 		</div>

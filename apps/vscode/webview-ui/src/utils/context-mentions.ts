@@ -124,8 +124,8 @@ export function getContextMenuOptions(
 	const workingChanges: ContextMenuQueryItem = {
 		type: ContextMenuOptionType.Git,
 		value: "git-changes",
-		label: "Working changes",
-		description: "Current uncommitted changes",
+		label: "Cambios en curso",
+		description: "Cambios actuales sin confirmar",
 	}
 
 	const searchResultItems: ContextMenuQueryItem[] = dynamicSearchResults.map((result) => {
@@ -182,8 +182,8 @@ export function getContextMenuOptions(
 	if ("git".startsWith(lowerQuery)) {
 		suggestions.push({
 			type: ContextMenuOptionType.Git,
-			label: "Git Commits",
-			description: "Search repository history",
+			label: "Commits de Git",
+			description: "Buscar en el historial del repositorio",
 		})
 	} else if ("git-changes".startsWith(lowerQuery)) {
 		suggestions.push(workingChanges)
@@ -208,7 +208,7 @@ export function getContextMenuOptions(
 				type: ContextMenuOptionType.Git,
 				value: lowerQuery,
 				label: `Commit ${lowerQuery}`,
-				description: "Git commit hash",
+				description: "Hash de commit de Git",
 			})
 		}
 	}

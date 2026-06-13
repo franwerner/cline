@@ -72,14 +72,14 @@ const AutoApproveModal: React.FC<AutoApproveModalProps> = ({ isVisible, setIsVis
 					maxHeight: "60vh",
 				}}>
 				<div className="mb-2.5 text-muted-foreground text-xs cursor-pointer" onClick={() => setIsVisible(false)}>
-					Let Catalina take these actions without asking for approval.{" "}
+					Permite que Catalina realice estas acciones sin pedir aprobación.{" "}
 					<a
 						className="text-link hover:text-link-hover"
 						href="https://docs.cline.bot/features/auto-approve#auto-approve"
 						rel="noopener"
 						style={{ fontSize: "inherit" }}
 						target="_blank">
-						Docs
+						Documentación
 					</a>
 				</div>
 
@@ -129,11 +129,11 @@ const AutoApproveModal: React.FC<AutoApproveModalProps> = ({ isVisible, setIsVis
 								enableNotifications: checked,
 							})
 						}}>
-						<span className="text-sm">Enable notifications</span>
+						<span className="text-sm">Activar notificaciones</span>
 					</VSCodeCheckbox>
 				</div>
 				<div className="mt-1 text-xs text-muted-foreground">
-					Notifications may show abbreviated tool details for safety and privacy.
+					Las notificaciones pueden mostrar detalles abreviados de las herramientas por seguridad y privacidad.
 				</div>
 			</div>
 		</div>

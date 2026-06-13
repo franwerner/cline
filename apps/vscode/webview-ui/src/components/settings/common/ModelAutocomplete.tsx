@@ -21,8 +21,8 @@ export const ModelAutocomplete = ({
 	selectedModelId,
 	onChange,
 	zIndex = AUTOCOMPLETE_Z_INDEX,
-	label = "Model",
-	placeholder = "Search and select a model...",
+	label = "Modelo",
+	placeholder = "Buscar y seleccionar un modelo...",
 }: ModelAutocompleteProps) => {
 	const [searchTerm, setSearchTerm] = useState(selectedModelId || "")
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false)
@@ -189,7 +189,7 @@ export const ModelAutocomplete = ({
 						value={searchTerm}>
 						{searchTerm && (
 							<div
-								aria-label="Clear search"
+								aria-label="Borrar búsqueda"
 								className="input-icon-button codicon codicon-close"
 								onClick={() => {
 									setSearchTerm("")
@@ -207,7 +207,7 @@ export const ModelAutocomplete = ({
 					</VSCodeTextField>
 					{isDropdownVisible && (
 						<DropdownList
-							aria-label="Model suggestions"
+							aria-label="Sugerencias de modelos"
 							id={listboxId}
 							ref={dropdownListRef}
 							role="listbox"

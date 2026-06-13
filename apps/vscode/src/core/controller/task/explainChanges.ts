@@ -37,7 +37,7 @@ export async function explainChanges(
 		if (!controller.task) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "No active task",
+				message: "No hay ninguna tarea activa",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -47,7 +47,7 @@ export async function explainChanges(
 		if (!checkpointManager) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Checkpoints not enabled",
+				message: "Los puntos de control no están activados",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -57,7 +57,8 @@ export async function explainChanges(
 		if (!checkpointManager.config?.enableCheckpoints) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Checkpoints are disabled in settings. Cannot review changes.",
+				message:
+					"Los puntos de control están desactivados en los Ajustes. No se pueden revisar los cambios.",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -68,7 +69,7 @@ export async function explainChanges(
 		if (!messageStateHandler) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Message state handler not available",
+				message: "El gestor de estado de mensajes no está disponible",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -117,7 +118,7 @@ export async function explainChanges(
 				);
 			} catch (error) {
 				const errorMessage =
-					error instanceof Error ? error.message : "Unknown error";
+					error instanceof Error ? error.message : "Error desconocido";
 				Logger.error(
 					`[explainChanges] Failed to initialize checkpoint tracker:`,
 					errorMessage,
@@ -139,7 +140,7 @@ export async function explainChanges(
 			Logger.error(`[explainChanges] Checkpoint tracker not available`);
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Checkpoint tracker not available",
+				message: "El rastreador de puntos de control no está disponible",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -162,7 +163,8 @@ export async function explainChanges(
 		if (!previousCheckpointHash) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Unexpected error: No checkpoint hash found",
+				message:
+					"Error inesperado: no se ha encontrado ningún hash de punto de control",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -175,7 +177,7 @@ export async function explainChanges(
 		if (!changedFiles?.length) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "No changes found to review",
+				message: "No se han encontrado cambios que revisar",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -186,7 +188,7 @@ export async function explainChanges(
 		if (!apiConfiguration) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "API configuration not available",
+				message: "La configuración de la API no está disponible",
 			});
 			relinquishButton();
 			return Empty.create({});
@@ -273,11 +275,11 @@ export async function explainChanges(
 		return Empty.create({});
 	} catch (error) {
 		const errorMessage =
-			error instanceof Error ? error.message : "Unknown error";
+			error instanceof Error ? error.message : "Error desconocido";
 		Logger.error("Error in explainChanges:", errorMessage);
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: "Failed to explain changes: " + errorMessage,
+			message: "No se han podido explicar los cambios: " + errorMessage,
 		});
 		sendRelinquishControlEvent();
 		return Empty.create({});

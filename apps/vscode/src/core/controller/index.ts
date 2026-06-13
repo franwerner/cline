@@ -208,12 +208,12 @@ export class Controller {
 			await this.postStateToWebview();
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Successfully logged out of Cline",
+				message: "Se ha cerrado la sesión de Cline correctamente",
 			});
 		} catch (_error) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Logout failed",
+				message: "No se ha podido cerrar la sesión",
 			});
 		}
 	}
@@ -225,12 +225,12 @@ export class Controller {
 			await this.postStateToWebview();
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "Successfully logged out of OCA",
+				message: "Se ha cerrado la sesión de OCA correctamente",
 			});
 		} catch (_error) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "OCA Logout failed",
+				message: "No se ha podido cerrar la sesión de OCA",
 			});
 		}
 	}
@@ -624,7 +624,7 @@ export class Controller {
 			Logger.error("Failed to handle auth callback:", error);
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Failed to log in to Cline",
+				message: "No se ha podido iniciar sesión en Cline",
 			});
 			// Even on login failure, we preserve any existing tokens
 			// Only clear tokens on explicit logout
@@ -679,7 +679,7 @@ export class Controller {
 			Logger.error("Failed to handle auth callback:", error);
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Failed to log in to OCA",
+				message: "No se ha podido iniciar sesión en OCA",
 			});
 			// Even on login failure, we preserve any existing tokens
 			// Only clear tokens on explicit logout
@@ -696,13 +696,13 @@ export class Controller {
 			await this.postStateToWebview();
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: `Successfully authenticated MCP server`,
+				message: `Servidor MCP autenticado correctamente`,
 			});
 		} catch (error) {
 			Logger.error("Failed to complete MCP OAuth:", error);
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Failed to authenticate MCP server`,
+				message: `No se ha podido autenticar el servidor MCP`,
 			});
 		}
 	}

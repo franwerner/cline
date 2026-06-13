@@ -28,7 +28,7 @@ export const NebiusProvider = ({ showModelOptions, isPopup, currentMode }: Nebiu
 	return (
 		<div>
 			<ApiKeyField
-				helpText="This key is stored locally and only used to make API requests from this extension. (Note: Catalina uses complex prompts and works best with Claude models. Less capable models may not work as expected.)"
+				helpText="Esta clave se guarda localmente y solo se usa para hacer solicitudes de API desde esta extensión. (Nota: Catalina usa prompts complejos y funciona mejor con modelos Claude. Los modelos menos capaces pueden no funcionar como se espera.)"
 				initialValue={apiConfiguration?.nebiusApiKey || ""}
 				onChange={(value) => handleFieldChange("nebiusApiKey", value)}
 				providerName="Nebius"
@@ -38,7 +38,7 @@ export const NebiusProvider = ({ showModelOptions, isPopup, currentMode }: Nebiu
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={nebiusModels}
 						onChange={(e: any) =>
 							handleModeFieldChange(

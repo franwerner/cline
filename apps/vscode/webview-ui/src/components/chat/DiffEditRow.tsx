@@ -148,7 +148,7 @@ const FileBlock = memo<{ file: Patch; isStreaming: boolean; startLineNumber?: nu
 							<span
 								className="font-medium truncate hover:underline hover:text-link"
 								onClick={handleOpenFile}
-								title="Open file in editor">
+								title="Abrir archivo en el editor">
 								{file.path}
 							</span>
 						</div>
@@ -158,7 +158,7 @@ const FileBlock = memo<{ file: Patch; isStreaming: boolean; startLineNumber?: nu
 						<span
 							className="p-1 hover:bg-description/20 rounded-xs transition-colors"
 							onClick={handleOpenFile}
-							title="Open file in editor">
+							title="Abrir archivo en el editor">
 							<SquareArrowOutUpRightIcon className="size-2 text-description hover:text-foreground" />
 						</span>
 					</div>

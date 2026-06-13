@@ -32,10 +32,10 @@ export async function deleteAllTaskHistory(
 			await HostProvider.window.showMessage(
 				ShowMessageRequest.create({
 					type: ShowMessageType.WARNING,
-					message: "What would you like to delete?",
+					message: "¿Qué desea eliminar?",
 					options: {
 						modal: true,
-						items: ["Delete All Except Favorites", "Delete Everything"],
+						items: ["Eliminar todo excepto los favoritos", "Eliminar todo"],
 					},
 				}),
 			)
@@ -49,7 +49,7 @@ export async function deleteAllTaskHistory(
 		}
 
 		// If preserving favorites, filter out non-favorites
-		if (userChoice === "Delete All Except Favorites") {
+		if (userChoice === "Eliminar todo excepto los favoritos") {
 			const favoritedTasks = taskHistory.filter(
 				(task) => task.isFavorited === true,
 			);
@@ -78,10 +78,10 @@ export async function deleteAllTaskHistory(
 					await HostProvider.window.showMessage({
 						type: ShowMessageType.WARNING,
 						message:
-							"No favorited tasks found. Would you like to delete all tasks anyway?",
+							"No se ha encontrado ninguna tarea marcada como favorita. ¿Desea eliminar todas las tareas de todos modos?",
 						options: {
 							modal: true,
-							items: ["Delete All Tasks"],
+							items: ["Eliminar todas las tareas"],
 						},
 					})
 				).selectedOption;
@@ -120,7 +120,7 @@ export async function deleteAllTaskHistory(
 		} catch (error) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: `Encountered error while deleting task history, there may be some files left behind. Error: ${error instanceof Error ? error.message : String(error)}`,
+				message: `Se ha producido un error al eliminar el historial de tareas; es posible que hayan quedado algunos archivos. Error: ${error instanceof Error ? error.message : String(error)}`,
 			});
 		}
 

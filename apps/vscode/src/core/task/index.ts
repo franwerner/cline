@@ -404,7 +404,8 @@ export class Task {
 
 		if (isMultiRootWorkspace && checkpointsEnabled) {
 			// Set checkpoint manager error message to display warning in TaskHeader
-			this.taskState.checkpointManagerErrorMessage = "Checkpoints are not currently supported in multi-root workspaces."
+			this.taskState.checkpointManagerErrorMessage =
+				"Los puntos de control no son compatibles actualmente con espacios de trabajo multi-raíz."
 		}
 
 		// Initialize checkpoint manager based on workspace configuration
@@ -443,10 +444,10 @@ export class Task {
 			} catch (error) {
 				Logger.error("Failed to initialize checkpoint manager:", error)
 				if (this.stateManager.getGlobalSettingsKey("enableCheckpointsSetting")) {
-					const errorMessage = error instanceof Error ? error.message : "Unknown error"
+					const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 					HostProvider.window.showMessage({
 						type: ShowMessageType.ERROR,
-						message: `Failed to initialize checkpoint manager: ${errorMessage}`,
+						message: `No se ha podido inicializar el gestor de puntos de control: ${errorMessage}`,
 					})
 				}
 			}
@@ -2397,7 +2398,7 @@ export class Task {
 			if (autoApprovalSettings.enableNotifications) {
 				showSystemNotification({
 					subtitle: "Error",
-					message: "Cline is having trouble. Would you like to continue the task?",
+					message: "Catalina está teniendo problemas. ¿Quieres continuar con la tarea?",
 				})
 			}
 			const { response, text, images, files } = await this.ask(
@@ -2458,12 +2459,12 @@ export class Task {
 			try {
 				await ensureCheckpointInitialized({ checkpointManager: this.checkpointManager })
 			} catch (error) {
-				const errorMessage = error instanceof Error ? error.message : "Unknown error"
+				const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 				Logger.error("Failed to initialize checkpoint manager:", errorMessage)
 				this.taskState.checkpointManagerErrorMessage = errorMessage // will be displayed right away since we saveClineMessages next which posts state to webview
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: `Checkpoint initialization timed out: ${errorMessage}`,
+					message: `Se ha agotado el tiempo de espera para la inicialización del punto de control: ${errorMessage}`,
 				})
 			}
 		}

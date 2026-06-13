@@ -88,7 +88,7 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 				onClose()
 			}
 		} catch (err) {
-			setCreateError(err instanceof Error ? err.message : "Failed to create worktree")
+			setCreateError(err instanceof Error ? err.message : "No se pudo crear el worktree")
 		} finally {
 			setIsCreating(false)
 		}
@@ -98,12 +98,12 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 		return null
 	}
 
-	const title = openAfterCreate ? "New Worktree" : "Create New Worktree"
-	const buttonText = openAfterCreate ? "Create & Open" : "Create Worktree"
-	const creatingText = openAfterCreate ? "Creating & Opening..." : "Creating..."
+	const title = openAfterCreate ? "Nuevo worktree" : "Crear nuevo worktree"
+	const buttonText = openAfterCreate ? "Crear y abrir" : "Crear worktree"
+	const creatingText = openAfterCreate ? "Creando y abriendo..." : "Creando..."
 	const description = openAfterCreate
-		? "This will create a copy of your project on a new branch and open in a separate window."
-		: "This will create a copy of your project on a new branch."
+		? "Esto creará una copia de tu proyecto en una nueva rama y la abrirá en una ventana independiente."
+		: "Esto creará una copia de tu proyecto en una nueva rama."
 
 	return (
 		<div
@@ -129,21 +129,21 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 						style={{ backgroundColor: "var(--vscode-inputValidation-warningBackground)" }}>
 						<AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5 text-[var(--vscode-editorWarning-foreground)]" />
 						<p className="text-xs text-[var(--vscode-foreground)] m-0">
-							No .worktreeinclude detected.{" "}
+							No se detectó .worktreeinclude.{" "}
 							<a
 								className="text-[var(--vscode-textLink-foreground)] hover:text-[var(--vscode-textLink-activeForeground)]"
 								href="https://docs.cline.bot/features/worktrees#worktreeinclude"
 								rel="noopener noreferrer"
 								style={{ fontSize: "inherit" }}
 								target="_blank">
-								Learn more
+								Más información
 							</a>
 						</p>
 					</div>
 				)}
 				<div className="flex flex-col">
 					<div>
-						<label className="block text-sm font-medium mb-1">Branch Name *</label>
+						<label className="block text-sm font-medium mb-1">Nombre de la rama *</label>
 						<VSCodeTextField
 							className="w-full"
 							onInput={(e) => setNewBranchName((e.target as HTMLInputElement).value)}
@@ -151,7 +151,7 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 							value={newBranchName}>
 							{newBranchName && (
 								<div
-									aria-label="Clear"
+									aria-label="Limpiar"
 									className="input-icon-button codicon codicon-close"
 									onClick={() => setNewBranchName("")}
 									slot="end"
@@ -165,11 +165,11 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 							)}
 						</VSCodeTextField>
 						<p className="text-xs text-[var(--vscode-descriptionForeground)] mt-1">
-							Your new copy will be checked out to this branch.
+							Tu nueva copia se ubicará en esta rama.
 						</p>
 					</div>
 					<div>
-						<label className="block text-sm font-medium mb-1">Folder Path *</label>
+						<label className="block text-sm font-medium mb-1">Ruta de la carpeta *</label>
 						<VSCodeTextField
 							className="w-full"
 							onInput={(e) => setNewWorktreePath((e.target as HTMLInputElement).value)}
@@ -177,7 +177,7 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 							value={newWorktreePath}>
 							{newWorktreePath && (
 								<div
-									aria-label="Clear"
+									aria-label="Limpiar"
 									className="input-icon-button codicon codicon-close"
 									onClick={() => setNewWorktreePath("")}
 									slot="end"
@@ -191,7 +191,7 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 							)}
 						</VSCodeTextField>
 						<p className="text-xs text-[var(--vscode-descriptionForeground)] mt-1">
-							Where the project will be copied for the worktree.
+							Dónde se copiará el proyecto para el worktree.
 						</p>
 					</div>
 					{createError && (
@@ -207,7 +207,7 @@ const CreateWorktreeModal = ({ open, onClose, openAfterCreate = false, onSuccess
 							{isLoadingDefaults ? (
 								<>
 									<Loader2 className="w-4 h-4 mr-1 animate-spin" />
-									Loading...
+									Cargando...
 								</>
 							) : isCreating ? (
 								<>

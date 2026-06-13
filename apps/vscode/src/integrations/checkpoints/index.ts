@@ -261,7 +261,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				case "taskAndWorkspace":
 				case "workspace":
 					if (!this.config.enableCheckpoints) {
-						const errorMessage = "Checkpoints are disabled in settings."
+						const errorMessage = "Los puntos de control están desactivados en los Ajustes."
 						Logger.error(`[TaskCheckpointManager] ${errorMessage} for task ${this.task.taskId}`)
 						HostProvider.window.showMessage({
 							type: ShowMessageType.ERROR,
@@ -281,7 +281,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 							)
 							this.services.messageStateHandler.setCheckpointTracker(this.state.checkpointTracker)
 						} catch (error) {
-							const errorMessage = error instanceof Error ? error.message : "Unknown error"
+							const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 							Logger.error(
 								`[TaskCheckpointManager] Failed to initialize checkpoint tracker for task ${this.task.taskId}:`,
 								errorMessage,
@@ -298,14 +298,14 @@ export class TaskCheckpointManager implements ICheckpointManager {
 						try {
 							await this.state.checkpointTracker.resetHead(message.lastCheckpointHash)
 						} catch (error) {
-							const errorMessage = error instanceof Error ? error.message : "Unknown error"
+							const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 							Logger.error(
 								`[TaskCheckpointManager] Failed to restore checkpoint for task ${this.task.taskId}:`,
 								errorMessage,
 							)
 							HostProvider.window.showMessage({
 								type: ShowMessageType.ERROR,
-								message: "Failed to restore checkpoint: " + errorMessage,
+								message: "No se ha podido restaurar el punto de control: " + errorMessage,
 							})
 							didWorkspaceRestoreFail = true
 						}
@@ -313,14 +313,14 @@ export class TaskCheckpointManager implements ICheckpointManager {
 						try {
 							await this.state.checkpointTracker.resetHead(lastMessageWithHash.lastCheckpointHash)
 						} catch (error) {
-							const errorMessage = error instanceof Error ? error.message : "Unknown error"
+							const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 							Logger.error(
 								`[TaskCheckpointManager] Failed to restore offset checkpoint for task ${this.task.taskId}:`,
 								errorMessage,
 							)
 							HostProvider.window.showMessage({
 								type: ShowMessageType.ERROR,
-								message: "Failed to restore offset checkpoint: " + errorMessage,
+								message: "No se ha podido restaurar el punto de control de desplazamiento: " + errorMessage,
 							})
 							didWorkspaceRestoreFail = true
 						}
@@ -332,19 +332,19 @@ export class TaskCheckpointManager implements ICheckpointManager {
 						try {
 							await this.state.checkpointTracker.resetHead(lastMessageWithHash.lastCheckpointHash)
 						} catch (error) {
-							const errorMessage = error instanceof Error ? error.message : "Unknown error"
+							const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 							Logger.error(
 								`[TaskCheckpointManager] Failed to restore fallback checkpoint for task ${this.task.taskId}:`,
 								errorMessage,
 							)
 							HostProvider.window.showMessage({
 								type: ShowMessageType.ERROR,
-								message: "Failed to restore checkpoint: " + errorMessage,
+								message: "No se ha podido restaurar el punto de control: " + errorMessage,
 							})
 							didWorkspaceRestoreFail = true
 						}
 					} else {
-						const errorMessage = "Failed to restore checkpoint: No valid checkpoint hash found"
+						const errorMessage = "No se ha podido restaurar el punto de control: no se ha encontrado ningún hash de punto de control válido"
 						Logger.error(`[TaskCheckpointManager] ${errorMessage} for task ${this.task.taskId}`)
 						HostProvider.window.showMessage({
 							type: ShowMessageType.ERROR,
@@ -395,7 +395,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 
 		try {
 			if (!this.config.enableCheckpoints) {
-				const errorMessage = "Checkpoints are disabled in settings. Cannot show diff."
+				const errorMessage = "Los puntos de control están desactivados en los Ajustes. No se puede mostrar la diferencia."
 				Logger.error(`[TaskCheckpointManager] ${errorMessage} for task ${this.task.taskId}`)
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
@@ -453,7 +453,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				Logger.error(`[TaskCheckpointManager] Checkpoint tracker not available for task ${this.task.taskId}`)
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "Checkpoint tracker not available",
+					message: "El rastreador de puntos de control no está disponible",
 				})
 				relinquishButton()
 				return
@@ -483,7 +483,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				const previousCheckpointHash = lastTaskCompletedMessageCheckpointHash || firstCheckpointMessageCheckpointHash
 
 				if (!previousCheckpointHash) {
-					const errorMessage = "Unexpected error: No checkpoint hash found"
+					const errorMessage = "Error inesperado: no se ha encontrado ningún hash de punto de control"
 					Logger.error(`[TaskCheckpointManager] ${errorMessage} for task ${this.task.taskId}`)
 					HostProvider.window.showMessage({
 						type: ShowMessageType.ERROR,
@@ -498,7 +498,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				if (!changedFiles?.length) {
 					HostProvider.window.showMessage({
 						type: ShowMessageType.INFORMATION,
-						message: "No changes found",
+						message: "No se han encontrado cambios",
 					})
 					relinquishButton()
 					return
@@ -509,7 +509,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				if (!changedFiles?.length) {
 					HostProvider.window.showMessage({
 						type: ShowMessageType.INFORMATION,
-						message: "No changes found",
+						message: "No se han encontrado cambios",
 					})
 					relinquishButton()
 					return
@@ -527,11 +527,11 @@ export class TaskCheckpointManager implements ICheckpointManager {
 
 			relinquishButton()
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error"
+			const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 			Logger.error(`[TaskCheckpointManager] Failed to present multifile diff for task ${this.task.taskId}:`, errorMessage)
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Failed to retrieve diff set: " + errorMessage,
+				message: "No se ha podido recuperar el conjunto de diferencias: " + errorMessage,
 			})
 			relinquishButton()
 		}
@@ -709,19 +709,19 @@ export class TaskCheckpointManager implements ICheckpointManager {
 			case "task":
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: "Task messages have been restored to the checkpoint",
+					message: "Los mensajes de la tarea se han restaurado al punto de control",
 				})
 				break
 			case "workspace":
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: "Workspace files have been restored to the checkpoint",
+					message: "Los archivos del espacio de trabajo se han restaurado al punto de control",
 				})
 				break
 			case "taskAndWorkspace":
 				HostProvider.window.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: "Task and workspace have been restored to the checkpoint",
+					message: "La tarea y el espacio de trabajo se han restaurado al punto de control",
 				})
 				break
 		}
@@ -790,7 +790,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				if (!checkpointsWarningShown) {
 					checkpointsWarningShown = true
 					await this.setcheckpointManagerErrorMessage(
-						"Checkpoints are taking longer than expected to initialize. Working in a large repository? Consider re-opening Cline in a project that uses git, or disabling checkpoints.",
+						"Los puntos de control están tardando más de lo esperado en inicializarse. ¿Estás trabajando en un repositorio grande? Considera volver a abrir Catalina en un proyecto que use git, o desactivar los puntos de control.",
 					)
 				}
 			}, 7_000)
@@ -802,7 +802,7 @@ export class TaskCheckpointManager implements ICheckpointManager {
 				{
 					milliseconds: 15_000,
 					message:
-						"Checkpoints taking too long to initialize. Consider re-opening Cline in a project that uses git, or disabling checkpoints.",
+						"Los puntos de control están tardando demasiado en inicializarse. Considera volver a abrir Catalina en un proyecto que use git, o desactivar los puntos de control.",
 				},
 			)
 
@@ -814,9 +814,9 @@ export class TaskCheckpointManager implements ICheckpointManager {
 			Logger.error("Failed to initialize checkpoint tracker:", errorMessage)
 
 			// If the error was a timeout, we disable all checkpoint operations for the rest of the task
-			if (errorMessage.includes("Checkpoints taking too long to initialize")) {
+			if (errorMessage.includes("Los puntos de control están tardando demasiado en inicializarse")) {
 				await this.setcheckpointManagerErrorMessage(
-					"Checkpoints initialization timed out. Consider re-opening Cline in a project that uses git, or disabling checkpoints.",
+					"Se agotó el tiempo de inicialización de los puntos de control. Considera volver a abrir Catalina en un proyecto que use git, o desactivar los puntos de control.",
 				)
 			} else {
 				await this.setcheckpointManagerErrorMessage(errorMessage)

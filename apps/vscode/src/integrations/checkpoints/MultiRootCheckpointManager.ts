@@ -273,7 +273,7 @@ export class MultiRootCheckpointManager implements ICheckpointManager {
 			if (!this.enableCheckpoints || !this.initialized) {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "Checkpoint manager is not initialized.",
+					message: "El gestor de puntos de control no está inicializado.",
 				})
 				return
 			}
@@ -282,7 +282,7 @@ export class MultiRootCheckpointManager implements ICheckpointManager {
 			if (!primaryRoot) {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "No primary workspace root configured.",
+					message: "No hay ninguna raíz principal del espacio de trabajo configurada.",
 				})
 				return
 			}
@@ -291,18 +291,18 @@ export class MultiRootCheckpointManager implements ICheckpointManager {
 			if (!tracker) {
 				HostProvider.window.showMessage({
 					type: ShowMessageType.ERROR,
-					message: "No checkpoint tracker available for the primary workspace.",
+					message: "No hay ningún rastreador de puntos de control disponible para el espacio de trabajo principal.",
 				})
 				return
 			}
 
 			await showChangedFilesDiff(this.messageStateHandler, tracker, messageTs, seeNewChangesSinceLastTaskCompletion)
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error"
+			const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 			Logger.error("[MultiRootCheckpointManager] Failed to present multifile diff:", errorMessage)
 			HostProvider.window.showMessage({
 				type: ShowMessageType.ERROR,
-				message: "Failed to present diff: " + errorMessage,
+				message: "No se ha podido mostrar la diferencia: " + errorMessage,
 			})
 		}
 	}

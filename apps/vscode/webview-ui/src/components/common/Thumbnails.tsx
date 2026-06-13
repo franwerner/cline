@@ -70,7 +70,7 @@ const Thumbnails = ({ images, files, style, setImages, setFiles, onHeightChange,
 					onMouseLeave={() => setHoveredIndex(null)}
 					style={{ position: "relative" }}>
 					<img
-						alt={`Thumbnail image-${index + 1}`}
+						alt={`Miniatura imagen-${index + 1}`}
 						onClick={() => handleImageClick(image)}
 						src={image}
 						style={{

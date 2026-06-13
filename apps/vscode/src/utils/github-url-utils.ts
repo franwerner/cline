@@ -157,13 +157,13 @@ export async function openUrlInBrowser(url: string): Promise<void> {
 			HostProvider.window
 				.showMessage({
 					type: ShowMessageType.INFORMATION,
-					message: "Couldn't open the URL automatically. It has been copied to your clipboard.",
+					message: "No se ha podido abrir la URL automáticamente. Se ha copiado en el portapapeles.",
 					options: {
-						items: ["Copy URL Again"],
+						items: ["Volver a copiar la URL"],
 					},
 				})
 				.then((response) => {
-					if (response.selectedOption === "Copy URL Again") {
+					if (response.selectedOption === "Volver a copiar la URL") {
 						writeTextToClipboard(url)
 					}
 				})

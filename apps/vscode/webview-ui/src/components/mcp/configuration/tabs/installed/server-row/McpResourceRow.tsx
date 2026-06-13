@@ -35,13 +35,13 @@ const McpResourceRow = ({ item }: McpResourceRowProps) => {
 						? item.description
 						: !item.description && item.name
 							? item.name
-							: "No description"}
+							: "Sin descripción"}
 			</div>
 			<div
 				style={{
 					fontSize: "12px",
 				}}>
-				<span style={{ opacity: 0.8 }}>Returns </span>
+				<span style={{ opacity: 0.8 }}>Devuelve </span>
 				<code
 					style={{
 						color: "var(--vscode-textPreformat-foreground)",
@@ -49,7 +49,7 @@ const McpResourceRow = ({ item }: McpResourceRowProps) => {
 						padding: "1px 4px",
 						borderRadius: "3px",
 					}}>
-					{item.mimeType || "Unknown"}
+					{item.mimeType || "Desconocido"}
 				</code>
 			</div>
 		</div>

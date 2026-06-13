@@ -39,13 +39,13 @@ export class VscodeCommentReviewController
 		// Create the comment controller
 		this.commentController = vscode.comments.createCommentController(
 			"cline-ai-review",
-			"Cline AI Review",
+			"Catalina AI Review",
 		);
 
 		// Configure options for the reply input
 		this.commentController.options = {
-			placeHolder: "Ask a question about this code...",
-			prompt: "Reply to Cline",
+			placeHolder: "Haga una pregunta sobre este código...",
+			prompt: "Responder a Catalina",
 		};
 
 		// Configure the commenting range provider (optional - allows commenting on any line)
@@ -130,7 +130,7 @@ export class VscodeCommentReviewController
 			body: new vscode.MarkdownString(comment.comment),
 			mode: vscode.CommentMode.Preview,
 			author: {
-				name: "Cline",
+				name: "Catalina",
 				iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 			},
 		};
@@ -186,7 +186,7 @@ export class VscodeCommentReviewController
 			body: new vscode.MarkdownString("_Thinking..._"),
 			mode: vscode.CommentMode.Preview,
 			author: {
-				name: "Cline",
+				name: "Catalina",
 				iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 			},
 		};
@@ -262,7 +262,7 @@ export class VscodeCommentReviewController
 			body: new vscode.MarkdownString(this.streamingContent || "_Thinking..._"),
 			mode: vscode.CommentMode.Preview,
 			author: {
-				name: "Cline",
+				name: "Catalina",
 				iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 			},
 		};
@@ -285,7 +285,7 @@ export class VscodeCommentReviewController
 			body: new vscode.MarkdownString(finalContent),
 			mode: vscode.CommentMode.Preview,
 			author: {
-				name: "Cline",
+				name: "Catalina",
 				iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 			},
 		};
@@ -376,7 +376,7 @@ export class VscodeCommentReviewController
 					body: new vscode.MarkdownString(content || "_Thinking..._"),
 					mode: vscode.CommentMode.Preview,
 					author: {
-						name: "Cline",
+						name: "Catalina",
 						iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 					},
 				};
@@ -388,7 +388,7 @@ export class VscodeCommentReviewController
 				body: new vscode.MarkdownString("_Thinking..._"),
 				mode: vscode.CommentMode.Preview,
 				author: {
-					name: "Cline",
+					name: "Catalina",
 					iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 				},
 			};
@@ -421,7 +421,7 @@ export class VscodeCommentReviewController
 						),
 						mode: vscode.CommentMode.Preview,
 						author: {
-							name: "Cline",
+							name: "Catalina",
 							iconPath: vscode.Uri.parse(CLINE_AVATAR_URL),
 						},
 					};

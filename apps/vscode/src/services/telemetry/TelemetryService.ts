@@ -406,13 +406,13 @@ export class TelemetryService {
 					.showMessage({
 						type: ShowMessageType.WARNING,
 						message:
-							"Anonymous Cline error and usage reporting is enabled, but IDE telemetry is disabled. To enable error and usage reporting for this extension, enable telemetry in IDE settings.",
+							"El informe anónimo de errores y uso de Cline está activado, pero la telemetría del IDE está desactivada. Para activar el informe de errores y uso de esta extensión, active la telemetría en los Ajustes del IDE.",
 						options: {
-							items: ["Open Settings"],
+							items: ["Abrir Ajustes"],
 						},
 					})
 					.then((response: { selectedOption?: string }) => {
-						if (response.selectedOption === "Open Settings") {
+						if (response.selectedOption === "Abrir Ajustes") {
 							void HostProvider.window.openSettings({
 								query: "telemetry.telemetryLevel",
 							})

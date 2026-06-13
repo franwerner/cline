@@ -131,25 +131,25 @@ const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
 			<ScreenReaderAnnounce message={announcement} />
 			<div
 				aria-activedescendant={filteredCommands.length > 0 ? `slash-command-menu-item-${selectedIndex}` : undefined}
-				aria-label="Slash commands"
+				aria-label="Comandos de barra"
 				className="bg-(--vscode-dropdown-background) border border-(--vscode-editorGroup-border) rounded-[3px] shadow-[0_4px_10px_rgba(0,0,0,0.25)] flex flex-col overflow-y-auto"
 				ref={menuRef}
 				role="listbox"
 				style={{ maxHeight: "min(200px, calc(50vh))", overscrollBehavior: "contain" }}>
 				{filteredCommands.length > 0 ? (
 					<>
-						{renderCommandSection(defaultCommands, "Default Commands", 0, true)}
-						{renderCommandSection(workflowCommands, "Workflow Commands", defaultCommands.length, false)}
+						{renderCommandSection(defaultCommands, "Comandos predeterminados", 0, true)}
+						{renderCommandSection(workflowCommands, "Comandos de flujo de trabajo", defaultCommands.length, false)}
 						{renderCommandSection(
 							mcpCommands,
-							"MCP Prompts",
+							"Prompts de MCP",
 							defaultCommands.length + workflowCommands.length,
 							true,
 						)}
 					</>
 				) : (
 					<div aria-selected="false" className="py-2 px-3 cursor-default flex flex-col" role="option">
-						<div className="text-[0.85em] text-(--vscode-descriptionForeground)">No matching commands found</div>
+						<div className="text-[0.85em] text-(--vscode-descriptionForeground)">No se encontraron comandos coincidentes</div>
 					</div>
 				)}
 			</div>

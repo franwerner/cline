@@ -21,19 +21,19 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 		e.preventDefault()
 
 		if (!serverName.trim()) {
-			setError("Server name is required")
+			setError("El nombre del servidor es obligatorio")
 			return
 		}
 
 		if (!serverUrl.trim()) {
-			setError("Server URL is required")
+			setError("La URL del servidor es obligatoria")
 			return
 		}
 
 		try {
 			new URL(serverUrl)
 		} catch (_err) {
-			setError("Invalid URL format")
+			setError("Formato de URL no válido")
 			return
 		}
 
@@ -59,16 +59,16 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 			onServerAdded()
 		} catch (error) {
 			setIsSubmitting(false)
-			setError(error instanceof Error ? error.message : "Failed to add server")
+			setError(error instanceof Error ? error.message : "No se pudo añadir el servidor")
 		}
 	}
 
 	return (
 		<div className="p-4 px-5">
 			<div className="text-(--vscode-foreground) mb-2">
-				Add a remote MCP server by providing a name and its URL endpoint. Learn more{" "}
+				Añade un servidor MCP remoto proporcionando un nombre y su endpoint de URL. Más información{" "}
 				<VSCodeLink href={LINKS.DOCUMENTATION.REMOTE_MCP_SERVER_DOCS} style={{ display: "inline" }}>
-					here.
+					aquí.
 				</VSCodeLink>
 			</div>
 
@@ -83,7 +83,7 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 						}}
 						placeholder="mcp-server"
 						value={serverName}>
-						Server Name
+						Nombre del servidor
 					</VSCodeTextField>
 				</div>
 
@@ -97,12 +97,12 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 						}}
 						placeholder="https://example.com/mcp-server"
 						value={serverUrl}>
-						Server URL
+						URL del servidor
 					</VSCodeTextField>
 				</div>
 
 				<div className="mb-3">
-					<label className={`block text-sm font-medium mb-2 ${isSubmitting ? "opacity-50" : ""}`}>Transport Type</label>
+					<label className={`block text-sm font-medium mb-2 ${isSubmitting ? "opacity-50" : ""}`}>Tipo de transporte</label>
 					<VSCodeRadioGroup
 						disabled={isSubmitting}
 						onChange={(e) => {
@@ -114,7 +114,7 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 							Streamable HTTP
 						</VSCodeRadio>
 						<VSCodeRadio checked={transportType === "sse"} value="sse">
-							SSE (Legacy)
+							SSE (heredado)
 						</VSCodeRadio>
 					</VSCodeRadioGroup>
 				</div>
@@ -122,7 +122,7 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 				{error && <div className="mb-3 text-(--vscode-errorForeground)">{error}</div>}
 
 				<VSCodeButton className="w-full" disabled={isSubmitting} type="submit">
-					{isSubmitting ? "Connecting..." : "Add Server"}
+					{isSubmitting ? "Conectando..." : "Añadir servidor"}
 				</VSCodeButton>
 
 				<VSCodeButton
@@ -133,7 +133,7 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 						})
 					}}
 					style={{ width: "100%", marginBottom: "5px", marginTop: 15 }}>
-					Edit Configuration
+					Editar configuración
 				</VSCodeButton>
 			</form>
 		</div>

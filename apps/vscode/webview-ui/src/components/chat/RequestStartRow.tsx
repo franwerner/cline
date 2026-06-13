@@ -35,21 +35,21 @@ const formatSearchRegex = (regex: string, path: string, filePattern?: string): s
 		.map((t) => t.trim().replace(/\\b/g, "").replace(/\\s\?/g, " "))
 		.filter(Boolean)
 		.join(" | ")
-	return filePattern && filePattern !== "*" ? `"${terms}" in ${cleanedPath}/ (${filePattern})` : `"${terms}" in ${cleanedPath}/`
+	return filePattern && filePattern !== "*" ? `"${terms}" en ${cleanedPath}/ (${filePattern})` : `"${terms}" en ${cleanedPath}/`
 }
 // Format activity text based on tool type
 const getActivityText = (tool: ClineSayTool): string | null => {
 	const cleanedPath = cleanPathPrefix(tool.path || "")
 	switch (tool.tool) {
 		case "readFile":
-			return tool.path ? `Reading ${cleanedPath}...` : null
+			return tool.path ? `Leyendo ${cleanedPath}...` : null
 		case "listFilesTopLevel":
 		case "listFilesRecursive":
-			return tool.path ? `Exploring ${cleanedPath}/...` : null
+			return tool.path ? `Explorando ${cleanedPath}/...` : null
 		case "searchFiles":
-			return tool.regex && tool.path ? `Searching ${formatSearchRegex(tool.regex, tool.path, tool.filePattern)}...` : null
+			return tool.regex && tool.path ? `Buscando ${formatSearchRegex(tool.regex, tool.path, tool.filePattern)}...` : null
 		case "listCodeDefinitionNames":
-			return tool.path ? `Analyzing ${cleanedPath}/...` : null
+			return tool.path ? `Analizando ${cleanedPath}/...` : null
 		default:
 			return null
 	}
@@ -232,7 +232,7 @@ export const RequestStartRow: React.FC<RequestStartRowProps> = ({
 					<div className="ml-1 pl-0 mb-1 -mt-1.25 pt-1">
 						<div className="inline-flex justify-baseline gap-0.5 text-left select-none px-0 w-full">
 							<span className="animate-shimmer bg-linear-90 from-foreground to-description bg-[length:200%_100%] bg-clip-text text-transparent text-[13px] leading-none">
-								Thinking...
+								Pensando...
 							</span>
 						</div>
 					</div>

@@ -12,10 +12,11 @@ const AddLocalServerForm = ({}: AddLocalServerFormProps) => {
 	return (
 		<FormContainer>
 			<div className="text-(--vscode-foreground)">
-				Add a local MCP server by configuring it in <code>cline_mcp_settings.json</code>. You'll need to specify the
-				server name, command, arguments, and any required environment variables in the JSON configuration. Learn more
+				Añade un servidor MCP local configurándolo en <code>cline_mcp_settings.json</code>. Tendrás que especificar el
+				nombre del servidor, el comando, los argumentos y cualquier variable de entorno necesaria en la configuración
+				JSON. Más información
 				<VSCodeLink href={LINKS.DOCUMENTATION.LOCAL_MCP_SERVER_DOCS} style={{ display: "inline" }}>
-					here.
+					aquí.
 				</VSCodeLink>
 			</div>
 
@@ -27,7 +28,7 @@ const AddLocalServerForm = ({}: AddLocalServerFormProps) => {
 					})
 				}}
 				style={{ width: "100%", marginBottom: "5px", marginTop: 8 }}>
-				Open cline_mcp_settings.json
+				Abrir cline_mcp_settings.json
 			</VSCodeButton>
 		</FormContainer>
 	)

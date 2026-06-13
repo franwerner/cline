@@ -295,7 +295,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({
 												<div className="flex items-center gap-1.5 text-xs">
 													<GitBranch className="w-3 h-3 stroke-[2.5] flex-shrink-0" />
 													<span className="break-all text-center">
-														<span className="font-semibold">Current:</span>{" "}
+														<span className="font-semibold">Actual:</span>{" "}
 														{currentWorktree.branch || "detached HEAD"}
 													</span>
 												</div>
@@ -305,7 +305,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({
 											</button>
 										</TooltipTrigger>
 										<TooltipContent side="bottom">
-											View and manage git worktrees. Great for running parallel Catalina tasks.
+											Ver y gestionar los worktree de git. Ideal para ejecutar tareas de Catalina en paralelo.
 										</TooltipContent>
 									</Tooltip>
 								)}

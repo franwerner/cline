@@ -14,7 +14,7 @@ export async function explainWithCline(
 	if (!request.selectedText?.trim() && !notebookContext) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.INFORMATION,
-			message: "Please select some code to explain.",
+			message: "Seleccione el código que desea explicar.",
 		});
 		return {};
 	}

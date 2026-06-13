@@ -203,7 +203,7 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 			</style>
 			<div style={{ display: "flex", flexDirection: "column" }}>
 				<label htmlFor="vercel-model-search">
-					<span style={{ fontWeight: 500 }}>Model</span>
+					<span style={{ fontWeight: 500 }}>Modelo</span>
 				</label>
 
 				<DropdownWrapper ref={dropdownRef}>
@@ -220,7 +220,7 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 							setIsDropdownVisible(true)
 						}}
 						onKeyDown={handleKeyDown}
-						placeholder="Search and select a model..."
+						placeholder="Buscar y seleccionar un modelo..."
 						role="combobox"
 						style={{
 							width: "100%",
@@ -230,7 +230,7 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 						value={searchTerm}>
 						{searchTerm && (
 							<div
-								aria-label="Clear search"
+								aria-label="Borrar búsqueda"
 								className="input-icon-button codicon codicon-close"
 								onClick={() => {
 									setSearchTerm("")
@@ -267,8 +267,8 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 								<DropdownItem isSelected={false}>
 									<span style={{ color: "var(--vscode-descriptionForeground)" }}>
 										{Object.keys(vercelAiGatewayModels).length === 0
-											? "Loading models..."
-											: "No models found"}
+											? "Cargando modelos..."
+											: "No se han encontrado modelos"}
 									</span>
 								</DropdownItem>
 							)}
@@ -289,10 +289,10 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 							defaultEffort={showAdaptiveThinkingEffort ? adaptiveThinkingDefaultEffort : "medium"}
 							description={
 								showAdaptiveThinkingEffort
-									? "Use None to disable adaptive thinking. Higher effort increases response detail and token usage."
+									? "Usa Ninguno para desactivar el razonamiento adaptativo. Un mayor esfuerzo aumenta el detalle de la respuesta y el uso de tokens."
 									: undefined
 							}
-							label={showAdaptiveThinkingEffort ? "Adaptive Thinking" : undefined}
+							label={showAdaptiveThinkingEffort ? "Razonamiento adaptativo" : undefined}
 						/>
 					)}
 
@@ -312,7 +312,8 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 					}}>
 					{Object.keys(vercelAiGatewayModels).length === 0 ? (
 						<>
-							Enter your Vercel AI Gateway API key above to load available models. You can get an API key from{" "}
+							Introduce tu clave de API de Vercel AI Gateway arriba para cargar los modelos disponibles. Puedes obtener
+							una clave de API en{" "}
 							<VSCodeLink
 								href="https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai"
 								style={{ display: "inline", fontSize: "inherit" }}>
@@ -321,8 +322,8 @@ const VercelModelPicker: React.FC<VercelModelPickerProps> = ({ isPopup, currentM
 						</>
 					) : (
 						<>
-							Select a model from the dropdown above. The extension fetches available models from your Vercel AI
-							Gateway configuration.
+							Selecciona un modelo en el desplegable de arriba. La extensión obtiene los modelos disponibles de tu
+							configuración de Vercel AI Gateway.
 						</>
 					)}
 				</p>

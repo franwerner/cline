@@ -136,7 +136,7 @@ const ActModeHighlight: React.FC = () => {
 					)
 				}
 			}}
-			title={mode === "plan" ? "Click to toggle to Act Mode" : "Already in Act Mode"}>
+			title={mode === "plan" ? "Haz clic para cambiar al modo Act" : "Ya estás en el modo Act"}>
 			<div className="p-1 rounded-md bg-code flex items-center justify-end w-7 border border-input-border">
 				<div className="rounded-full bg-link w-2 h-2" />
 			</div>
@@ -328,7 +328,7 @@ const PreWithCopyButton = ({ children, ...preProps }: React.HTMLAttributes<HTMLP
 	}
 
 	return (
-		<WithCopyButton ariaLabel="Copy code" onCopy={handleCopy} position="top-right">
+		<WithCopyButton ariaLabel="Copiar código" onCopy={handleCopy} position="top-right">
 			<pre {...preProps} ref={preRef}>
 				{children}
 			</pre>
@@ -398,7 +398,7 @@ const InlineCodeWithFileCheck: React.FC<ComponentProps<"code"> & { [key: string]
 				className="p-0 ml-0.5 leading-none align-middle transition-opacity text-preformat gap-0.5 inline text-left"
 				onClick={() => FileServiceClient.openFileRelativePath({ value: filePath })}
 				size="icon"
-				title={`Open ${filePath} in editor`}
+				title={`Abrir ${filePath} en el editor`}
 				type="button"
 				variant="icon">
 				<code {...props} />

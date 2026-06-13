@@ -31,7 +31,7 @@ export const MoonshotProvider = ({ showModelOptions, isPopup, currentMode }: Moo
 		<div>
 			<DropdownContainer className="dropdown-container" style={{ position: "inherit" }}>
 				<label htmlFor="moonshot-entrypoint">
-					<span style={{ fontWeight: 500, marginTop: 5 }}>Moonshot Entrypoint</span>
+					<span style={{ fontWeight: 500, marginTop: 5 }}>Punto de entrada de Moonshot</span>
 				</label>
 				<VSCodeDropdown
 					id="moonshot-entrypoint"
@@ -58,7 +58,7 @@ export const MoonshotProvider = ({ showModelOptions, isPopup, currentMode }: Moo
 				</VSCodeDropdown>
 			</DropdownContainer>
 			<ApiKeyField
-				helpText="This key is stored locally and only used to make API requests from this extension."
+				helpText="Esta clave se guarda localmente y solo se usa para hacer solicitudes de API desde esta extensión."
 				initialValue={apiConfiguration?.moonshotApiKey || ""}
 				onChange={async (value) => {
 					await ModelsServiceClient.updateApiConfiguration(
@@ -83,7 +83,7 @@ export const MoonshotProvider = ({ showModelOptions, isPopup, currentMode }: Moo
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={moonshotModels}
 						onChange={async (e: any) => {
 							const value = e.target.value

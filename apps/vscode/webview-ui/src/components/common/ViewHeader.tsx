@@ -3,10 +3,10 @@ import { getEnvironmentColor } from "@/utils/environmentColors"
 import type { Environment } from "../../../../src/shared/config-types"
 
 const ENV_DISPLAY_NAMES: Record<Environment, string> = {
-	production: "Production",
+	production: "Producción",
 	staging: "Staging",
 	local: "Local",
-	selfHosted: "Self-hosted",
+	selfHosted: "Autoalojado",
 }
 
 type ViewHeaderProps = {
@@ -29,12 +29,12 @@ const ViewHeader = ({ title, onDone, showEnvironmentSuffix, environment }: ViewH
 				</h3>
 				{showSubtext && (
 					<span className="absolute left-0 top-8 -translate-y-1 text-xs text-description whitespace-nowrap">
-						{capitalizedEnv} environment
+						Entorno {capitalizedEnv}
 					</span>
 				)}
 			</div>
 			<Button size="header" onClick={onDone}>
-				Done
+				Listo
 			</Button>
 		</div>
 	)

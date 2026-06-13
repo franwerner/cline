@@ -145,7 +145,7 @@ const OcaModelPicker: React.FC<OcaModelPickerProps> = ({
 					overflow: auto;
 				}
 			`}</style>
-			<label className="font-medium text-[12px] mt-[10px] mb-[2px]">Model</label>
+			<label className="font-medium text-[12px] mt-[10px] mb-[2px]">Modelo</label>
 			<div className="relative z-100 flex items-center gap-2 mb-1">
 				<VSCodeDropdown
 					className="flex-1 text-[12px] min-h-[24px]"
@@ -183,17 +183,17 @@ const OcaModelPicker: React.FC<OcaModelPickerProps> = ({
 						minWidth: 0,
 						margin: 0,
 					}}>
-					{loading ? "Refreshing…" : "Refresh"}
+					{loading ? "Actualizando…" : "Actualizar"}
 				</VSCodeButton>
 			</div>
 			{lastRefreshedText ? (
 				<div className="text-[11px] text-(--vscode-descriptionForeground) mt-0 mb-2">
-					Last refreshed at {lastRefreshedText}
+					Última actualización a las {lastRefreshedText}
 				</div>
 			) : null}
 			{!loading && selectedModelInfo && selectedModelInfo.supportsReasoning && reasoningEffortOptions.length > 0 && (
 				<React.Fragment>
-					<label className="font-medium text-[12px] mt-[10px] mb-[2px]">Reasoning Effort</label>
+					<label className="font-medium text-[12px] mt-[10px] mb-[2px]">Esfuerzo de razonamiento</label>
 					<div className="flex items-center gap-2 mb-1">
 						<VSCodeDropdown
 							className="flex-1 text-[12px] min-h-[24px]"
@@ -244,10 +244,10 @@ const OcaRestrictivePopup: React.FC<{
 			className={`p-6 max-w-[600px] w-[90%] rounded-[8px] [box-shadow:0_4px_24px_0_var(--vscode-widget-shadow,rgba(0,0,0,.4))] [border:1px_solid_var(--vscode-focusBorder,#007acc)] [background:var(--vscode-editor-background,#252526)] [color:var(${VSC_FOREGROUND},#cccccc)] [font-family:var(--vscode-font-family,sans-serif)] [font-size:var(--vscode-font-size,13px)] flex flex-col max-h-[80vh]`}
 			role="dialog">
 			<h2 className={`mt-0 [color:var(${VSC_FOREGROUND},#111)] font-bold`} id="oca-popup-title">
-				Acknowledgement Required
+				Confirmación requerida
 			</h2>
 			<h4 className={`mb-2 [color:var(${VSC_DESCRIPTION_FOREGROUND},#b3b3b3)] font-semibold`}>
-				Disclaimer: Prohibited Data Submission
+				Aviso legal: envío de datos prohibido
 			</h4>
 			<div className="overflow-y-auto flex-1 pr-2 mb-4 text-[13px] leading-normal text-(--vscode-foreground,#222) mask-[linear-gradient(to_bottom,black_96%,transparent_100%)]">
 				{bannerText && <div dangerouslySetInnerHTML={{ __html: bannerText }} />}
@@ -260,7 +260,7 @@ const OcaRestrictivePopup: React.FC<{
 						color: `var(${VSC_BUTTON_FOREGROUND}, #fff)`,
 					}}
 					type="button">
-					I acknowledge and agree
+					Confirmo y acepto
 				</VSCodeButton>
 			</div>
 		</div>

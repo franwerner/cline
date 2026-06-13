@@ -73,11 +73,11 @@ export const LiteLlmProvider = ({ showModelOptions, isPopup, currentMode }: Lite
 							}),
 						)
 					}}
-					placeholder={"Default: http://localhost:4000"}
+					placeholder={"Predeterminado: http://localhost:4000"}
 					style={{ width: "100%" }}
 					type="text">
 					<div className="flex items-center gap-2 mb-1">
-						<span style={{ fontWeight: 500 }}>Base URL (optional)</span>
+						<span style={{ fontWeight: 500 }}>URL base (opcional)</span>
 						{remoteConfigSettings?.liteLlmBaseUrl !== undefined && <LockIcon />}
 					</div>
 				</DebouncedTextField>
@@ -98,11 +98,11 @@ export const LiteLlmProvider = ({ showModelOptions, isPopup, currentMode }: Lite
 							}),
 						)
 					}}
-					placeholder="Default: noop"
+					placeholder="Predeterminado: noop"
 					style={{ width: "100%" }}
 					type="password">
 					<div className="flex items-center gap-2 mb-1">
-						<span style={{ fontWeight: 500 }}>API Key</span>
+						<span style={{ fontWeight: 500 }}>Clave de API</span>
 						{remoteConfigSettings?.configuredApiKeys?.litellm && <LockIcon />}
 					</div>
 				</DebouncedTextField>
@@ -110,10 +110,10 @@ export const LiteLlmProvider = ({ showModelOptions, isPopup, currentMode }: Lite
 			{showModelOptions && (
 				<>
 					<ModelAutocomplete
-						label="Model"
+						label="Modelo"
 						models={liteLlmModels}
 						onChange={handleModelChange}
-						placeholder="Search or enter a custom model ID..."
+						placeholder="Buscar o introducir un ID de modelo personalizado..."
 						selectedModelId={selectedModelId}
 					/>
 					<VSCodeButton
@@ -121,10 +121,10 @@ export const LiteLlmProvider = ({ showModelOptions, isPopup, currentMode }: Lite
 						disabled={isLoading}
 						onClick={onRefreshModels}>
 						{isLoading ? (
-							"Loading..."
+							"Cargando..."
 						) : (
 							<>
-								Refresh models <RefreshCwIcon className="ml-1" />
+								Actualizar modelos <RefreshCwIcon className="ml-1" />
 							</>
 						)}
 					</VSCodeButton>
@@ -140,11 +140,11 @@ export const LiteLlmProvider = ({ showModelOptions, isPopup, currentMode }: Lite
 					marginTop: "5px",
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				Extended thinking is available for models such as Sonnet-4, o3-mini, Deepseek R1, etc. More info on{" "}
+				El razonamiento extendido está disponible para modelos como Sonnet-4, o3-mini, Deepseek R1, etc. Más información en{" "}
 				<VSCodeLink
 					href="https://docs.litellm.ai/docs/reasoning_content"
 					style={{ display: "inline", fontSize: "inherit" }}>
-					thinking mode configuration
+					la configuración del modo de razonamiento
 				</VSCodeLink>
 			</p>
 
@@ -154,11 +154,11 @@ export const LiteLlmProvider = ({ showModelOptions, isPopup, currentMode }: Lite
 					marginTop: "5px",
 					color: "var(--vscode-descriptionForeground)",
 				}}>
-				LiteLLM provides a unified interface to access various LLM providers' models. See their{" "}
+				LiteLLM proporciona una interfaz unificada para acceder a los modelos de varios proveedores de LLM. Consulta su{" "}
 				<VSCodeLink href="https://docs.litellm.ai/docs/" style={{ display: "inline", fontSize: "inherit" }}>
-					quickstart guide
+					guía de inicio rápido
 				</VSCodeLink>{" "}
-				for more information.
+				para más información.
 			</p>
 		</div>
 	)

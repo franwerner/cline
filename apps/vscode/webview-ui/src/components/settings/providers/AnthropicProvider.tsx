@@ -68,9 +68,9 @@ export const AnthropicProvider = ({ showModelOptions, isPopup, currentMode }: An
 				<BaseUrlField
 					disabled={!!remoteConfigSettings?.anthropicBaseUrl}
 					initialValue={apiConfiguration?.anthropicBaseUrl}
-					label="Use custom base URL"
+					label="Usar URL base personalizada"
 					onChange={(value) => handleFieldChange("anthropicBaseUrl", value)}
-					placeholder="Default: https://api.anthropic.com"
+					placeholder="Predeterminado: https://api.anthropic.com"
 					showLockIcon={!!remoteConfigSettings?.anthropicBaseUrl}
 				/>
 			</RemotelyConfiguredInputWrapper>
@@ -78,7 +78,7 @@ export const AnthropicProvider = ({ showModelOptions, isPopup, currentMode }: An
 			{showModelOptions && (
 				<>
 					<ModelSelector
-						label="Model"
+						label="Modelo"
 						models={anthropicModels}
 						onChange={(e) =>
 							handleModeFieldChange(
@@ -134,8 +134,8 @@ export const AnthropicProvider = ({ showModelOptions, isPopup, currentMode }: An
 							allowedEfforts={["none", "low", "medium", "high", "xhigh"] as const}
 							currentMode={currentMode}
 							defaultEffort={adaptiveThinkingDefaultEffort}
-							description="Use None to disable adaptive thinking. Higher effort increases response detail and token usage."
-							label="Adaptive Thinking"
+							description="Usar None para desactivar el razonamiento adaptativo. Un esfuerzo mayor aumenta el detalle de la respuesta y el uso de tokens."
+							label="Razonamiento adaptativo"
 						/>
 					) : SUPPORTED_ANTHROPIC_THINKING_MODELS.includes(selectedModelId) ? (
 						<ThinkingBudgetSlider currentMode={currentMode} maxBudget={selectedModelInfo.thinkingConfig?.maxBudget} />

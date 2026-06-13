@@ -63,9 +63,10 @@ export async function deleteRuleFile(
 		"Controller.deleteRuleFile",
 	);
 
-	const fileTypeName = request.type === "workflow" ? "workflow" : "rule";
+	const fileTypeName =
+		request.type === "workflow" ? "de flujo de trabajo" : "de regla";
 
-	const message = `${fileTypeName} file "${fileName}" deleted successfully`;
+	const message = `El archivo ${fileTypeName} "${fileName}" se ha eliminado correctamente`;
 	HostProvider.window.showMessage({
 		type: ShowMessageType.INFORMATION,
 		message,

@@ -21,10 +21,10 @@ const OpenDiskConversationHistoryButton: React.FC<{
 
 	return (
 		<Tooltip>
-			<TooltipContent>Open Conversation History File</TooltipContent>
+			<TooltipContent>Abrir archivo de historial de conversación</TooltipContent>
 			<TooltipTrigger className={cn("flex items-center", className)}>
 				<Button
-					aria-label="Open Disk Conversation History"
+					aria-label="Abrir historial de conversación del disco"
 					onClick={(e) => {
 						e.preventDefault()
 						e.stopPropagation()

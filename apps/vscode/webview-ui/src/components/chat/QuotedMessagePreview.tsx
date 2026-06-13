@@ -78,7 +78,7 @@ const QuotedMessagePreview: React.FC<QuotedMessagePreviewProps> = ({ text, onDis
 			<ContentRow>
 				<ReplyIcon className="codicon codicon-reply"></ReplyIcon>
 				<TextContainer title={text}>{text}</TextContainer>
-				<DismissButton appearance="icon" aria-label="Dismiss quote" onClick={onDismiss}>
+				<DismissButton appearance="icon" aria-label="Descartar cita" onClick={onDismiss}>
 					<span className="codicon codicon-close"></span>
 				</DismissButton>
 			</ContentRow>

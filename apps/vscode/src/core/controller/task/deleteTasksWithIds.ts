@@ -25,16 +25,16 @@ export async function deleteTasksWithIds(
 	const taskCount = request.value.length;
 	const message =
 		taskCount === 1
-			? "Are you sure you want to delete this task? This action cannot be undone."
-			: `Are you sure you want to delete these ${taskCount} tasks? This action cannot be undone.`;
+			? "¿Seguro que desea eliminar esta tarea? Esta acción no se puede deshacer."
+			: `¿Seguro que desea eliminar estas ${taskCount} tareas? Esta acción no se puede deshacer.`;
 
 	const userChoice = await HostProvider.window.showMessage({
 		type: ShowMessageType.WARNING,
 		message,
-		options: { modal: true, items: ["Delete"] },
+		options: { modal: true, items: ["Eliminar"] },
 	});
 
-	if (userChoice.selectedOption !== "Delete") {
+	if (userChoice.selectedOption !== "Eliminar") {
 		return Empty.create();
 	}
 

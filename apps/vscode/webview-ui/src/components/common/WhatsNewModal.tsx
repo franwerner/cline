@@ -43,7 +43,7 @@ export const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ open, onClose, ver
 						className="text-lg font-semibold mb-3 pr-6"
 						id="whats-new-title"
 						style={{ color: "var(--vscode-editor-foreground)" }}>
-						🎉 New in v{version}
+						🎉 Novedades en la v{version}
 					</h2>
 
 					<WhatsNewItems
@@ -59,7 +59,7 @@ export const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ open, onClose, ver
 						<div className="flex items-center gap-4">
 							{/* X/Twitter */}
 							<a
-								aria-label="Follow us on X"
+								aria-label="Síguenos en X"
 								className="text-[var(--vscode-foreground)] hover:text-[var(--vscode-textLink-activeForeground)] transition-colors"
 								href="https://x.com/cline"
 								rel="noopener noreferrer"
@@ -69,7 +69,7 @@ export const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ open, onClose, ver
 
 							{/* Discord */}
 							<a
-								aria-label="Join our Discord"
+								aria-label="Únete a nuestro Discord"
 								className="text-[var(--vscode-foreground)] hover:text-[var(--vscode-textLink-activeForeground)] transition-colors"
 								href="https://discord.gg/cline"
 								rel="noopener noreferrer"
@@ -79,7 +79,7 @@ export const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ open, onClose, ver
 
 							{/* GitHub */}
 							<a
-								aria-label="Star us on GitHub"
+								aria-label="Danos una estrella en GitHub"
 								className="text-[var(--vscode-foreground)] hover:text-[var(--vscode-textLink-activeForeground)] transition-colors"
 								href="https://github.com/cline/cline"
 								rel="noopener noreferrer"
@@ -89,7 +89,7 @@ export const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ open, onClose, ver
 
 							{/* Reddit */}
 							<a
-								aria-label="Join our subreddit"
+								aria-label="Únete a nuestro subreddit"
 								className="text-[var(--vscode-foreground)] hover:text-[var(--vscode-textLink-activeForeground)] transition-colors"
 								href="https://www.reddit.com/r/cline/"
 								rel="noopener noreferrer"
@@ -99,7 +99,7 @@ export const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ open, onClose, ver
 
 							{/* LinkedIn */}
 							<a
-								aria-label="Follow us on LinkedIn"
+								aria-label="Síguenos en LinkedIn"
 								className="text-[var(--vscode-foreground)] hover:text-[var(--vscode-textLink-activeForeground)] transition-colors"
 								href="https://www.linkedin.com/company/clinebot/"
 								rel="noopener noreferrer"

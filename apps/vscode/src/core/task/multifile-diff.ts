@@ -74,15 +74,15 @@ async function getChangedFiles(
 		if (!changedFiles.length) {
 			HostProvider.window.showMessage({
 				type: ShowMessageType.INFORMATION,
-				message: "No changes found",
+				message: "No se han encontrado cambios",
 			})
 		}
 		return changedFiles
 	} catch (error) {
-		const errorMessage = error instanceof Error ? error.message : "Unknown error"
+		const errorMessage = error instanceof Error ? error.message : "Error desconocido"
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: "Failed to retrieve diff set: " + errorMessage,
+			message: "No se ha podido recuperar el conjunto de diferencias: " + errorMessage,
 		})
 		return []
 	}
@@ -112,7 +112,7 @@ async function getChangesSinceLastTaskCompletion(
 	if (!previousCheckpointHash) {
 		HostProvider.window.showMessage({
 			type: ShowMessageType.ERROR,
-			message: "Unexpected error: No checkpoint hash found",
+			message: "Error inesperado: no se ha encontrado ningún hash de punto de control",
 		})
 		return []
 	}
