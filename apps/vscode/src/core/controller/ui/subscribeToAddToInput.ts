@@ -72,3 +72,12 @@ export async function sendAddToInputEvent(text: string): Promise<void> {
 
 	await Promise.all(promises);
 }
+
+/**
+ * Number of webviews currently listening for addToInput events.
+ * Used to wait until the chat input is mounted before sending (avoids a race
+ * where the event is dropped because the webview was just opened).
+ */
+export function getActiveAddToInputSubscriptionCount(): number {
+	return activeAddToInputSubscriptions.size;
+}

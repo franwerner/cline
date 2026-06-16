@@ -12,7 +12,6 @@ import { useEffect, useMemo, useState } from "react"
 import { useExtensionState } from "@/context/ExtensionStateContext"
 import { McpServiceClient } from "@/services/grpc-client"
 import McpMarketplaceCard from "./McpMarketplaceCard"
-import McpSubmitCard from "./McpSubmitCard"
 
 const McpMarketplaceView = () => {
 	const { mcpServers, mcpMarketplaceCatalog, setMcpMarketplaceCatalog, remoteConfigSettings } = useExtensionState()
@@ -289,7 +288,6 @@ const McpMarketplaceView = () => {
 						<McpMarketplaceCard installedServers={mcpServers} item={item} key={item.mcpId} setError={setError} />
 					))
 				)}
-				<McpSubmitCard />
 			</div>
 		</div>
 	)

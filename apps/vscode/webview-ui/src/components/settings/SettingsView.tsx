@@ -11,7 +11,6 @@ import {
 	SlidersHorizontal,
 	SquareMousePointer,
 	SquareTerminal,
-	Wrench,
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useEvent } from "react-use";
@@ -33,7 +32,6 @@ import ApiConfigurationSection from "./sections/ApiConfigurationSection";
 import BrowserSettingsSection from "./sections/BrowserSettingsSection";
 import DebugSection from "./sections/DebugSection";
 import FeatureSettingsSection from "./sections/FeatureSettingsSection";
-import GeneralSettingsSection from "./sections/GeneralSettingsSection";
 import { RemoteConfigSection } from "./sections/RemoteConfigSection";
 import TerminalSettingsSection from "./sections/TerminalSettingsSection";
 
@@ -45,7 +43,6 @@ type SettingsTabID =
 	| "features"
 	| "browser"
 	| "terminal"
-	| "general"
 	| "about"
 	| "debug"
 	| "remote-config";
@@ -89,13 +86,6 @@ export const SETTINGS_TABS: SettingsTab[] = [
 		tooltipText: "Ajustes del terminal",
 		headerText: "Ajustes del terminal",
 		icon: SquareTerminal,
-	},
-	{
-		id: "general",
-		name: "General",
-		tooltipText: "Ajustes generales",
-		headerText: "Ajustes generales",
-		icon: Wrench,
 	},
 	{
 		id: "remote-config",
@@ -153,7 +143,6 @@ const SettingsView = ({ onDone, targetSection }: SettingsViewProps) => {
 	const TAB_CONTENT_MAP: Record<SettingsTabID, React.FC<any>> = useMemo(
 		() => ({
 			"api-config": ApiConfigurationSection,
-			general: GeneralSettingsSection,
 			features: FeatureSettingsSection,
 			browser: BrowserSettingsSection,
 			terminal: TerminalSettingsSection,

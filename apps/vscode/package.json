@@ -8,15 +8,11 @@
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "Cline Bot Inc."
+		"name": "Diputación de Badajoz"
 	},
 	"license": "Apache-2.0",
-	"publisher": "saoudrizwan",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/cline/cline"
-	},
-	"homepage": "https://cline.bot",
+	"publisher": "peninsula",
+	"qna": false,
 	"categories": [
 		"AI",
 		"Chat",
@@ -26,18 +22,13 @@
 		"Testing"
 	],
 	"keywords": [
-		"cline",
-		"claude",
-		"dev",
+		"catalina",
+		"ia",
+		"asistente",
+		"programacion",
+		"codigo",
 		"mcp",
-		"openrouter",
-		"coding",
-		"agent",
-		"autonomous",
-		"chatgpt",
-		"sonnet",
-		"ai",
-		"llama"
+		"agente"
 	],
 	"activationEvents": [
 		"onLanguage",
@@ -189,7 +180,7 @@
 				"command": "cline.generateGitCommitMessage",
 				"title": "Generar mensaje de commit con Catalina",
 				"category": "Catalina",
-				"icon": "$(cline-icon)"
+				"icon": "$(comment-discussion)"
 			},
 			{
 				"command": "cline.abortGitCommitMessage",

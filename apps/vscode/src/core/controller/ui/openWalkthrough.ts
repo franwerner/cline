@@ -19,7 +19,7 @@ export async function openWalkthrough(
 	try {
 		await vscode.commands.executeCommand(
 			"workbench.action.openWalkthrough",
-			`saoudrizwan.${ExtensionRegistryInfo.name}#ClineWalkthrough`,
+			`${ExtensionRegistryInfo.id}#ClineWalkthrough`,
 		);
 		telemetryService.captureButtonClick("webview_openWalkthrough");
 		return Empty.create({});

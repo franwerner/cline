@@ -43,7 +43,9 @@ import {
 	findMatchingNotebookCell,
 	getContextForCommand,
 	getUrisFromCommandArgs,
+	pickFilesForChat,
 	showWebview,
+	waitForChatInputSubscriber,
 } from "./hosts/vscode/commandUtils"
 import { abortCommitGeneration, generateCommitMsg } from "./hosts/vscode/commit-message-generator"
 import { registerClineOutputChannel } from "./hosts/vscode/hostbridge/env/debugLog"
@@ -360,11 +362,17 @@ export async function activate(context: vscode.ExtensionContext) {
 				if (uris.length === 0) {
 					return
 				}
+				const chosen = await pickFilesForChat(uris)
+				if (!chosen || chosen.length === 0) {
+					return
+				}
 				await showWebview(false)
-				const input = await buildFileMentionsFromUris(uris)
+				await vscode.commands.executeCommand(`${ExtensionRegistryInfo.views.Sidebar}.focus`)
+				const input = await buildFileMentionsFromUris(chosen)
 				if (!input.trim()) {
 					return
 				}
+				await waitForChatInputSubscriber()
 				await sendAddToInputEvent(input)
 			},
 		),
@@ -377,13 +385,19 @@ export async function activate(context: vscode.ExtensionContext) {
 				if (uris.length === 0) {
 					return
 				}
+				const chosen = await pickFilesForChat(uris)
+				if (!chosen || chosen.length === 0) {
+					return
+				}
 				const webview = await showWebview(false)
 				await webview.controller.clearTask()
 				await webview.controller.postStateToWebview()
-				const input = await buildFileMentionsFromUris(uris)
+				await vscode.commands.executeCommand(`${ExtensionRegistryInfo.views.Sidebar}.focus`)
+				const input = await buildFileMentionsFromUris(chosen)
 				if (!input.trim()) {
 					return
 				}
+				await waitForChatInputSubscriber()
 				await sendAddToInputEvent(input)
 			},
 		),

@@ -26,8 +26,8 @@ export class TerminalRegistry {
 	): TerminalInfo {
 		const terminalOptions: vscode.TerminalOptions = {
 			cwd,
-			name: "Cline",
-			iconPath: new vscode.ThemeIcon("cline-icon"),
+			name: "Catalina",
+			iconPath: new vscode.ThemeIcon("comment-discussion"),
 			env: {
 				CLINE_ACTIVE: "true",
 			},

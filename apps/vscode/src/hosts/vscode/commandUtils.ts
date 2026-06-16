@@ -1,6 +1,7 @@
 import * as fs from "fs/promises";
 import * as vscode from "vscode";
 import { getFileMentionFromPath } from "@/core/mentions";
+import { getActiveAddToInputSubscriptionCount } from "@/core/controller/ui/subscribeToAddToInput";
 import { sanitizeCellForLLM } from "@/integrations/misc/notebook-utils";
 import { ExtensionRegistryInfo } from "@/registry";
 import { CommandContext } from "@/shared/proto/index.cline";
@@ -129,26 +130,151 @@ export function getUrisFromCommandArgs(
 }
 
 /**
- * Builds a space-separated list of @-mentions for the given resources.
- * Folders get a trailing slash so the mention parser treats them as folders.
+ * Waits until at least one webview is listening for addToInput events, so a
+ * host-initiated insert is not dropped when the panel was just opened.
+ */
+export async function waitForChatInputSubscriber(
+	timeoutMs = 4000,
+	intervalMs = 100,
+): Promise<void> {
+	const start = Date.now();
+	while (
+		getActiveAddToInputSubscriptionCount() === 0 &&
+		Date.now() - start < timeoutMs
+	) {
+		await new Promise((resolve) => setTimeout(resolve, intervalMs));
+	}
+}
+
+async function walkDirectory(
+	uri: vscode.Uri,
+	out: vscode.Uri[],
+): Promise<void> {
+	let entries: [string, vscode.FileType][];
+	try {
+		entries = await vscode.workspace.fs.readDirectory(uri);
+	} catch {
+		return;
+	}
+	for (const [name, type] of entries) {
+		if (type === vscode.FileType.Directory) {
+			await walkDirectory(vscode.Uri.joinPath(uri, name), out);
+		} else if (type === vscode.FileType.File) {
+			out.push(vscode.Uri.joinPath(uri, name));
+		}
+	}
+}
+
+/**
+ * Expands the given resources into a flat, deduplicated, sorted list of files.
+ * Folders are walked recursively (excluding common build/vcs directories).
+ */
+export async function collectFilesFromUris(
+	uris: vscode.Uri[],
+): Promise<vscode.Uri[]> {
+	const collected: vscode.Uri[] = [];
+	for (const uri of uris) {
+		let stat: vscode.FileStat;
+		try {
+			stat = await vscode.workspace.fs.stat(uri);
+		} catch {
+			continue;
+		}
+		if (stat.type === vscode.FileType.Directory) {
+			await walkDirectory(uri, collected);
+		} else if (stat.type === vscode.FileType.File) {
+			collected.push(uri);
+		}
+	}
+
+	const seen = new Set<string>();
+	const deduped: vscode.Uri[] = [];
+	for (const uri of collected) {
+		if (seen.has(uri.fsPath)) {
+			continue;
+		}
+		seen.add(uri.fsPath);
+		deduped.push(uri);
+	}
+	deduped.sort((a, b) => a.fsPath.localeCompare(b.fsPath));
+	return deduped;
+}
+
+interface FilePickItem extends vscode.QuickPickItem {
+	uri: vscode.Uri;
+}
+
+/**
+ * Resolves which files to add to the chat from an Explorer selection.
+ * A single file is returned directly; folders (or multiple resources) are
+ * expanded and presented in a multi-select QuickPick (all pre-selected) so the
+ * user can deselect the files they don't want. Returns undefined if cancelled.
+ */
+export async function pickFilesForChat(
+	uris: vscode.Uri[],
+): Promise<vscode.Uri[] | undefined> {
+	const files = await collectFilesFromUris(uris);
+	if (files.length <= 1) {
+		return files;
+	}
+
+	const items: FilePickItem[] = files.map((uri) => ({
+		label: vscode.workspace.asRelativePath(uri, false),
+		uri,
+	}));
+
+	return new Promise<vscode.Uri[] | undefined>((resolve) => {
+		const qp = vscode.window.createQuickPick<FilePickItem>();
+		qp.title = "Catalina — Archivos a añadir";
+		qp.placeholder = "Desmarca los archivos que no quieras añadir";
+		qp.canSelectMany = true;
+		qp.ignoreFocusOut = true;
+		qp.items = items;
+		qp.selectedItems = items;
+
+		let settled = false;
+		qp.onDidAccept(() => {
+			settled = true;
+			const chosen = qp.selectedItems.map((i) => i.uri);
+			qp.hide();
+			resolve(chosen);
+		});
+		qp.onDidHide(() => {
+			qp.dispose();
+			if (!settled) {
+				resolve(undefined);
+			}
+		});
+		qp.show();
+	});
+}
+
+/**
+ * Builds @-mentions for the given files, grouped by parent folder: one line per
+ * folder with that folder's files space-separated. Keeps each file as a real
+ * @/path mention (so the model reads it) while avoiding a long, noisy list when
+ * many files are added.
  */
 export async function buildFileMentionsFromUris(
 	uris: vscode.Uri[],
 ): Promise<string> {
-	const mentions: string[] = [];
+	const byFolder = new Map<string, string[]>();
 	for (const uri of uris) {
-		let mention = await getFileMentionFromPath(uri.fsPath);
-		try {
-			const stat = await vscode.workspace.fs.stat(uri);
-			if (stat.type === vscode.FileType.Directory && !mention.endsWith("/")) {
-				mention += "/";
-			}
-		} catch {
-			// Resource may be unreadable; fall back to the file mention as-is.
+		const mention = await getFileMentionFromPath(uri.fsPath);
+		const relative = mention.replace(/^@\//, "");
+		const lastSlash = relative.lastIndexOf("/");
+		const folder = lastSlash >= 0 ? relative.slice(0, lastSlash) : "";
+		const group = byFolder.get(folder);
+		if (group) {
+			group.push(mention);
+		} else {
+			byFolder.set(folder, [mention]);
 		}
-		mentions.push(mention);
 	}
-	return mentions.join(" ");
+	return Array.from(byFolder.keys())
+		.sort()
+		.map((folder) => byFolder.get(folder)!.join(" "))
+		.join("\n");
 }
 
 export async function showWebview(
